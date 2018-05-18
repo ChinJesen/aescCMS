@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="description" content="汽博中心合同管理系统" />
+	<meta name="author" content="Dawn" />
+	
+	<title>汽博中心合同管理系统</title>
+
+	<link rel="stylesheet" href="../../static/xenon/assets/css/fonts/linecons/css/linecons.css">
+	<link rel="stylesheet" href="../../static/xenon/assets/css/fonts/fontawesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="../../static/xenon/assets/css/bootstrap.css">
+	<link rel="stylesheet" href="../../static/xenon/assets/css/xenon-core.css">
+	<link rel="stylesheet" href="../../static/xenon/assets/css/xenon-forms.css">
+	<link rel="stylesheet" href="../../static/xenon/assets/css/xenon-components.css">
+	<link rel="stylesheet" href="../../static/xenon/assets/css/xenon-skins.css">
+	<link rel="stylesheet" href="../../static/xenon/assets/css/custom.css">
+
+	<script src="../../static/xenon/assets/js/jquery-1.11.1.min.js"></script>
+
+	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+	
+	
+</head>
+<body class="page-body login-page login-light">
+
+	
+	<div class="login-container">
+	
+		<div class="row">
+		
+			<div class="col-sm-6">
+			
+			<script type="text/javascript">
+					jQuery(document).ready(function($)
+					{
+						// 显示表单登录
+						setTimeout(function(){ $(".fade-in-effect").addClass('in'); }, 1);
+						
+						
+						// 验证和Ajax操作
+						/*$("form#login").validate({
+							rules: {
+								username: {
+									required: true
+								},
+								
+								password: {
+									required: true
+								}
+							},
+							
+							messages: {
+								username: {
+									required: '请输入你的用户名.'
+								},
+								
+								password: {
+									required: '请输入你的密码.'
+								}
+							},
+							
+							// Form Processing via AJAX
+							submitHandler: function(form)
+							{
+								show_loading_bar(70); // Fill progress bar to 70% (just a given value)
+								
+								var opts = {
+									"closeButton": true,
+									"debug": false,
+									"positionClass": "toast-top-full-width",
+									"onclick": null,
+									"showDuration": "300",
+									"hideDuration": "1000",
+									"timeOut": "5000",
+									"extendedTimeOut": "1000",
+									"showEasing": "swing",
+									"hideEasing": "linear",
+									"showMethod": "fadeIn",
+									"hideMethod": "fadeOut"
+								};
+									
+								$.ajax({
+									url: "http://127.0.0.1:8080/login",
+									method: 'POST',
+									dataType: 'json',
+									data: {
+										do_login: true,
+										username: $(form).find('#username').val(),
+										password: $(form).find('#password').val(),
+									},
+									success: function(resp)
+									{
+										show_loading_bar({
+											delay: .5,
+											pct: 100,
+											finish: function(){
+												
+												// 成功登录页面后重定向 (当进度条达到 100%)
+												if(resp.accessGranted)
+												{
+													window.location.href = 'guanLi.html';
+												}
+																						}
+										});
+										
+																			
+										// 删除提醒
+										$(".errors-container .alert").slideUp('fast');
+										
+										
+										// 显示错误提示
+										if(resp.accessGranted == false)
+										{
+											$(".errors-container").html('<div class="alert alert-danger">\
+												<button type="button" class="close" data-dismiss="alert">\
+													<span aria-hidden="true">&times;</span>\
+													<span class="sr-only">关闭</span>\
+												</button>\
+												' + resp.errors + '\
+											</div>');
+											
+											
+											$(".errors-container .alert").hide().slideDown();
+											$(form).find('#password').select();
+										}
+																		}
+								});
+								
+							}
+						});*/
+						
+						// 设置表单焦点
+						$("form#login .form-group:has(.form-control):first .form-control").focus();
+					});
+				</script>
+				
+				<!-- 错误信息提示 -->
+				<div class="errors-container">
+
+									
+				</div>
+				
+				<!-- fade-in-effect为登录窗体效果添加类“淡入效果” -->
+				<form method="post" role="form" id="login" class="login-form fade-in-effect" action="login">
+					
+					<div class="login-header">
+						<a href="#" class="logo">
+							<img src="../../static/xenon/assets/images/logo-white-bg@2x.png" alt="" width="80" />
+							<span>汽博中心IT部陈晨开发</span>
+						</a>
+						
+						<p>输入您的用户名和密码以登录,忘记密码请联系陈晨!</p>
+					</div>
+	
+					
+					<div class="form-group">
+						<label class="control-label" for="username">用户名</label>
+						<input type="text" class="form-control" name="username" id="username" autocomplete="off" />
+					</div>
+					
+					<div class="form-group">
+						<label class="control-label" for="password">密码</label>
+						<input type="password" class="form-control" name="password" id="password" autocomplete="off" />
+					</div>
+					
+					<div class="form-group">
+						<button type="submit" class="btn btn-primary  btn-block text-left">
+							<i class="fa-lock"></i>
+							登录
+						</button>
+					</div>
+					
+				</form>
+				
+
+				</div>
+				
+			</div>
+			
+		</div>
+		
+	</div>
+
+
+
+	<!-- Bottom Scripts -->
+	<script src="../../static/xenon/assets/js/bootstrap.min.js"></script>
+	<script src="../../static/xenon/assets/js/TweenMax.min.js"></script>
+	<script src="../../static/xenon/assets/js/resizeable.js"></script>
+	<script src="../../static/xenon/assets/js/joinable.js"></script>
+	<script src="../../static/xenon/assets/js/xenon-api.js"></script>
+	<script src="../../static/xenon/assets/js/xenon-toggles.js"></script>
+	<script src="../../static/xenon/assets/js/jquery-validate/jquery.validate.min.js"></script>
+	<script src="../../static/xenon/assets/js/toastr/toastr.min.js"></script>
+
+
+	<!-- JavaScripts initializations and stuff -->
+	<script src="../../static/xenon/assets/js/xenon-custom.js"></script>
+
+</body>
+</html>

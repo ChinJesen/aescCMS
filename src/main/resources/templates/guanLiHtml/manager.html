@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head th:include="baseTemplate/headHtml :: head"></head>
+<body class="page-body">
+<div th:include="baseTemplate/profileLeft :: profileLeft"></div>
+<nav th:include="baseTemplate/navHtml :: nav"></nav>
+
+<div class="page-container"><!-- add class "sidebar-collapsed" to close sidebar by default, "chat-visible" to make chat appear always -->
+
+	<div class="main-content">
+
+		<h3>Here starts everything&hellip;</h3>
+
+					
+		<footer th:include="baseTemplate/footHtml :: foot"></footer>
+	</div>
+
+</div>
+<!-- Bottom Scripts -->
+<script th:src="@{../../static/xenon/assets/js/bootstrap.min.js}"></script>
+<script th:src="@{../../static/xenon/assets/js/TweenMax.min.js}"></script>
+<script th:src="@{../../static/xenon/assets/js/resizeable.js}"></script>
+<script th:src="@{../../static/xenon/assets/js/joinable.js}"></script>
+<script th:src="@{../../static/xenon/assets/js/xenon-api.js}"></script>
+<script th:src="@{../../static/xenon/assets/js/xenon-toggles.js}"></script>
+
+
+<!-- JavaScripts initializations and stuff -->
+<script th:src="@{../../static/xenon/assets/js/xenon-custom.js}"></script>
+</body>
+</html>

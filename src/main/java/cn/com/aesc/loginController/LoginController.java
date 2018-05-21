@@ -57,8 +57,9 @@ public class LoginController {
    */
   @RequestMapping(value = "/login",method = RequestMethod.POST)
   String login(HttpServletRequest request, Model model, Users users) {
-
-    return "baseMuBan/houTai";
+    System.out.println(users.getUserName());
+    System.out.println(users.getPassword());
+    return "guanLiHtml/manager";
   }
 
   @RequestMapping("/loginOut")

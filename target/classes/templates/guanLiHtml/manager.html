@@ -2,30 +2,24 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
 <head th:include="baseTemplate/headHtml :: head"></head>
 <body class="page-body">
-<div th:include="baseTemplate/profileLeft :: profileLeft"></div>
-<nav th:include="baseTemplate/navHtml :: nav"></nav>
-
+<!--profileLeft -->
+<div th:include="baseTemplate/profileLeft :: profileLeft" class="settings-pane"></div>
+<!--profileLeft -->
+<!-- nav -->
+<nav th:include="baseTemplate/navHtml :: nav" class="navbar horizontal-menu navbar-fixed-top navbar-minimal"></nav>
+<!-- nav -->
 <div class="page-container"><!-- add class "sidebar-collapsed" to close sidebar by default, "chat-visible" to make chat appear always -->
 
 	<div class="main-content">
 
-		<h3>Here starts everything&hellip;</h3>
+		<h3>欢迎使用合同管理系统&hellip;</h3>
 
-					
-		<footer th:include="baseTemplate/footHtml :: foot"></footer>
+
+		<footer th:include="baseTemplate/footHtml :: foot" class="main-footer sticky footer-type-1"></footer>
 	</div>
 
 </div>
 <!-- Bottom Scripts -->
-<script th:src="@{../../static/xenon/assets/js/bootstrap.min.js}"></script>
-<script th:src="@{../../static/xenon/assets/js/TweenMax.min.js}"></script>
-<script th:src="@{../../static/xenon/assets/js/resizeable.js}"></script>
-<script th:src="@{../../static/xenon/assets/js/joinable.js}"></script>
-<script th:src="@{../../static/xenon/assets/js/xenon-api.js}"></script>
-<script th:src="@{../../static/xenon/assets/js/xenon-toggles.js}"></script>
-
-
-<!-- JavaScripts initializations and stuff -->
-<script th:src="@{../../static/xenon/assets/js/xenon-custom.js}"></script>
+<div th:include="baseTemplate/BottomScriptsHtml :: BottomScripts"></div>
 </body>
 </html>

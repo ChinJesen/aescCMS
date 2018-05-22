@@ -1,5 +1,5 @@
-<div th:fragment="nav">
-    <nav class="navbar horizontal-menu navbar-fixed-top navbar-minimal"><!-- set fixed position by adding class "navbar-fixed-top" -->
+
+    <nav  th:fragment="nav" class="navbar horizontal-menu navbar-fixed-top navbar-minimal"><!-- set fixed position by adding class "navbar-fixed-top" -->
 
         <div class="navbar-inner">
             <!-- 手机版 -->
@@ -40,8 +40,10 @@
 
 
             <!-- main menu -->
-
+            <!--<shiro:hasRole name="superAdministrator">-->
             <ul class="navbar-nav">
+
+                <!--<shiro:hasRole name="Administrator">-->
                 <li>
                     <a href="dashboard-1.html">
                         <i class="linecons-cog"></i>
@@ -49,37 +51,39 @@
                     </a>
                     <ul>
                         <li class="active">
-                            <a href="dashboard-1.html">
+                            <a href="/inquiryAllUsers">
                                 <i class="fa-users"></i>
                                 <span class="title">用户管理</span>
                             </a>
                         </li>
                         <li>
-                            <a href="dashboard-3.html">
+                            <a href="/users/inquiry">
                                 <i class="fa-male"></i>
                                 <span class="title">角色管理</span>
                             </a>
                         </li>
                         <li>
-                            <a href="dashboard-2.html">
+                            <a href="/users/inquiry">
                                 <i class="fa-bank"></i>
                                 <span class="title">权限管理</span>
                             </a>
                         </li>
                         <li>
-                            <a href="dashboard-4.html">
+                            <a href="/users/inquiry">
                                 <i class="fa-home"></i>
                                 <span class="title">部门管理</span>
                             </a>
                         </li>
                         <li>
-                            <a href="dashboard-4.html">
+                            <a href="/users/inquiry">
                                 <i class="fa-folder-open-o"></i>
                                 <span class="title">资源链管理</span>
                             </a>
                         </li>
                     </ul>
                 </li>
+               <!-- </shiro:hasRole name="Administrator">
+                <shiro:hasRole name="commissioner">-->
                 <li>
                     <a href="">
                         <i class="linecons-shop"></i>
@@ -137,6 +141,8 @@
                     </ul>
                 </li>
             </ul>
+<!--</shiro:hasRole name="commissioner">
+</shiro:hasRole name="superAdministrator">-->
             <!-- main menu -->
 
             <!-- profileRight -->
@@ -209,4 +215,3 @@
         </div>
 
     </nav>
-</div>

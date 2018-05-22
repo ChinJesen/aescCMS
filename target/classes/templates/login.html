@@ -46,9 +46,9 @@
 						
 						
 						// 验证和Ajax操作
-						/*$("form#login").validate({
+						$("form#login").validate({
 							rules: {
-								username: {
+								userName: {
 									required: true
 								},
 								
@@ -58,15 +58,16 @@
 							},
 							
 							messages: {
-								username: {
+								userName: {
 									required: '请输入你的用户名.'
 								},
 								
 								password: {
 									required: '请输入你的密码.'
 								}
-							},
-							
+							}
+						})/*,
+
 							// Form Processing via AJAX
 							submitHandler: function(form)
 							{
@@ -93,7 +94,7 @@
 									dataType: 'json',
 									data: {
 										do_login: true,
-										username: $(form).find('#username').val(),
+										userName: $(form).find('#userName').val(),
 										password: $(form).find('#password').val(),
 									},
 									success: function(resp)
@@ -162,13 +163,13 @@
 	
 					
 					<div class="form-group">
-						<label class="control-label" for="username">用户名</label>
-						<input type="text" class="form-control" name="userName" id="userName" autocomplete="off" />
+						<label class="control-label" for="userName">用户名</label>
+						<input type="text" class="form-control" name="userName" id="userName" autocomplete="off" pattern="^[\u4e00-\u9fa5]{0,8}$" title="汉字" />
 					</div>
 					
 					<div class="form-group">
 						<label class="control-label" for="password">密码</label>
-						<input type="password" class="form-control" name="password" id="password" autocomplete="off" />
+						<input type="password" class="form-control" name="password" id="password" autocomplete="off" pattern="^[a-zA-Z]\w{5,17}$" title="字母数字组合" />
 					</div>
 					
 					<div class="form-group">

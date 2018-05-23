@@ -18,10 +18,7 @@
                 <h3 class="panel-title">用户信息</h3>
 
                 <div class="panel-options">
-                    <button class="btn btn-success btn-icon" data-toggle="modal" data-target="#addUser" >
-                        <i class="fa-plus"></i>
-                        <span>添加用户</span>
-                    </button>
+                    <a href="javascript:;" onclick="jQuery('#addUser').modal('show', {backdrop: 'static'});" class="btn btn-black btn-single btn-lg">添加用户</a>
                     <a href="#" data-toggle="panel">
                         <span class="collapse-icon">&ndash;</span>
                         <span class="expand-icon">+</span>
@@ -32,7 +29,7 @@
                 </div>
             </div>
             <div class="panel-body">
-
+                 <!-- dataTable与checkboxes的选择 -->
                 <script type="text/javascript">
                     jQuery(document).ready(function($)
                     {
@@ -98,11 +95,13 @@
                         <td>7</td>
                         <td>Maxillofacial surgeon</td>
                         <td>
-                            <button class="btn btn-turquoise" data-toggle="modal" data-target="#modifyUser" >修改</button>
+                            <!--<button class="btn btn-turquoise" data-toggle="modal" data-target="#modifyUser" >修改</button>
 
                             <button class="btn btn-red">删除</button>
 
-                            <button class="btn btn-info">详情</button>
+                            <button class="btn btn-info">详情</button>-->
+                            <a href="javascript:;" onclick="jQuery('#modifyUser').modal('show', {backdrop: 'fade'});" class="btn btn-info btn-single btn-sm">修改</a>
+                            <a href="javascript:;" onclick="jQuery('#deleteUser').modal('show', {backdrop: 'static'});" class="btn btn-red btn-single btn-sm">删除</a>
                         </td>
                     </tr>
 
@@ -111,6 +110,8 @@
 
             </div>
         </div>
+
+
         <!-- 主要内容 -->
 
         <!-- 页脚 -->
@@ -120,145 +121,248 @@
 
 </div>
 <!-- 页面容器 -->
+<!-- 删除用户-->
+<div class="modal fade" id="deleteUser" data-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h4 class="modal-title">删除用户</h4>
+            </div>
+
+            <div class="modal-body">
+
+                是否删除该用户？
+
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-white" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-info" data-dismiss="modal">确认</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 添加用户-->
+<div class="modal fade" id="addUser">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">新增一个用户</h4>
+            </div>
+
+            <div class="modal-body">
+
+                <form role="form" id="addUserForm" action="addUser" method="post" class="validate">
+                    <div class="row">
+                        <div class="col-md-6">
+
+                            <div class="form-group">
+                                <label for="userName" class="control-label">用户名</label>
+
+                                <input type="text" name="userName" class="form-control" id="userName" data-validate="required" placeholder="userName" >
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-6">
+
+                            <div class="form-group">
+                                <label for="password" class="control-label">密码</label>
+
+                                <input type="password" class="form-control" id="password" name="password" data-validate="required,password">
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+
+                            <div class="form-group">
+                                <label for="addSex" class="control-label">性别</label>
+
+                                <input type="text" class="form-control" id="addSex" name="sex" placeholder="sex">
+                            </div>
+
+                        </div>
+                        <div class="col-md-6">
+
+                            <div class="form-group">
+                                <label for="address" class="control-label">地址</label>
+
+                                <input type="text" class="form-control" id="address" name="address" placeholder="Address">
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4">
+
+                            <div class="form-group">
+                                <label for="department" class="control-label">部门</label>
+
+                                <input type="text" class="form-control" id="department" name="department" placeholder="department">
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-4">
+
+                            <div class="form-group">
+                                <label for="email" class="control-label">邮箱</label>
+
+                                <input type="text" class="form-control" name="email" id="email" placeholder="email">
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-4">
+
+                            <div class="form-group">
+                                <label for="telephone" class="control-label">联系方式</label>
+
+                                <input type="text" class="form-control" name="telephone" id="telephone" placeholder="telephone">
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+
+                            <div class="form-group no-margin">
+                                <label for="bio" class="control-label">简介</label>
+
+                                <textarea class="form-control autogrow" name="bio" id="bio" placeholder="Bio"></textarea>
+                            </div>
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-white" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-info">确认</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 修改用户信息-->
+<div class="modal fade" id="modifyUser">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">修改用户信息</h4>
+            </div>
+
+            <div class="modal-body">
+
+                <form role="form" id="modifyUserForm" action="modifyUser" method="post" class="validate">
+                    <div class="row">
+                        <div class="col-md-6">
+
+                            <div class="form-group">
+                                <label for="userName" class="control-label">用户名</label>
+
+                                <input type="text" name="userName" class="form-control" id="modifyUserName" data-validate="required" placeholder="userName" >
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-6">
+
+                            <div class="form-group">
+                                <label for="password" class="control-label">密码</label>
+
+                                <input type="password" class="form-control" id="modifyPassword" name="password" data-validate="required,password">
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+
+                            <div class="form-group">
+                                <label for="modifySex" class="control-label">性别</label>
+
+                                <input type="text" class="form-control" id="modifySex" name="sex" placeholder="sex">
+                            </div>
+
+                        </div>
+                        <div class="col-md-6">
+
+                            <div class="form-group">
+                                <label for="address" class="control-label">地址</label>
+
+                                <input type="text" class="form-control" id="modifyAddress" name="address" placeholder="Address">
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4">
+
+                            <div class="form-group">
+                                <label for="department" class="control-label">部门</label>
+
+                                <input type="text" class="form-control" id="modifyDepartment" name="department" placeholder="department">
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-4">
+
+                            <div class="form-group">
+                                <label for="email" class="control-label">邮箱</label>
+
+                                <input type="text" class="form-control" name="email" id="modifyEmail" placeholder="email">
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-4">
+
+                            <div class="form-group">
+                                <label for="telephone" class="control-label">联系方式</label>
+
+                                <input type="text" class="form-control" name="telephone" id="modifyTelephone" placeholder="telephone">
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+
+                            <div class="form-group no-margin">
+                                <label for="bio" class="control-label">简介</label>
+
+                                <textarea class="form-control autogrow" name="bio" id="modifyBio" placeholder="Bio"></textarea>
+                            </div>
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-white" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-info">确认</button>
+            </div>
+        </div>
+    </div>
+</div>
 <!-- Bottom Scripts -->
 <div th:include="baseTemplate/BottomScriptsHtml :: BottomScripts"></div>
 </body>
-<!-- 用户添加表单弹窗 放入body内会被fade遮罩-->
-<div class="modal" id="addUser" tabindex="-1" role="dialog" aria-labelledby="addUser" aria-hidden="false">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                    ×
-                </button>
-                <div class="panel-heading">
-                    <div class="panel-title">
-                        新增用户
-                    </div>
-
-                    <small class="text-small pull-right" style="padding-top:5px;">
-                        <code>请按照规则填入用户信息</code>
-                    </small>
-                </div>
-            </div>
-            <div class="modal-body">
-                <div class="panel-body">
-
-                    <form role="form" id="addUserForm" method="post" class="validate">
-
-                        <div class="form-group">
-                            <label class="control-label">用户名</label>
-
-                            <input type="text" class="form-control" name="name" data-validate="required" placeholder="用户名">
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label">密码</label>
-
-                            <input type="password" class="form-control" name="name" data-validate="required,password">
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label">部门</label>
-
-                            <input type="text" class="form-control" name="name" data-validate="required" placeholder="部门">
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label">邮箱</label>
-
-                            <input type="text" class="form-control" name="email" data-validate="email" placeholder="邮箱">
-                        </div>
-
-                        <div class="form-group">
-                            <label class="control-label">联系方式</label>
-
-                            <input type="text" class="form-control" name="min_field" data-validate="number,minlength[11]" placeholder="联系方式">
-                        </div>
-
-                        <div class="form-group">
-                        <label class="control-label">地址</label>
-
-                        <input type="text" class="form-control" name="number" data-validate="required" placeholder="地址">
-                    </div>
-
-                        <div class="form-group modal-footer">
-                            <button type="submit" class="btn btn-success">确认</button>
-                            <button class="btn btn-white" data-dismiss="addUser">取消</button>
-                        </div>
-
-                    </form>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- 用户添加表单弹窗 -->
-<!-- 修改用户表单弹窗 放入body内会被fade遮罩-->
-<div class="modal" id="modifyUser" tabindex="-1" role="dialog" aria-labelledby="modifyUser" aria-hidden="false">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                    ×
-                </button>
-                <div class="panel-heading">
-                    <div class="panel-title">
-                        修改用户
-                    </div>
-
-                    <small class="text-small pull-right" style="padding-top:5px;">
-                        <code>请按照规则填入用户信息</code>
-                    </small>
-                </div>
-            </div>
-            <div class="modal-body">
-                <div class="panel-body">
-
-                    <form role="form" id="modifyUserForm" method="post" class="validate">
-
-                        <div class="form-group">
-                            <label class="control-label">用户名</label>
-
-                            <input type="text" class="form-control" name="name" data-validate="required" placeholder="用户名">
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label">密码</label>
-
-                            <input type="password" class="form-control" name="name" data-validate="required,password">
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label">部门</label>
-
-                            <input type="text" class="form-control" name="name" data-validate="required" placeholder="部门">
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label">邮箱</label>
-
-                            <input type="text" class="form-control" name="email" data-validate="email" placeholder="邮箱">
-                        </div>
-
-                        <div class="form-group">
-                            <label class="control-label">联系方式</label>
-
-                            <input type="text" class="form-control" name="min_field" data-validate="number,minlength[11]" placeholder="联系方式">
-                        </div>
-
-                        <div class="form-group">
-                        <label class="control-label">地址</label>
-
-                        <input type="text" class="form-control" name="number" data-validate="required" placeholder="地址">
-                    </div>
-
-                        <div class="form-group modal-footer">
-                            <button type="submit" class="btn btn-success">确认</button>
-                            <button class="btn btn-white" data-dismiss="addUser">取消</button>
-                        </div>
-
-                    </form>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- 修改用户表单弹窗 -->
 </html>

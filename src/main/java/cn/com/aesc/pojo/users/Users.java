@@ -27,8 +27,12 @@ public class Users {
   private String userName;
   private String password;
   private String department;
+  private String email;
+  private String address;
   private String telephone;
-  private String sexs;
+  private String sex;
+  // 简介
+  private String bio;
   // 注册时间
   private Date registerTime;
   // 登录时间
@@ -41,8 +45,7 @@ public class Users {
   private String accessToken;
   // 访问过期
   private String accessExpire;
-  private String email;
-  private String address;
+
   // 密码盐
   private String salt;
   // 账户是否可用
@@ -80,6 +83,22 @@ public class Users {
     this.department = department;
   }
 
+  public String getEmail() {
+    return email;
+  }
+
+  public void setEmail(String email) {
+    this.email = email;
+  }
+
+  public String getAddress() {
+    return address;
+  }
+
+  public void setAddress(String address) {
+    this.address = address;
+  }
+
   public String getTelephone() {
     return telephone;
   }
@@ -88,12 +107,20 @@ public class Users {
     this.telephone = telephone;
   }
 
-  public String getSexs() {
-    return sexs;
+  public String getSex() {
+    return sex;
   }
 
-  public void setSexs(String sexs) {
-    this.sexs = sexs;
+  public void setSex(String sex) {
+    this.sex = sex;
+  }
+
+  public String getBio() {
+    return bio;
+  }
+
+  public void setBio(String bio) {
+    this.bio = bio;
   }
 
   public Date getRegisterTime() {
@@ -144,22 +171,6 @@ public class Users {
     this.accessExpire = accessExpire;
   }
 
-  public String getEmail() {
-    return email;
-  }
-
-  public void setEmail(String email) {
-    this.email = email;
-  }
-
-  public String getAddress() {
-    return address;
-  }
-
-  public void setAddress(String address) {
-    this.address = address;
-  }
-
   public String getSalt() {
     return salt;
   }
@@ -180,19 +191,20 @@ public class Users {
   public String toString() {
     return "Users{" +
             "userId=" + userId +
-            ", username='" + userName + '\'' +
+            ", userName='" + userName + '\'' +
             ", password='" + password + '\'' +
             ", department='" + department + '\'' +
+            ", email='" + email + '\'' +
+            ", address='" + address + '\'' +
             ", telephone='" + telephone + '\'' +
-            ", sexs='" + sexs + '\'' +
+            ", sex='" + sex + '\'' +
+            ", bio='" + bio + '\'' +
             ", registerTime=" + registerTime +
             ", loginTime=" + loginTime +
             ", registerIp='" + registerIp + '\'' +
             ", loginIp='" + loginIp + '\'' +
             ", accessToken='" + accessToken + '\'' +
             ", accessExpire='" + accessExpire + '\'' +
-            ", email='" + email + '\'' +
-            ", address='" + address + '\'' +
             ", salt='" + salt + '\'' +
             ", enable=" + enable +
             '}';

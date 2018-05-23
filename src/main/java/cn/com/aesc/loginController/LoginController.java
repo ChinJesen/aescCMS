@@ -59,7 +59,7 @@ public class LoginController {
   String login(HttpServletRequest request, Model model, Users users) {
     System.out.println(users.getUserName());
     System.out.println(users.getPassword());
-    return "guanLiHtml/manager";
+    return "manageHtml/main";
   }
 
   @RequestMapping("/loginOut")

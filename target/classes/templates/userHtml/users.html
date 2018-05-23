@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head th:include="baseTemplate/headHtml :: head"></head>
+<body class="page-body">
+<!--个人信息 -->
+<div th:include="baseTemplate/profileLeft :: profileLeft" class="settings-pane"></div>
+<!--个人信息 -->
+<!-- 导航条 -->
+<nav th:include="baseTemplate/navHtml :: nav" class="navbar horizontal-menu navbar-fixed-top navbar-minimal"></nav>
+<!-- 导航条 -->
+<!-- 页面容器 -->
+<div class="page-container">
+
+    <div class="main-content">
+        <!-- 主要内容 -->
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">用户信息</h3>
+
+                <div class="panel-options">
+                    <button class="btn btn-success btn-icon" data-toggle="modal" data-target="#addUser" >
+                        <i class="fa-plus"></i>
+                        <span>添加用户</span>
+                    </button>
+                    <a href="#" data-toggle="panel">
+                        <span class="collapse-icon">&ndash;</span>
+                        <span class="expand-icon">+</span>
+                    </a>
+                    <a href="#" data-toggle="remove">
+                        &times;
+                    </a>
+                </div>
+            </div>
+            <div class="panel-body">
+
+                <script type="text/javascript">
+                    jQuery(document).ready(function($)
+                    {
+                        $("#example-2").dataTable({
+                            dom: "t" + "<'row'<'col-xs-6'i><'col-xs-6'p>>",
+                            aoColumns: [
+                                {bSortable: false},
+                                null,
+                                null,
+                                null,
+                                null
+                            ],
+                        });
+
+                        // Replace checkboxes when they appear
+                        var $state = $("#example-2 thead input[type='checkbox']");
+
+                        $("#example-2").on('draw.dt', function()
+                        {
+                            cbr_replace();
+
+                            $state.trigger('change');
+                        });
+
+                        // Script to select all checkboxes
+                        $state.on('change', function(ev)
+                        {
+                            var $chcks = $("#example-2 tbody input[type='checkbox']");
+
+                            if($state.is(':checked'))
+                            {
+                                $chcks.prop('checked', true).trigger('change');
+                            }
+                            else
+                            {
+                                $chcks.prop('checked', false).trigger('change');
+                            }
+                        });
+                    });
+                </script>
+
+                <table class="table table-bordered table-striped" id="example-2">
+                    <thead>
+                    <tr>
+                        <th class="no-sorting">
+                            <input type="checkbox" class="cbr">
+                        </th>
+                        <th>用户名</th>
+                        <th>联系方式</th>
+                        <th>部门</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+
+                    <tbody class="middle-align">
+
+
+                    <tr>
+                        <td>
+                            <input type="checkbox" class="cbr">
+                        </td>
+                        <td>Jennifer J. Jefferson</td>
+                        <td>7</td>
+                        <td>Maxillofacial surgeon</td>
+                        <td>
+                            <button class="btn btn-turquoise" data-toggle="modal" data-target="#modifyUser" >修改</button>
+
+                            <button class="btn btn-red">删除</button>
+
+                            <button class="btn btn-info">详情</button>
+                        </td>
+                    </tr>
+
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+        <!-- 主要内容 -->
+
+        <!-- 页脚 -->
+        <footer th:include="baseTemplate/footHtml :: foot" class="main-footer sticky footer-type-1"></footer>
+        <!-- 页脚 -->
+    </div>
+
+</div>
+<!-- 页面容器 -->
+<!-- Bottom Scripts -->
+<div th:include="baseTemplate/BottomScriptsHtml :: BottomScripts"></div>
+</body>
+<!-- 用户添加表单弹窗 放入body内会被fade遮罩-->
+<div class="modal" id="addUser" tabindex="-1" role="dialog" aria-labelledby="addUser" aria-hidden="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    ×
+                </button>
+                <div class="panel-heading">
+                    <div class="panel-title">
+                        新增用户
+                    </div>
+
+                    <small class="text-small pull-right" style="padding-top:5px;">
+                        <code>请按照规则填入用户信息</code>
+                    </small>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="panel-body">
+
+                    <form role="form" id="addUserForm" method="post" class="validate">
+
+                        <div class="form-group">
+                            <label class="control-label">用户名</label>
+
+                            <input type="text" class="form-control" name="name" data-validate="required" placeholder="用户名">
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">密码</label>
+
+                            <input type="password" class="form-control" name="name" data-validate="required,password">
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">部门</label>
+
+                            <input type="text" class="form-control" name="name" data-validate="required" placeholder="部门">
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">邮箱</label>
+
+                            <input type="text" class="form-control" name="email" data-validate="email" placeholder="邮箱">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label">联系方式</label>
+
+                            <input type="text" class="form-control" name="min_field" data-validate="number,minlength[11]" placeholder="联系方式">
+                        </div>
+
+                        <div class="form-group">
+                        <label class="control-label">地址</label>
+
+                        <input type="text" class="form-control" name="number" data-validate="required" placeholder="地址">
+                    </div>
+
+                        <div class="form-group modal-footer">
+                            <button type="submit" class="btn btn-success">确认</button>
+                            <button class="btn btn-white" data-dismiss="addUser">取消</button>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 用户添加表单弹窗 -->
+<!-- 修改用户表单弹窗 放入body内会被fade遮罩-->
+<div class="modal" id="modifyUser" tabindex="-1" role="dialog" aria-labelledby="modifyUser" aria-hidden="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    ×
+                </button>
+                <div class="panel-heading">
+                    <div class="panel-title">
+                        修改用户
+                    </div>
+
+                    <small class="text-small pull-right" style="padding-top:5px;">
+                        <code>请按照规则填入用户信息</code>
+                    </small>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="panel-body">
+
+                    <form role="form" id="modifyUserForm" method="post" class="validate">
+
+                        <div class="form-group">
+                            <label class="control-label">用户名</label>
+
+                            <input type="text" class="form-control" name="name" data-validate="required" placeholder="用户名">
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">密码</label>
+
+                            <input type="password" class="form-control" name="name" data-validate="required,password">
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">部门</label>
+
+                            <input type="text" class="form-control" name="name" data-validate="required" placeholder="部门">
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">邮箱</label>
+
+                            <input type="text" class="form-control" name="email" data-validate="email" placeholder="邮箱">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label">联系方式</label>
+
+                            <input type="text" class="form-control" name="min_field" data-validate="number,minlength[11]" placeholder="联系方式">
+                        </div>
+
+                        <div class="form-group">
+                        <label class="control-label">地址</label>
+
+                        <input type="text" class="form-control" name="number" data-validate="required" placeholder="地址">
+                    </div>
+
+                        <div class="form-group modal-footer">
+                            <button type="submit" class="btn btn-success">确认</button>
+                            <button class="btn btn-white" data-dismiss="addUser">取消</button>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 修改用户表单弹窗 -->
+</html>

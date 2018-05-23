@@ -25,6 +25,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class UserController {
   @RequestMapping("/inquiryAllUsers")
   String inquiry(){
-    return "userHtml/user";
+    return "userHtml/users";
   }
 }

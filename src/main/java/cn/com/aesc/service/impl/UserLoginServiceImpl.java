@@ -10,6 +10,8 @@
  */
 package cn.com.aesc.service.impl;
 
+import cn.com.aesc.service.users.UserLoginService;
+
 /**
  * 〈一句话功能简述〉<br> 
  * 〈用户登录实现〉
@@ -18,5 +20,5 @@ package cn.com.aesc.service.impl;
  * @create 2018-05-10
  * @since 1.0.0
  */
-public class UserLoginServiceImpl {
+public class UserLoginServiceImpl implements UserLoginService {
 }

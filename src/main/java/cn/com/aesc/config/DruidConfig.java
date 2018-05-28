@@ -20,7 +20,7 @@ import org.springframework.context.annotation.Configuration;
 /**
  * 〈一句话功能简述〉<br> 
  * 〈druid配置〉
- *
+ * 配置文件从xml变成了Java代码由标记bean注入
  * @author dawn@acdiost.com
  * @create 2018-05-24
  * @since 1.0.0

@@ -8,9 +8,11 @@
  * <author>          <time>          <version>          <desc>
  * 作者姓名           修改时间           版本号              描述
  */
-package cn.com.aesc.loginController;
+package cn.com.aesc.controller.userController;
 
 import cn.com.aesc.pojo.users.Users;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -26,7 +28,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class UserController {
-
+private static final Logger LOGGER = LoggerFactory.getLogger(UserController.class);
   /**
    * Copyright (C), 2005-2018, 重庆汽博实业有限公司
    * @Author: dawn@acdiost.com
@@ -56,7 +58,7 @@ public class UserController {
    */
   @RequestMapping("/addUser")
   String addUsers(Users users){
-
+    LOGGER.info("asdasdas");
 
 
     return "userHtml/users";

@@ -1,7 +1,7 @@
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE `aesc_cms`.`users` (
-  `userId` INT NOT NULL auto_increment COMMENT '用户id主键',
-  `userName` varchar (255) BINARY CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL comment '用户名',
+  `user_id` INT NOT NULL auto_increment COMMENT '用户id主键',
+  `user_name` varchar (255) BINARY CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL comment '用户名',
   `password` varchar (255) not null comment'密码',
   `department` varchar (255) not null comment'部门',
   `email` varchar (255) comment'邮箱',
@@ -9,18 +9,13 @@ CREATE TABLE `aesc_cms`.`users` (
   `telephone` varchar (255) not null comment'电话号码',
   `sex` varchar (10) not null comment'性别',
   `bio` varchar (1000) comment'用户信息描述简介',
-  `registerTime` date not null comment'注册时间',
-  `loginTime` date not null comment'登录时间',
-  `loginIp` varchar (255) not null comment'登录IP',
-  `accessToken` varchar (255) not null comment'访问标识',
-  `accessExpire` varchar (255) comment'访问过期',
-  `salt` varchar (255) not null comment'密码盐',
   `enable` int not null comment'账户是否启用',
-  PRIMARY KEY (`userId`))
+  PRIMARY KEY (`user_id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
 COMMENT = '用户表';
 
+INSERT INTO `aesc_cms`.`users`(`user_id`, `user_name`, `password`, `department`, `email`, `address`, `telephone`, `sex`, `bio`, `enable`) VALUES (1, '陈晨', 'c1ee32e9524f13f5846635dfaa5de236cbeaa85749e175d694452fcbba9d8297', 'IT部', '', '', '', '男', 'To be a better man!', 1);
 
 
 drop table if exists `roles`;

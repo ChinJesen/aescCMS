@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<html xmlns:th="http://www.thymeleaf.org">
 <head th:include="baseTemplate/headHtml :: head"></head>
 <body class="page-body">
 <!--个人信息 -->
@@ -366,17 +366,35 @@
 <div th:include="baseTemplate/BottomScriptsHtml :: BottomScripts"></div>
 <script>
     function addUser() {
+        var addUsername = $("#addUserName").val();
+        var addPassword = $("#addPassword").val();
+        var addDepartment = $("#addDepartment").val();
+        if (addUsername == "" || addUsername == undefined || addUsername == null) {
+            return layer.msg('用户名不能为空', function () {
+                //关闭后的操作
+            });
+        }
+        if (addPassword.length < 6 || addPassword.length >= 16) {
+            return layer.msg('密码长度为6-16', function () {
+                //关闭后的操作
+            });
+        }
+        if (addDepartment == "" || addDepartment == undefined || addDepartment == null) {
+            return layer.msg('部门不能为空', function () {
+                //关闭后的操作
+            });
+        }
         $.ajax({
             cache:true,
             type:"post",
-            url:'users/addUser',
+            url: 'addUser',
             data:$('#addUserForm').serialize(),
             async:false,
             success:function (data) {
                 if (data == "success") {
                     layer.msg('添加成功');
                     jQuery('#addUser').modal('hide');
-                }else if (data == "gaiYongHuYiCunAZai") {
+                } else if (data == "gaiYongHuYiCunZai") {
                     layer.msg('该用户名已存在！');
                     jQuery('#addUser').modal('hide');
                 }else{

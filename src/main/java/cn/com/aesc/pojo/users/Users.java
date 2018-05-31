@@ -33,21 +33,6 @@ public class Users {
   private String sex;
   // 简介
   private String bio;
-  // 注册时间
-  private Date registerTime;
-  // 登录时间
-  private Date loginTime;
-  // 注册IP
-  private String registerIp;
-  // 登录IP
-  private String loginIp;
-  // 访问标识
-  private String accessToken;
-  // 访问过期
-  private String accessExpire;
-
-  // 密码盐
-  private String salt;
   // 账户是否可用
   private int enable;
 
@@ -123,61 +108,6 @@ public class Users {
     this.bio = bio;
   }
 
-  public Date getRegisterTime() {
-    return registerTime;
-  }
-
-  public void setRegisterTime(Date registerTime) {
-    this.registerTime = registerTime;
-  }
-
-  public Date getLoginTime() {
-    return loginTime;
-  }
-
-  public void setLoginTime(Date loginTime) {
-    this.loginTime = loginTime;
-  }
-
-  public String getRegisterIp() {
-    return registerIp;
-  }
-
-  public void setRegisterIp(String registerIp) {
-    this.registerIp = registerIp;
-  }
-
-  public String getLoginIp() {
-    return loginIp;
-  }
-
-  public void setLoginIp(String loginIp) {
-    this.loginIp = loginIp;
-  }
-
-  public String getAccessToken() {
-    return accessToken;
-  }
-
-  public void setAccessToken(String accessToken) {
-    this.accessToken = accessToken;
-  }
-
-  public String getAccessExpire() {
-    return accessExpire;
-  }
-
-  public void setAccessExpire(String accessExpire) {
-    this.accessExpire = accessExpire;
-  }
-
-  public String getSalt() {
-    return salt;
-  }
-
-  public void setSalt(String salt) {
-    this.salt = salt;
-  }
 
   public int getEnable() {
     return enable;
@@ -199,13 +129,6 @@ public class Users {
             ", telephone='" + telephone + '\'' +
             ", sex='" + sex + '\'' +
             ", bio='" + bio + '\'' +
-            ", registerTime=" + registerTime +
-            ", loginTime=" + loginTime +
-            ", registerIp='" + registerIp + '\'' +
-            ", loginIp='" + loginIp + '\'' +
-            ", accessToken='" + accessToken + '\'' +
-            ", accessExpire='" + accessExpire + '\'' +
-            ", salt='" + salt + '\'' +
             ", enable=" + enable +
             '}';
   }

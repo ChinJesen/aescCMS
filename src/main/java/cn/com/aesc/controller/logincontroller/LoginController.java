@@ -1,4 +1,4 @@
-package cn.com.aesc.controller.loginController;
+package cn.com.aesc.controller.logincontroller;
 
 import cn.com.aesc.pojo.users.Users;
 import org.apache.catalina.servlet4preview.http.HttpServletRequest;
@@ -34,10 +34,11 @@ public class LoginController {
    * @See:
    * @Throws:
    * @Version:
-   * @Description:
+   * @Description:用户直接登录页面get方法
    */
   @RequestMapping(value = "/login",method = RequestMethod.GET)
   String login() {
+
     return "login";
   }
   /**
@@ -53,8 +54,8 @@ public class LoginController {
    */
   @RequestMapping(value = "/login",method = RequestMethod.POST)
   String login(HttpServletRequest request, Model model, Users users) {
-    System.out.println(users.getUserName());
-    System.out.println(users.getPassword());
+    logger.info("用户名:"+users.getUserName());
+    logger.info("密码:"+users.getPassword());
     return "manageHtml/main";
   }
 

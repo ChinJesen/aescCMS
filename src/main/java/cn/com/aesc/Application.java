@@ -1,7 +1,10 @@
 package cn.com.aesc;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
+
 /**
  * Copyright (C), 2005-2018, 重庆汽博实业有限公司
  * @Author: dawn@acdiost.com
@@ -14,6 +17,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @Description: 
  */
 @SpringBootApplication
+@EnableTransactionManagement
+@MapperScan(basePackages = "cn.com.aesc.mapper")
 public class Application {
     public static void main(String[] args) {
       SpringApplication.run(Application.class, args);

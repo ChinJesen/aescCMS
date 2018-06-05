@@ -1,6 +1,34 @@
 <!DOCTYPE html>
 <html>
-<head th:include="baseTemplate/headHtml :: head"></head>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="description" content="汽博中心合同管理系统" />
+	<meta name="author" content="Dawn" />
+	
+	<title>汽博中心合同管理系统</title>
+
+	<link rel="stylesheet" href="/xenon/assets/css/fonts/linecons/css/linecons.css">
+	<link rel="stylesheet" href="/xenon/assets/css/fonts/fontawesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/xenon/assets/css/bootstrap.css">
+	<link rel="stylesheet" href="/xenon/assets/css/xenon-core.css">
+	<link rel="stylesheet" href="/xenon/assets/css/xenon-forms.css">
+	<link rel="stylesheet" href="/xenon/assets/css/xenon-components.css">
+	<link rel="stylesheet" href="/xenon/assets/css/xenon-skins.css">
+	<link rel="stylesheet" href="/xenon/assets/css/custom.css">
+
+	<script src="/xenon/assets/js/jquery-1.11.1.min.js"></script>
+
+	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+	
+	
+</head>
 <body class="page-body login-page login-light">
 
 	
@@ -127,7 +155,7 @@
 					<div class="login-header">
 						<a href="#" class="logo">
 							<img src="/xenon/assets/images/logo-white-bg@2x.png" alt="" width="80" />
-							<span>由汽博中心IT部陈晨开发</span>
+							<span>汽博中心IT部陈晨开发</span>
 						</a>
 						
 						<p>输入您的用户名和密码以登录,忘记密码请联系陈晨!</p>
@@ -164,7 +192,19 @@
 
 
 
-	<div th:include="baseTemplate/BottomScriptsHtml :: BottomScripts"></div>
+	<!-- Bottom Scripts -->
+	<script src="/xenon/assets/js/bootstrap.min.js"></script>
+	<script src="/xenon/assets/js/TweenMax.min.js"></script>
+	<script src="/xenon/assets/js/resizeable.js"></script>
+	<script src="/xenon/assets/js/joinable.js"></script>
+	<script src="/xenon/assets/js/xenon-api.js"></script>
+	<script src="/xenon/assets/js/xenon-toggles.js"></script>
+	<script src="/xenon/assets/js/jquery-validate/jquery.validate.min.js"></script>
+	<script src="/xenon/assets/js/toastr/toastr.min.js"></script>
+
+
+	<!-- JavaScripts initializations and stuff -->
+	<script src="/xenon/assets/js/xenon-custom.js"></script>
 
 </body>
 </html>

@@ -41,6 +41,7 @@ public class DruidConfig {
    */
   @Bean
   public ServletRegistrationBean druidServlet(){
+    // 设置网页访问url
     ServletRegistrationBean servletRegistrationBean = new ServletRegistrationBean(new StatViewServlet(),"/druid/*");
     servletRegistrationBean.addInitParameter("loginUsername","admin");
     servletRegistrationBean.addInitParameter("loginPassword","admin");

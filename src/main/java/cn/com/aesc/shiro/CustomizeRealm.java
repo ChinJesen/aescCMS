@@ -49,6 +49,7 @@ public class CustomizeRealm extends AuthorizingRealm {
 
   @Autowired
   private RedisSessionDAO redisSessionDAO;
+
   // 授权
 
   @Override
@@ -57,6 +58,7 @@ public class CustomizeRealm extends AuthorizingRealm {
     Map<String,Object> map = new HashMap<String, Object>();
     map.put("userId",user.getUserId());
     List<Resources> resourcesList = resourcesService.loadUserResources(map);
+    // 权限信息对象info,用来存放查出的用户的所有的角色（role）及权限（permission）
     SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
     for (Resources resources : resourcesList){
       info.addStringPermission(resources.getResources_url());
@@ -78,6 +80,7 @@ public class CustomizeRealm extends AuthorizingRealm {
       // 账号不可用
       throw new LockedAccountException();
     }
+    // 开始认证
     SimpleAuthenticationInfo simpleAuthenticationInfo = new SimpleAuthenticationInfo(users,users.getPassword(),ByteSource.Util.bytes(userName),getName());
     // 当验证通过后，把用户信息放入session
     Session session = SecurityUtils.getSubject().getSession();
@@ -99,26 +102,26 @@ public class CustomizeRealm extends AuthorizingRealm {
    * @Version: 
    * @Description: 根据userId 清除当前session存在的用户的权限缓存
    */
-  void clearUserAuthByUserId(List<Integer> userIds){
+  public void clearUserAuthByUserId(List<Integer> userIds){
     if(null == userIds || userIds.size() == 0){
       return ;
     }
-    //获取所有session
+    // 获取所有session
     Collection<Session> sessions = redisSessionDAO.getActiveSessions();
-    //定义返回
+    // 定义返回
     List<SimplePrincipalCollection> list = new ArrayList<SimplePrincipalCollection>();
     for (Session session:sessions){
-      //获取session登录信息。
+      // 获取session登录信息。
       Object obj = session.getAttribute(DefaultSubjectContext.PRINCIPALS_SESSION_KEY);
       if(null != obj && obj instanceof SimplePrincipalCollection){
-        //强转
+        // 强转
         SimplePrincipalCollection spc = (SimplePrincipalCollection)obj;
-        //判断用户，匹配用户ID。
+        // 判断用户，匹配用户ID。
         obj = spc.getPrimaryPrincipal();
         if(null != obj && obj instanceof Users){
           Users user = (Users) obj;
           System.out.println("user:"+user);
-          //比较用户ID，符合即加入集合
+          // 比较用户ID，符合即加入集合
           if(null != user && userIds.contains(user.getUserId())){
             list.add(spc);
           }

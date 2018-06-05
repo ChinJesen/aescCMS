@@ -71,7 +71,7 @@ public class ShiroConfig {
    * @Description: 重要的生命周期配置
    */
   @Bean
-  static LifecycleBeanPostProcessor getLifecycleBeanPostProcessor(){
+  public static LifecycleBeanPostProcessor getLifecycleBeanPostProcessor(){
     return new LifecycleBeanPostProcessor();
   }
   /**
@@ -87,7 +87,7 @@ public class ShiroConfig {
    * @Description:为了在thymeleaf里使用shiro的标签
    */
   @Bean
-  ShiroDialect shiroDialect() {
+  public ShiroDialect shiroDialect() {
     return new ShiroDialect();
   }
 
@@ -104,7 +104,7 @@ public class ShiroConfig {
    * @Description: shiro拦截器配置
    */
   @Bean
-  ShiroFilterFactoryBean shiroFilterFactoryBean(SecurityManager securityManager) {
+  public ShiroFilterFactoryBean shiroFilterFactoryBean(SecurityManager securityManager) {
     ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
     // 必须设置的securityManager
     shiroFilterFactoryBean.setSecurityManager(securityManager);
@@ -143,7 +143,7 @@ public class ShiroConfig {
 
   /**
    * Copyright (C), 2005-2018, 重庆汽博实业有限公司
-   * 
+   *
    * @Author: dawn@acdiost.com
    * @Date: 2018-06-01 16:00
    * @Param: 
@@ -154,17 +154,16 @@ public class ShiroConfig {
    * @Description:
    */
   @Bean
-  SecurityManager securityManager() {
-    DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
-    // 设置自定义的realm
+  public SecurityManager securityManager(){
+    DefaultWebSecurityManager securityManager =  new DefaultWebSecurityManager();
+    //设置realm.
     securityManager.setRealm(customizeRealm());
-    // 用redis实现自定义缓存
+    // 自定义缓存实现 使用redis
     securityManager.setCacheManager(cacheManager());
-    // 用redis来管理session
+    // 自定义session管理 使用redis
     securityManager.setSessionManager(sessionManager());
-    return securityManager();
+    return securityManager;
   }
-
   
   /**
    * Copyright (C), 2005-2018, 重庆汽博实业有限公司
@@ -178,8 +177,8 @@ public class ShiroConfig {
    * @Version: 
    * @Description: 
    */
-  
-  RedisCacheManager cacheManager(){
+
+  public RedisCacheManager cacheManager(){
     RedisCacheManager redisCacheManager = new RedisCacheManager();
     redisCacheManager.setRedisManager(redisManager());
     return redisCacheManager;
@@ -197,7 +196,7 @@ public class ShiroConfig {
    * @Description: 自定义的realm注入
    */
   @Bean
-  CustomizeRealm customizeRealm() {
+  public CustomizeRealm customizeRealm() {
     CustomizeRealm customizeRealm = new CustomizeRealm();
     customizeRealm.setCredentialsMatcher(hashedCredentialsMatcher());
     return customizeRealm;
@@ -217,13 +216,14 @@ public class ShiroConfig {
    * 所以我们需要修改下doGetAuthenticationInfo中的代码;
    */
   @Bean
-  HashedCredentialsMatcher hashedCredentialsMatcher() {
+  public HashedCredentialsMatcher hashedCredentialsMatcher(){
     HashedCredentialsMatcher hashedCredentialsMatcher = new HashedCredentialsMatcher();
-    hashedCredentialsMatcher.setHashAlgorithmName("SHA-256");
-    hashedCredentialsMatcher.setHashIterations(6);
-    return hashedCredentialsMatcher();
+    // 散列算法:这里使用MD5算法;
+    hashedCredentialsMatcher.setHashAlgorithmName("md5");
+    // 散列的次数，比如散列两次，相当于 md5(md5(""));
+    hashedCredentialsMatcher.setHashIterations(3);
+    return hashedCredentialsMatcher;
   }
-
   /**
    * Copyright (C), 2005-2018, 重庆汽博实业有限公司
    *
@@ -237,7 +237,7 @@ public class ShiroConfig {
    * @Description: 开启aop注解使用的代理 需要开启支持
    */
   @Bean
-  AuthorizationAttributeSourceAdvisor authorizationAttributeSourceAdvisor(SecurityManager securityManager) {
+  public AuthorizationAttributeSourceAdvisor authorizationAttributeSourceAdvisor(SecurityManager securityManager) {
     AuthorizationAttributeSourceAdvisor authorizationAttributeSourceAdvisor = new AuthorizationAttributeSourceAdvisor();
     authorizationAttributeSourceAdvisor.setSecurityManager(securityManager);
     return authorizationAttributeSourceAdvisor;
@@ -256,7 +256,7 @@ public class ShiroConfig {
    * @Description: session的管理 通过redis
    */
   @Bean
-  DefaultWebSessionManager sessionManager() {
+  public DefaultWebSessionManager sessionManager() {
     DefaultWebSessionManager sessionManager = new DefaultWebSessionManager();
     sessionManager.setSessionDAO(redisSessionDAO());
     return sessionManager;
@@ -275,7 +275,7 @@ public class ShiroConfig {
    * @Description: 使用shiro-redis开源插件
    */
   @Bean
-  RedisSessionDAO redisSessionDAO() {
+  public RedisSessionDAO redisSessionDAO() {
     RedisSessionDAO redisSessionDAO = new RedisSessionDAO();
     redisSessionDAO.setRedisManager(redisManager());
     return redisSessionDAO;
@@ -293,7 +293,7 @@ public class ShiroConfig {
    * @Version:
    * @Description: 配置redis
    */
-  RedisManager redisManager() {
+  public RedisManager redisManager() {
     RedisManager redisManager = new RedisManager();
     redisManager.setHost(host);
     redisManager.setPort(port);

@@ -15,6 +15,7 @@ import cn.com.aesc.pojo.resources.Resources;
 import cn.com.aesc.service.impl.BaseService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import org.springframework.stereotype.Service;
 import tk.mybatis.mapper.entity.Example;
 
 import javax.annotation.Resource;
@@ -29,6 +30,7 @@ import java.util.Map;
  * @create 2018-06-01
  * @since 1.0.0
  */
+@Service("resourcesService")
 public class ResourcesServiceImpl extends BaseService<Resources> implements ResourcesService {
 
 

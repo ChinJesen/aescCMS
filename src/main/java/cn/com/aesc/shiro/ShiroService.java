@@ -92,7 +92,7 @@ public class ShiroService {
    * @Version:
    * @Description:重新加载权限
    */
-  void updatePermission(){
+  public void updatePermission(){
     synchronized (filterFactoryBean){
       AbstractShiroFilter shiroFilter = null;
       try {

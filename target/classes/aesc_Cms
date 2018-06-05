@@ -84,3 +84,7 @@ create table `aesc_cms`.`resources_roles`(
 engine=innodb
 default character set=utf8
 comment'角色资源关系表';
+
+INSERT INTO `aesc_cms`.`resources_roles`(`resourcesId`, `roleId`) VALUES (1, 1);
+INSERT INTO `aesc_cms`.`resources_roles`(`resourcesId`, `roleId`) VALUES (1, 2)
+INSERT INTO `aesc_cms`.`users_roles`(`roleId`, `userId`) VALUES (1, 1);

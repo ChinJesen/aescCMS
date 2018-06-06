@@ -29,14 +29,14 @@ public class PasswordEncryption {
   private int hashIterations = 3;
 
   public void encryptPassword(Users user) {
-    String newPassword = new SimpleHash(algorithmName, user.getPassword(), ByteSource.Util.bytes(user.getUserName()), hashIterations).toHex();
+    String newPassword = new SimpleHash(algorithmName, user.getPassword(), ByteSource.Util.bytes(user.getUser_name()), hashIterations).toHex();
     user.setPassword(newPassword);
   }
 
   public static void main(String[] args) {
     PasswordEncryption passwordHelper = new PasswordEncryption();
     Users user = new Users();
-    user.setUserName("admin");
+    user.setUser_name("admin");
     user.setPassword("admin");
     passwordHelper.encryptPassword(user);
     System.out.println(user);

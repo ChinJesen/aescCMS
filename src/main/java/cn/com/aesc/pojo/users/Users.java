@@ -11,7 +11,8 @@
 package cn.com.aesc.pojo.users;
 
 
-import java.util.Date;
+import javax.persistence.Column;
+import javax.persistence.Table;
 
 /**
  * 〈一句话功能简述〉<br> 
@@ -21,35 +22,38 @@ import java.util.Date;
  * @create 2018-05-10
  * @since 1.0.0
  */
+@Table(name = "users")
 public class Users {
-
-  private int userId;
-  private String userName;
+  @Column(name = "user_id")
+  private int user_id;
+  @Column(name = "user_name")
+  private String user_name;
+  @Column(name = "password")
   private String password;
+  @Column(name = "department")
   private String department;
+  @Column(name = "email")
   private String email;
-  private String address;
+  @Column(name = "telephone")
   private String telephone;
-  private String sex;
-  // 简介
-  private String bio;
   // 账户是否可用
+  @Column(name = "enable")
   private int enable;
 
-  public int getUserId() {
-    return userId;
+  public int getUser_id() {
+    return user_id;
   }
 
-  public void setUserId(int userId) {
-    this.userId = userId;
+  public void setUser_id(int user_id) {
+    this.user_id = user_id;
   }
 
-  public String getUserName() {
-    return userName;
+  public String getUser_name() {
+    return user_name;
   }
 
-  public void setUserName(String userName) {
-    this.userName = userName;
+  public void setUser_name(String user_name) {
+    this.user_name = user_name;
   }
 
   public String getPassword() {
@@ -76,14 +80,6 @@ public class Users {
     this.email = email;
   }
 
-  public String getAddress() {
-    return address;
-  }
-
-  public void setAddress(String address) {
-    this.address = address;
-  }
-
   public String getTelephone() {
     return telephone;
   }
@@ -91,23 +87,6 @@ public class Users {
   public void setTelephone(String telephone) {
     this.telephone = telephone;
   }
-
-  public String getSex() {
-    return sex;
-  }
-
-  public void setSex(String sex) {
-    this.sex = sex;
-  }
-
-  public String getBio() {
-    return bio;
-  }
-
-  public void setBio(String bio) {
-    this.bio = bio;
-  }
-
 
   public int getEnable() {
     return enable;
@@ -120,15 +99,12 @@ public class Users {
   @Override
   public String toString() {
     return "Users{" +
-            "userId=" + userId +
-            ", userName='" + userName + '\'' +
+            "userId=" + user_id +
+            ", userName='" + user_name + '\'' +
             ", password='" + password + '\'' +
             ", department='" + department + '\'' +
             ", email='" + email + '\'' +
-            ", address='" + address + '\'' +
             ", telephone='" + telephone + '\'' +
-            ", sex='" + sex + '\'' +
-            ", bio='" + bio + '\'' +
             ", enable=" + enable +
             '}';
   }

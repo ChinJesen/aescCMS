@@ -73,13 +73,13 @@
             <artifactId>shiro-spring</artifactId>
             <version>1.4.0</version>
         </dependency>
-
+        <!--&lt;!&ndash;热部署1&ndash;&gt; 使用会导致mapper获取不到表名 无法正常运行
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
             <optional>true</optional>
             <scope>true</scope>
-        </dependency>
+        </dependency>-->
     </dependencies>
 
     <properties>
@@ -90,18 +90,18 @@
 
     <build>
         <plugins>
-            <plugin>
+           <!-- 热部署1<plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
                     <fork>true</fork>
                 </configuration>
-            </plugin>
+            </plugin>-->
             <!--<plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <dependencies>
-                    &lt;!&ndash; spring热部署 &ndash;&gt;
+                    &lt;!&ndash; spring热部署2 &ndash;&gt;
                     <dependency>
                         <groupId>org.springframework</groupId>
                         <artifactId>springloaded</artifactId>

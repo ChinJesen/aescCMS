@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head th:include="baseTemplate/headHtml :: head"></head>
+<body class="page-body page-error-env">
+
+	<div class="page-error centered">
+    
+    		<div class="error-symbol">
+    			<i class="fa-warning"></i>
+    		</div>
+    
+    		<h2>
+    			错误！
+    			<small>发生了不可预知的问题</small>
+    		</h2>
+    
+    		<p>请联系IT部陈晨解决您的问题!</p>
+    		<p></p>
+    	</div>
+
+	<div class="page-error-search centered">
+    		<!--<form class="form-half" method="get" action="" enctype="application/x-www-form-urlencoded">
+			<input type="text" class="form-control input-lg" placeholder="Search..." />
+			
+			<button type="submit" class="btn-unstyled">
+				<i class="linecons-search"></i>
+			</button>
+		</form>-->
+    
+    		<a href="#" class="go-back" onclick="javascript:history.back(-1)">
+    			<i class="fa-angle-left"></i>
+    			返回
+    		</a>
+    	</div>
+
+
+
+	<div th:include="baseTemplate/BottomScriptsHtml :: BottomScripts"></div>
+
+</body>
+</html> 

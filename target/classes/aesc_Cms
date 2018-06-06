@@ -5,86 +5,83 @@ CREATE TABLE `aesc_cms`.`users` (
   `password` varchar (255) not null comment'密码',
   `department` varchar (255) not null comment'部门',
   `email` varchar (255) comment'邮箱',
-  `address` varchar (255) comment'地址',
   `telephone` varchar (255) not null comment'电话号码',
-  `sex` varchar (10) not null comment'性别',
-  `bio` varchar (1000) comment'用户信息描述简介',
   `enable` int not null comment'账户是否启用',
   PRIMARY KEY (`user_id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
 COMMENT = '用户表';
 
-INSERT INTO `aesc_cms`.`users`(`user_id`, `user_name`, `password`, `department`, `email`, `address`, `telephone`, `sex`, `bio`, `enable`) VALUES (1, '陈晨', 'c1ee32e9524f13f5846635dfaa5de236cbeaa85749e175d694452fcbba9d8297', 'IT部', '', '', '', '男', 'To be a better man!', 1);
+INSERT INTO `aesc_cms`.`users`(`user_id`, `user_name`, `password`, `department`, `email`, `telephone`, `enable`) VALUES (1, '陈晨', '1f82a3a60f85f7a1da794b567184d9af', 'IT部', '1036359208@qq.com', '15215079472', 1);
 
 
 drop table if exists `roles`;
 create table `aesc_cms`.`roles`(
-  `roleId` int not null auto_increment comment'角色主键',
+  `role_id` int not null auto_increment comment'角色主键',
   `role_description` varchar (255) not null comment'角色描述',
-primary key (`roleId`)
+primary key (`role_id`)
 )
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
 COMMENT = '角色表';
 
 
-INSERT INTO `aesc_cms`.`roles`(`role_description`) VALUES ('超级管理员');
-INSERT INTO `aesc_cms`.`roles`(`role_description`) VALUES ('管理员');
-INSERT INTO `aesc_cms`.`roles`(`role_description`) VALUES ('专员');
+INSERT INTO `aesc_cms`.`roles`(`role_description`) VALUES ('superAdmin');
+INSERT INTO `aesc_cms`.`roles`(`role_description`) VALUES ('administrator');
+INSERT INTO `aesc_cms`.`roles`(`role_description`) VALUES ('commissioner');
 
 
 
 drop table if exists `users_roles`;
 create table `aesc_cms`.`users_roles`(
-  `roleId` int not null comment'角色id',
-  `userId` int not null comment'用户id'
+  `role_id` int not null comment'角色id',
+  `user_id` int not null comment'用户id'
 )
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
 COMMENT = '用户角色关系表';
 
-
+INSERT INTO `aesc_cms`.`users_roles`(`role_id`, `user_id`) VALUES (1, 1);
 
 drop table if exists `resources`;
 create table `aesc_cms`.`resources`(
-  `resourcesId` int not null auto_increment comment'资源id',
+  `resources_id` int not null auto_increment comment'资源id',
   `role_resources` varchar (255) not null comment'角色权限资源',
   `resources_url` varchar (255) not null comment'权限资源链接',
   `type` int not null comment'类型',
-  `parentId` int not null comment'父资源',
+  `parent_id` int not null comment'父资源',
   `sort` int not null comment'排序',
-primary key (`resourcesId`)
+primary key (`resources_id`)
 )
 engine=innodb
 default character set=utf8
 comment'角色资源表';
 
 
-INSERT INTO `aesc_cms`.`resources`(`resourcesId`,`role_resources`,`resources_url`,`type`,`parentId`,`sort`) VALUES (1,'系统设置','/system',0,0,1);
-INSERT INTO `aesc_cms`.`resources`(`resourcesId`,`role_resources`,`resources_url`,`type`,`parentId`,`sort`) VALUES (2,'用户管理','/system',1,1,2);
-INSERT INTO `aesc_cms`.`resources`(`resourcesId`,`role_resources`,`resources_url`,`type`,`parentId`,`sort`) VALUES (3,'角色管理','/system',1,1,3);
-INSERT INTO `aesc_cms`.`resources`(`resourcesId`,`role_resources`,`resources_url`,`type`,`parentId`,`sort`) VALUES (4,'资源管理','/system',1,1,4);
-INSERT INTO `aesc_cms`.`resources`(`resourcesId`,`role_resources`,`resources_url`,`type`,`parentId`,`sort`) VALUES (5,'添加用户','/system',2,2,5);
-INSERT INTO `aesc_cms`.`resources`(`resourcesId`,`role_resources`,`resources_url`,`type`,`parentId`,`sort`) VALUES (6,'删除用户','/system',2,2,6);
-INSERT INTO `aesc_cms`.`resources`(`resourcesId`,`role_resources`,`resources_url`,`type`,`parentId`,`sort`) VALUES (7,'添加角色','/system',2,3,7);
-INSERT INTO `aesc_cms`.`resources`(`resourcesId`,`role_resources`,`resources_url`,`type`,`parentId`,`sort`) VALUES (8,'删除角色','/system',2,3,8);
-INSERT INTO `aesc_cms`.`resources`(`resourcesId`,`role_resources`,`resources_url`,`type`,`parentId`,`sort`) VALUES (9,'添加资源','/system',2,4,9);
-INSERT INTO `aesc_cms`.`resources`(`resourcesId`,`role_resources`,`resources_url`,`type`,`parentId`,`sort`) VALUES (10,'删除资源','/system',2,4,10);
-INSERT INTO `aesc_cms`.`resources`(`resourcesId`,`role_resources`,`resources_url`,`type`,`parentId`,`sort`) VALUES (11,'分配角色','/system',2,2,11);
-INSERT INTO `aesc_cms`.`resources`(`resourcesId`,`role_resources`,`resources_url`,`type`,`parentId`,`sort`) VALUES (12,'分配权限','/system',2,3,12);
+INSERT INTO `aesc_cms`.`resources`(`resources_id`,`role_resources`,`resources_url`,`type`,`parent_id`,`sort`) VALUES (1,'系统设置','/systemSet',0,0,1);
+INSERT INTO `aesc_cms`.`resources`(`resources_id`,`role_resources`,`resources_url`,`type`,`parent_id`,`sort`) VALUES (2,'用户管理','/userManagement',1,1,2);
+INSERT INTO `aesc_cms`.`resources`(`resources_id`,`role_resources`,`resources_url`,`type`,`parent_id`,`sort`) VALUES (3,'角色管理','/roleManagement',1,1,3);
+INSERT INTO `aesc_cms`.`resources`(`resources_id`,`role_resources`,`resources_url`,`type`,`parent_id`,`sort`) VALUES (4,'资源管理','/resourcesManagement',1,1,4);
+INSERT INTO `aesc_cms`.`resources`(`resources_id`,`role_resources`,`resources_url`,`type`,`parent_id`,`sort`) VALUES (5,'添加用户','/addUser',2,2,5);
+INSERT INTO `aesc_cms`.`resources`(`resources_id`,`role_resources`,`resources_url`,`type`,`parent_id`,`sort`) VALUES (6,'删除用户','/deleteUser',2,2,6);
+INSERT INTO `aesc_cms`.`resources`(`resources_id`,`role_resources`,`resources_url`,`type`,`parent_id`,`sort`) VALUES (7,'添加角色','/addRole',2,3,7);
+INSERT INTO `aesc_cms`.`resources`(`resources_id`,`role_resources`,`resources_url`,`type`,`parent_id`,`sort`) VALUES (8,'删除角色','/deleteRole',2,3,8);
+INSERT INTO `aesc_cms`.`resources`(`resources_id`,`role_resources`,`resources_url`,`type`,`parent_id`,`sort`) VALUES (9,'添加资源','/addResources',2,4,9);
+INSERT INTO `aesc_cms`.`resources`(`resources_id`,`role_resources`,`resources_url`,`type`,`parent_id`,`sort`) VALUES (10,'删除资源','/deleteResources',2,4,10);
+INSERT INTO `aesc_cms`.`resources`(`resources_id`,`role_resources`,`resources_url`,`type`,`parent_id`,`sort`) VALUES (11,'分配角色','/assignRoles',2,2,11);
+INSERT INTO `aesc_cms`.`resources`(`resources_id`,`role_resources`,`resources_url`,`type`,`parent_id`,`sort`) VALUES (12,'分配权限','/authorityOfDistribution',2,3,12);
 
 
 
 drop table if exists `roles_resources`;
 create table `aesc_cms`.`resources_roles`(
-  `resourcesId` int not null comment'资源id',
-  `roleId` int not null comment'角色id'
+  `resources_id` int not null comment'资源id',
+  `role_id` int not null comment'角色id'
 )
 engine=innodb
 default character set=utf8
 comment'角色资源关系表';
 
-INSERT INTO `aesc_cms`.`resources_roles`(`resourcesId`, `roleId`) VALUES (1, 1);
-INSERT INTO `aesc_cms`.`resources_roles`(`resourcesId`, `roleId`) VALUES (1, 2)
-INSERT INTO `aesc_cms`.`users_roles`(`roleId`, `userId`) VALUES (1, 1);
+INSERT INTO `aesc_cms`.`resources_roles`(`resources_id`, `role_id`) VALUES (1, 1);
+INSERT INTO `aesc_cms`.`resources_roles`(`resources_id`, `role_id`) VALUES (1, 2)
+INSERT INTO `aesc_cms`.`users_roles`(`role_id`, `userId`) VALUES (1, 1);

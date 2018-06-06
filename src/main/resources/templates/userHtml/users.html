@@ -161,9 +161,9 @@
                         <div class="col-md-6">
 
                             <div class="form-group">
-                                <label for="addUserName" class="control-label">用户名</label>
+                                <label for="addUser_name" class="control-label">用户名</label>
 
-                                <input type="text" id="addUserName" name="userName" class="form-control" placeholder="userName" pattern="^[\u4e00-\u9fa5]{0,8}$" required="required">
+                                <input type="text" id="addUser_name" name="user_name" class="form-control" placeholder="用户名" pattern="^[\u4e00-\u9fa5]{0,8}$" required="required">
                             </div>
 
                         </div>
@@ -180,33 +180,12 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-md-6">
-
-                            <div class="form-group">
-                                <label for="addSex" class="control-label">性别</label>
-
-                                <input type="text" class="form-control" id="addSex" name="sex" placeholder="sex" required="required">
-                            </div>
-
-                        </div>
-                        <div class="col-md-6">
-
-                            <div class="form-group">
-                                <label for="addAddress" class="control-label">地址</label>
-
-                                <input type="text" class="form-control" id="addAddress" name="address" placeholder="Address">
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div class="row">
                         <div class="col-md-4">
 
                             <div class="form-group">
                                 <label for="addDepartment" class="control-label">部门</label>
 
-                                <input type="text" class="form-control" id="addDepartment" name="department" placeholder="department" required="required">
+                                <input type="text" class="form-control" id="addDepartment" name="department" placeholder="部门" required="required">
                             </div>
 
                         </div>
@@ -216,7 +195,7 @@
                             <div class="form-group">
                                 <label for="addEmail" class="control-label">邮箱</label>
 
-                                <input type="text" class="form-control" name="email" id="addEmail" placeholder="email" required="required">
+                                <input type="text" class="form-control" name="email" id="addEmail" placeholder="邮箱" required="required">
                             </div>
 
                         </div>
@@ -226,23 +205,12 @@
                             <div class="form-group">
                                 <label for="addTelephone" class="control-label">联系方式</label>
 
-                                <input type="text" class="form-control" name="telephone" id="addTelephone" placeholder="telephone" required="required">
+                                <input type="text" class="form-control" name="telephone" id="addTelephone" placeholder="联系方式" required="required">
                             </div>
 
                         </div>
                     </div>
 
-                    <div class="row">
-                        <div class="col-md-12">
-
-                            <div class="form-group no-margin">
-                                <label for="bio" class="control-label">简介</label>
-
-                                <textarea class="form-control autogrow" name="bio" id="bio" placeholder="Bio"></textarea>
-                            </div>
-
-                        </div>
-                    </div>
                 </form>
             </div>
             <div class="modal-footer">
@@ -270,9 +238,9 @@
                         <div class="col-md-6">
 
                             <div class="form-group">
-                                <label for="modifyUserName" class="control-label">用户名</label>
+                                <label for="modifyUser_name" class="control-label">用户名</label>
 
-                                <input type="text" name="userName" class="form-control" id="modifyUserName" data-validate="required" placeholder="userName" >
+                                <input type="text" name="user_name" class="form-control" id="modifyUser_name" data-validate="required" placeholder="用户名" >
                             </div>
 
                         </div>
@@ -288,26 +256,6 @@
                         </div>
                     </div>
 
-                    <div class="row">
-                        <div class="col-md-6">
-
-                            <div class="form-group">
-                                <label for="modifySex" class="control-label">性别</label>
-
-                                <input type="text" class="form-control" id="modifySex" name="sex" placeholder="sex">
-                            </div>
-
-                        </div>
-                        <div class="col-md-6">
-
-                            <div class="form-group">
-                                <label for="modifyAddress" class="control-label">地址</label>
-
-                                <input type="text" class="form-control" id="modifyAddress" name="address" placeholder="Address">
-                            </div>
-
-                        </div>
-                    </div>
 
                     <div class="row">
                         <div class="col-md-4">
@@ -315,7 +263,7 @@
                             <div class="form-group">
                                 <label for="modifyDepartment" class="control-label">部门</label>
 
-                                <input type="text" class="form-control" id="modifyDepartment" name="department" placeholder="department">
+                                <input type="text" class="form-control" id="modifyDepartment" name="department" placeholder="部门">
                             </div>
 
                         </div>
@@ -325,31 +273,17 @@
                             <div class="form-group">
                                 <label for="modifyEmail" class="control-label">邮箱</label>
 
-                                <input type="text" class="form-control" name="email" id="modifyEmail" placeholder="email">
+                                <input type="text" class="form-control" name="email" id="modifyEmail" placeholder="邮箱">
                             </div>
 
                         </div>
 
                         <div class="col-md-4">
-
                             <div class="form-group">
                                 <label for="modifyTelephone" class="control-label">联系方式</label>
 
-                                <input type="text" class="form-control" name="telephone" id="modifyTelephone" placeholder="telephone">
+                                <input type="text" class="form-control" name="telephone" id="modifyTelephone" placeholder="联系方式">
                             </div>
-
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-12">
-
-                            <div class="form-group no-margin">
-                                <label for="modifyBio" class="control-label">简介</label>
-
-                                <textarea class="form-control autogrow" name="bio" id="modifyBio" placeholder="Bio"></textarea>
-                            </div>
-
                         </div>
                     </div>
                 </div>
@@ -366,10 +300,10 @@
 <div th:include="baseTemplate/BottomScriptsHtml :: BottomScripts"></div>
 <script>
     function addUser() {
-        var addUsername = $("#addUserName").val();
+        var addUser_name = $("#addUser_name").val();
         var addPassword = $("#addPassword").val();
         var addDepartment = $("#addDepartment").val();
-        if (addUsername == "" || addUsername == undefined || addUsername == null) {
+        if (addUser_name == "" || addUser_name == undefined || addUser_name == null) {
             return layer.msg('用户名不能为空', function () {
                 //关闭后的操作
             });

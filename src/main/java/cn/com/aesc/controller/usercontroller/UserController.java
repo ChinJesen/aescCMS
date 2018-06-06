@@ -72,7 +72,7 @@ public class UserController {
   @RequestMapping("/addUser")
   @ResponseBody
   String addUsers(Users users) {
-    Users user = userService.selectByUserName(users.getUserName());
+    Users user = userService.selectByUserName(users.getUser_name());
     if (user != null) {
       return "gaiYongHuYiCunZai";
     }

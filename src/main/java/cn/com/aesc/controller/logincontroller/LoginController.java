@@ -54,13 +54,13 @@ public class LoginController {
    */
   @RequestMapping(value = "/login",method = RequestMethod.POST)
   String login(HttpServletRequest request, Model model, Users users) {
-    logger.info("用户名:"+users.getUserName());
+    logger.info("用户名:"+users.getUser_name());
     logger.info("密码:"+users.getPassword());
     return "manageHtml/main";
   }
 
-  @RequestMapping("/loginOut")
-  String loginOut(){
+  @RequestMapping("/logout")
+  String logout(){
     return "login";
   }
 }

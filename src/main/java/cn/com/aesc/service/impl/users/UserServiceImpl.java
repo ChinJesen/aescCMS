@@ -30,11 +30,11 @@ import java.util.List;
 public class UserServiceImpl extends BaseService<Users> implements UserService {
 
   @Override
-  public Users selectByUserName(String userName) {
+  public Users selectByUserName(String user_name) {
 
     Example example = new Example(Users.class);
     Example.Criteria criteria = example.createCriteria();
-    criteria.andEqualTo("userName",userName);
+    criteria.andEqualTo("user_name",user_name);
     List<Users> usersList = selectByExample(example);
     // 如果有返回第一条数据，说明该用户名已经被使用
     if (usersList.size() > 0){

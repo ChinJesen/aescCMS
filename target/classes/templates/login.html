@@ -48,7 +48,7 @@
 						// 验证和Ajax操作
 						$("form#login").validate({
 							rules: {
-								user_name: {
+								username: {
 									required: true
 								},
 								
@@ -58,7 +58,7 @@
 							},
 							
 							messages: {
-								user_name: {
+								username: {
 									required: '请输入你的用户名.'
 								},
 								
@@ -94,7 +94,7 @@
 									dataType: 'json',
 									data: {
 										do_login: true,
-										user_name: $(form).find('#user_name').val(),
+										username: $(form).find('#username').val(),
 										password: $(form).find('#password').val(),
 									},
 									success: function(resp)
@@ -163,8 +163,8 @@
 	
 					
 					<div class="form-group">
-						<label class="control-label" for="user_name">用户名</label>
-						<input type="text" class="form-control" name="user_name" id="user_name" autocomplete="off" required="required" pattern="^[\u4e00-\u9fa5]{0,8}$" title="汉字" />
+						<label class="control-label" for="username">用户名</label>
+						<input type="text" class="form-control" name="username" id="username" autocomplete="off" required="required" pattern="^[\u4e00-\u9fa5]{0,8}$" title="汉字" />
 					</div>
 					
 					<div class="form-group">

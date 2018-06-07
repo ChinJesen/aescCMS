@@ -1,0 +1,31 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2018-06-07
+
+nested exception is java.lang.IllegalArgumentException: Mapped Statements collection already contains value for cn.com.aesc.mapper.UsersMapper.selectByExample（* 几个方法报已存在，但是id的确只有一个，不知错误原因，修改id即可正常运行）
+删除了之前写的一些代码，进行重写。不参考示例。今天完成了mybatis的自动生成工具。加之前面一个月的网页完善，和shiro尝试。接下来学习通用mapper的使用。
+
+mapper接口中的方法解析https://blog.csdn.net/biandous/article/details/65630783
+int countByExample(UserExample example) thorws SQLException	                        按条件计数
+int deleteByPrimaryKey(Integer id) thorws SQLException	                            按主键删除
+int deleteByExample(UserExample example) thorws SQLException	                    按条件查询
+String/Integer insert(User record) thorws SQLException	                            插入数据（返回值为ID）
+User selectByPrimaryKey(Integer id) thorws SQLException	                            按主键查询
+ListselectByExample(UserExample example) thorws SQLException	                    按条件查询
+ListselectByExampleWithBLOGs(UserExample example) thorws SQLException	            按条件查询（包括BLOB字段）。只有当数据表中的字段类型有为二进制的才会产生。
+int updateByPrimaryKey(User record) thorws SQLException	                            按主键更新
+int updateByPrimaryKeySelective(User record) thorws SQLException	                按主键更新值不为null的字段
+int updateByExample(User record, UserExample example) thorws SQLException	        按条件更新
+int updateByExampleSelective(User record, UserExample example) thorws SQLException	按条件更新值不为null的字段

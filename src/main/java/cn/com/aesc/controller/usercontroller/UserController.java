@@ -11,7 +11,6 @@
 package cn.com.aesc.controller.usercontroller;
 
 import cn.com.aesc.pojo.users.Users;
-import cn.com.aesc.service.users.UserService;
 import cn.com.aesc.utils.PasswordEncryption;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -36,8 +35,8 @@ import javax.annotation.Resource;
 public class UserController {
   private static final Logger LOGGER = LoggerFactory.getLogger(UserController.class);
 
-  @Resource
-  private UserService userService;
+  //@Resource
+ // private UserService userService;
 
   /**
    * Copyright (C), 2005-2018, 重庆汽博实业有限公司
@@ -51,8 +50,8 @@ public class UserController {
    * @Description: 进行查询所有用户数据，返回到用户管理界面
    */
   @RequestMapping("/userManagement")
-  String inquiryAllUsers(){
-
+  String userManagement(){
+    LOGGER.info("进入用户管理++++++++++++++++++++++++++++++");
     return "userHtml/users";
   }
 
@@ -71,18 +70,18 @@ public class UserController {
    */
   @RequestMapping("/addUser")
   @ResponseBody
-  String addUsers(Users users) {
-    Users user = userService.selectByUserName(users.getUser_name());
-    if (user != null) {
-      return "gaiYongHuYiCunZai";
-    }
+  String addUser(Users users) {
+    //Users user = userService.selectByUserName(users.getUser_name());
+    //if (user != null) {
+   //   return "gaiYongHuYiCunZai";
+   // }
     try {
       // 账户启用
       users.setEnable(1);
       // TODO 进行密码的加密，以及其他资料存储数据库
       PasswordEncryption passwordEncryption = new PasswordEncryption();
       passwordEncryption.encryptPassword(users);
-      userService.save(users);
+      //userService.save(users);
       return "success";
     } catch (Exception e) {
       e.printStackTrace();

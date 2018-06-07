@@ -161,9 +161,9 @@
                         <div class="col-md-6">
 
                             <div class="form-group">
-                                <label for="addUser_name" class="control-label">用户名</label>
+                                <label for="addusername" class="control-label">用户名</label>
 
-                                <input type="text" id="addUser_name" name="user_name" class="form-control" placeholder="用户名" pattern="^[\u4e00-\u9fa5]{0,8}$" required="required">
+                                <input type="text" id="addusername" name="username" class="form-control" placeholder="用户名" pattern="^[\u4e00-\u9fa5]{0,8}$" required="required">
                             </div>
 
                         </div>
@@ -238,9 +238,9 @@
                         <div class="col-md-6">
 
                             <div class="form-group">
-                                <label for="modifyUser_name" class="control-label">用户名</label>
+                                <label for="modifyusername" class="control-label">用户名</label>
 
-                                <input type="text" name="user_name" class="form-control" id="modifyUser_name" data-validate="required" placeholder="用户名" >
+                                <input type="text" name="username" class="form-control" id="modifyusername" data-validate="required" placeholder="用户名" >
                             </div>
 
                         </div>
@@ -300,10 +300,10 @@
 <div th:include="baseTemplate/BottomScriptsHtml :: BottomScripts"></div>
 <script>
     function addUser() {
-        var addUser_name = $("#addUser_name").val();
+        var addusername = $("#addusername").val();
         var addPassword = $("#addPassword").val();
         var addDepartment = $("#addDepartment").val();
-        if (addUser_name == "" || addUser_name == undefined || addUser_name == null) {
+        if (addusername == "" || addusername == undefined || addusername == null) {
             return layer.msg('用户名不能为空', function () {
                 //关闭后的操作
             });

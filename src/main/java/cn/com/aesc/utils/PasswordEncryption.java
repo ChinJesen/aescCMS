@@ -10,7 +10,7 @@
  */
 package cn.com.aesc.utils;
 
-import cn.com.aesc.pojo.users.Users;
+import cn.com.aesc.pojo.Users;
 import org.apache.shiro.crypto.hash.SimpleHash;
 import org.apache.shiro.util.ByteSource;
 
@@ -29,14 +29,14 @@ public class PasswordEncryption {
   private int hashIterations = 3;
 
   public void encryptPassword(Users user) {
-    String newPassword = new SimpleHash(algorithmName, user.getPassword(), ByteSource.Util.bytes(user.getUser_name()), hashIterations).toHex();
+    String newPassword = new SimpleHash(algorithmName, user.getPassword(), ByteSource.Util.bytes(user.getUsername()), hashIterations).toHex();
     user.setPassword(newPassword);
   }
 
   public static void main(String[] args) {
     PasswordEncryption passwordHelper = new PasswordEncryption();
     Users user = new Users();
-    user.setUser_name("admin");
+    user.setUsername("admin");
     user.setPassword("admin");
     passwordHelper.encryptPassword(user);
     System.out.println(user);

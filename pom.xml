@@ -39,6 +39,7 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.11</version>
         </dependency>
         <!-- spring boot整合mybatis -->
         <dependency>
@@ -97,12 +98,30 @@
                 </exclusion>
             </exclusions>
         </dependency>
+        <!-- 实体类注解 -->
+        <dependency>
+            <groupId>javax.persistence</groupId>
+            <artifactId>persistence-api</artifactId>
+            <version>1.0.2</version>
+        </dependency>
     </dependencies>
 
     <properties>
+        <!--设置编码和Java版本-->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
+        <!-- MyBatis Generator -->
+        <mybatis.generator.version>1.3.6</mybatis.generator.version>
+        <targetJavaProject>${basedir}/src/main/java</targetJavaProject>
+        <targetMapperPackage>cn.com.aesc.mapper</targetMapperPackage>
+        <targetEntityPackage>cn.com.aesc.pojo</targetEntityPackage>
+        <!-- tk.mybatis -->
+        <tk.mybatis.version>2.0.3-beta1</tk.mybatis.version>
+        <persistence.version>1.0.2</persistence.version>
+        <mapper.plugin>tk.mybatis.mapper.generator.MapperPlugin</mapper.plugin>
+        <mapper.Mapper>tk.mybatis.mapper.common.Mapper</mapper.Mapper>
+
     </properties>
 
     <build>
@@ -111,10 +130,12 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+           <!-- 自动生成工具 数据库反向生成java -->
             <plugin>
                 <groupId>org.mybatis.generator</groupId>
                 <artifactId>mybatis-generator-maven-plugin</artifactId>
                 <version>1.3.6</version>
+                <!--配置文件的位置-->
                 <configuration>
                     <configurationFile>${basedir}/src/main/resources/generator/generatorConfig.xml</configurationFile>
                     <overwrite>true</overwrite>
@@ -124,7 +145,7 @@
                     <dependency>
                         <groupId>mysql</groupId>
                         <artifactId>mysql-connector-java</artifactId>
-                        <version>${mysql.version}</version>
+                        <version>8.0.11</version>
                     </dependency>
                     <!-- https://mvnrepository.com/artifact/tk.mybatis/mapper -->
                     <dependency>

@@ -1,6 +1,6 @@
 package cn.com.aesc.controller.logincontroller;
 
-import cn.com.aesc.pojo.users.Users;
+import cn.com.aesc.pojo.Users;
 import org.apache.catalina.servlet4preview.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -53,11 +53,24 @@ public class LoginController {
    */
   @RequestMapping(value = "/login",method = RequestMethod.POST)
   String login(HttpServletRequest request, Model model, Users users) {
-    logger.info("用户名:"+users.getUser_name());
+    logger.info("用户名:"+users.getUsername());
     logger.info("密码:"+users.getPassword());
     return "manageHtml/main";
   }
 
+  
+  /**
+   * Copyright (C), 2005-2018, 重庆汽博实业有限公司
+   * 
+   * @Author: dawn@acdiost.com
+   * @Date: 2018-06-07 17:52
+   * @Param: 
+   * @Return: 
+   * @See: 
+   * @Throws: 
+   * @Version: 
+   * @Description: 
+   */
   @RequestMapping("/logout")
   String logout(){
     return "login";

@@ -13,6 +13,8 @@
     <result column="telephone" jdbcType="VARCHAR" property="telephone" />
     <result column="enable" jdbcType="INTEGER" property="enable" />
   </resultMap>
+  <!--将改、删、查增加了一个s。不然抛出以下错误-->
+  <!--nested exception is java.lang.IllegalArgumentException: Mapped Statements collection already contains value for cn.com.aesc.mapper.UsersMapper.selectByExample-->
   <sql id="Example_Where_Clause">
     <!--
       WARNING - @mbg.generated
@@ -83,7 +85,7 @@
     -->
     userId, userName, password, department, email, telephone, enable
   </sql>
-  <select id="selectByExample" parameterType="cn.com.aesc.pojo.UsersExample" resultMap="BaseResultMap">
+  <select id="selectByExamples" parameterType="cn.com.aesc.pojo.UsersExample" resultMap="BaseResultMap">
     <!--
       WARNING - @mbg.generated
     -->
@@ -100,7 +102,7 @@
       order by ${orderByClause}
     </if>
   </select>
-  <delete id="deleteByExample" parameterType="cn.com.aesc.pojo.UsersExample">
+  <delete id="deleteByExamples" parameterType="cn.com.aesc.pojo.UsersExample">
     <!--
       WARNING - @mbg.generated
     -->
@@ -109,7 +111,7 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <select id="countByExample" parameterType="cn.com.aesc.pojo.UsersExample" resultType="java.lang.Long">
+  <select id="countByExamples" parameterType="cn.com.aesc.pojo.UsersExample" resultType="java.lang.Long">
     <!--
       WARNING - @mbg.generated
     -->
@@ -118,7 +120,7 @@
       <include refid="Example_Where_Clause" />
     </if>
   </select>
-  <update id="updateByExampleSelective" parameterType="map">
+  <update id="updateByExampleSelectives" parameterType="map">
     <!--
       WARNING - @mbg.generated
     -->
@@ -150,7 +152,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByExample" parameterType="map">
+  <update id="updateByExamples" parameterType="map">
     <!--
       WARNING - @mbg.generated
     -->

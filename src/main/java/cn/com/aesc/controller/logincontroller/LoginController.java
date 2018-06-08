@@ -4,6 +4,7 @@ import cn.com.aesc.pojo.Users;
 import org.apache.catalina.servlet4preview.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  */
 @Controller
 public class LoginController {
+
 
 
   private Logger logger = LoggerFactory.getLogger(LoginController.class);
@@ -53,6 +55,7 @@ public class LoginController {
    */
   @RequestMapping(value = "/login",method = RequestMethod.POST)
   String login(HttpServletRequest request, Model model, Users users) {
+
     logger.info("用户名:"+users.getUsername());
     logger.info("密码:"+users.getPassword());
     return "manageHtml/main";

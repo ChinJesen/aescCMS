@@ -25,7 +25,9 @@ import org.apache.shiro.util.ByteSource;
  */
 public class PasswordEncryption {
   private String algorithmName = "md5";
-  // 加密循环次数
+  /**
+   * 加密循环次数
+   */
   private int hashIterations = 3;
 
   public void encryptPassword(Users user) {

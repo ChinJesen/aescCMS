@@ -3,6 +3,18 @@ package cn.com.aesc.pojo;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Copyright (C), 2005-2018, 重庆汽博实业有限公司
+ * 
+ * @Author: dawn@acdiost.com
+ * @Date: 2018-06-08 16:24
+ * @Param: 
+ * @Return: 
+ * @See: 
+ * @Throws: 
+ * @Version: 
+ * @Description: 
+ */
 public class UsersExample {
     protected String orderByClause;
 

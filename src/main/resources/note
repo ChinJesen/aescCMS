@@ -8,7 +8,10 @@
 
 
 
-
+2018-06-08
+AOP完成shiro后集成。
+1、添加aop依赖
+2、创建类。添加Aspect和Component注解。pointcut、Before、after、afterReturning注解等。
 
 
 

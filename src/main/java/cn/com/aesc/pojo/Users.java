@@ -3,6 +3,18 @@ package cn.com.aesc.pojo;
 import java.io.Serializable;
 import javax.persistence.*;
 
+/**
+ * Copyright (C), 2005-2018, 重庆汽博实业有限公司
+ * 
+ * @Author: dawn@acdiost.com
+ * @Date: 2018-06-08 16:23
+ * @Param: 
+ * @Return: 
+ * @See: 
+ * @Throws: 
+ * @Version: 
+ * @Description: 
+ */
 public class Users implements Serializable {
     /**
      * 用户id主键

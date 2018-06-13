@@ -80,7 +80,7 @@ javaTypeResolver?,javaModelGenerator,sqlMapGenerator?,javaClientGenerator?,table
             targetProject：目标项目，指定一个存在的目录下，生成的内容会放到指定目录中，如果目录不存在，MBG不会自动建目录
         -->
         <!-- 生成bean和example对象 -->
-        <javaModelGenerator targetPackage="cn.com.aesc.pojo" targetProject="src/main/java">
+        <javaModelGenerator targetPackage="cn.com.aesc.entity" targetProject="src/main/java">
             <!--  for MyBatis3/MyBatis3Simple
                 自动为每一个生成的类创建一个构造方法，构造方法包含了所有的field；而不是使用setter；
             -->
@@ -251,10 +251,19 @@ javaTypeResolver?,javaModelGenerator,sqlMapGenerator?,javaClientGenerator?,table
               &ndash;&gt;
          </table>-->
         <table tableName="users">
-            <!--mysql 配置 -->
             <generatedKey column="userId" sqlStatement="Mysql" identity="true"/>
-            <!--oracle 配置 -->
-            <!--<generatedKey column="id" sqlStatement="select SEQ_{1}.nextval from dual" identity="false" type="pre"/>-->
+        </table>
+        <table tableName="roles">
+            <generatedKey column="roleId" sqlStatement="Mysql" identity="true"/>
+        </table>
+        <table tableName="resources">
+            <generatedKey column="resourcesId" sqlStatement="Mysql" identity="true"/>
+        </table>
+        <table tableName="roles_resources">
+            <generatedKey column="userId" sqlStatement="Mysql" identity="true"/>
+        </table>
+        <table tableName="users_roles">
+            <generatedKey column="userId" sqlStatement="Mysql" identity="true"/>
         </table>
     </context>
 </generatorConfiguration>

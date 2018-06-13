@@ -10,7 +10,7 @@
  */
 package cn.com.aesc.controller.usercontroller;
 
-import cn.com.aesc.pojo.Users;
+import cn.com.aesc.entity.Users;
 import cn.com.aesc.utils.PasswordEncryption;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -18,7 +18,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  */
 @SpringBootApplication
 @EnableTransactionManagement
-@MapperScan(basePackages = "cn.com.aesc.mapper")
+@MapperScan(basePackages = "cn.com.aesc.mapper")//在Application中，以注解的形式设置扫描的basePackage，可以设置多个，dao可在不同路径。
 public class Application {
     public static void main(String[] args) {
       SpringApplication.run(Application.class, args);

@@ -1,4 +1,4 @@
-package cn.com.aesc.pojo;
+package cn.com.aesc.entity;
 
 import java.io.Serializable;
 import javax.persistence.*;
@@ -15,10 +15,12 @@ import javax.persistence.*;
  * @Version: 
  * @Description: 
  */
+@Entity
 public class Users implements Serializable {
     /**
      * 用户id主键
      */
+    @Id
     @Column(name = "userId")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer userid;

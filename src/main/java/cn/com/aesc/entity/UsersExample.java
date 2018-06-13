@@ -1,4 +1,4 @@
-package cn.com.aesc.pojo;
+package cn.com.aesc.entity;
 
 import java.util.ArrayList;
 import java.util.List;

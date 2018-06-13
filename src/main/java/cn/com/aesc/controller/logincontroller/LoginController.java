@@ -1,14 +1,17 @@
 package cn.com.aesc.controller.logincontroller;
 
-import cn.com.aesc.pojo.Users;
+import cn.com.aesc.entity.Users;
+import cn.com.aesc.service.UserService;
 import org.apache.catalina.servlet4preview.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+
+import javax.annotation.Resource;
 
 /**
  * Copyright (C), 2005-2018, 重庆汽博实业有限公司
@@ -24,7 +27,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class LoginController {
 
-
+@Resource(name = "userService")
+private UserService userService;
 
   private Logger logger = LoggerFactory.getLogger(LoginController.class);
   /**
@@ -38,7 +42,8 @@ public class LoginController {
    * @Version:
    * @Description:用户直接登录页面get方法
    */
-  @RequestMapping(value = "/login",method = RequestMethod.GET)
+  //@RequestMapping(value = "/login",method = RequestMethod.GET)
+  @GetMapping("/login")
   String login() {
     return "login";
   }
@@ -53,12 +58,21 @@ public class LoginController {
    * @Version:
    * @Description:
    */
-  @RequestMapping(value = "/login",method = RequestMethod.POST)
-  String login(HttpServletRequest request, Model model, Users users) {
-
+  //@RequestMapping(value = "/login",method = RequestMethod.POST)
+  @PostMapping("/login")
+  String login(HttpServletRequest request, Users users) {
+    if (StringUtils.isEmpty(users.getUsername()) || StringUtils.isEmpty(users.getPassword())) {
+      request.setAttribute("msg", "用户名或密码不能为空！");
+      return "login";
+    }
+    Users u = userService.selectByExamples(users.getUsername());
+    if(u != null){
+      request.setAttribute("msg", "有该用户！");
+      return "manageHtml/main";
+    }
     logger.info("用户名:"+users.getUsername());
     logger.info("密码:"+users.getPassword());
-    return "manageHtml/main";
+    return "redirect:manageHtml/main";
   }
 
   

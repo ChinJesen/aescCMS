@@ -120,7 +120,8 @@
 										// 显示错误提示
 										if(resp.accessGranted == false)
 										{
-											$(".errors-container").html('<div class="alert alert-danger">\
+											$(".errors-container").html(
+											'<div class="alert alert-danger">\
 												<button type="button" class="close" data-dismiss="alert">\
 													<span aria-hidden="true">&times;</span>\
 													<span class="sr-only">关闭</span>\
@@ -171,7 +172,7 @@
 						<label class="control-label" for="password">密码</label>
 						<input type="password" class="form-control" name="password" id="password" autocomplete="off" required="required" pattern="^[a-zA-Z]\w{5,17}$" title="字母数字组合" />
 					</div>
-					
+
 					<div class="form-group">
 						<button type="submit" class="btn btn-primary  btn-block text-left">
 							<i class="fa-lock"></i>
@@ -187,9 +188,6 @@
 			</div>
 			
 		</div>
-		
-	</div>
-
 
 
 	<!-- Bottom Scripts -->
@@ -205,6 +203,5 @@
 
 	<!-- JavaScripts initializations and stuff -->
 	<script src="/xenon/assets/js/xenon-custom.js"></script>
-
 </body>
 </html>

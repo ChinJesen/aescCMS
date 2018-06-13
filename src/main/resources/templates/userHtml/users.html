@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:include="baseTemplate/headHtml :: head"></head>
+<head th:replace="baseTemplate/headHtml :: head"></head>
 <body class="page-body">
 <!--个人信息 -->
-<div th:include="baseTemplate/profileLeft :: profileLeft" class="settings-pane"></div>
+<div th:replace="baseTemplate/profileLeft :: profileLeft" ></div>
 <!--个人信息 -->
 <!-- 导航条 -->
-<nav th:include="baseTemplate/navHtml :: nav" class="navbar horizontal-menu navbar-fixed-top navbar-minimal"></nav>
+<nav th:replace="baseTemplate/navHtml::nav" ></nav>
 <!-- 导航条 -->
 <!-- 页面容器 -->
 <div class="page-container">
@@ -195,7 +195,7 @@
                             <div class="form-group">
                                 <label for="addEmail" class="control-label">邮箱</label>
 
-                                <input type="text" class="form-control" name="email" id="addEmail" placeholder="邮箱" required="required">
+                                <input type="email" class="form-control" name="email" id="addEmail" placeholder="邮箱" required="required">
                             </div>
 
                         </div>
@@ -205,7 +205,7 @@
                             <div class="form-group">
                                 <label for="addTelephone" class="control-label">联系方式</label>
 
-                                <input type="text" class="form-control" name="telephone" id="addTelephone" placeholder="联系方式" required="required">
+                                <input type="number" minlength="8" maxlength="12" class="form-control" name="telephone" id="addTelephone" placeholder="联系方式" required="required">
                             </div>
 
                         </div>
@@ -273,7 +273,7 @@
                             <div class="form-group">
                                 <label for="modifyEmail" class="control-label">邮箱</label>
 
-                                <input type="text" class="form-control" name="email" id="modifyEmail" placeholder="邮箱">
+                                <input type="email" class="form-control" name="email" id="modifyEmail" placeholder="邮箱">
                             </div>
 
                         </div>
@@ -282,7 +282,7 @@
                             <div class="form-group">
                                 <label for="modifyTelephone" class="control-label">联系方式</label>
 
-                                <input type="text" class="form-control" name="telephone" id="modifyTelephone" placeholder="联系方式">
+                                <input type="number" minlength="8" maxlength="12" class="form-control" name="telephone" id="modifyTelephone" placeholder="联系方式">
                             </div>
                         </div>
                     </div>

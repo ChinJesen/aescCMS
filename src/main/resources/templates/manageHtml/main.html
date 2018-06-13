@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
-<head th:include="baseTemplate/headHtml :: head"></head>
-<body class="page-body">
+<head th:replace="baseTemplate/headHtml :: head"></head>
+<body class="page-body" onload="">
 <!--profileLeft -->
-<div th:include="baseTemplate/profileLeft :: profileLeft" class="settings-pane"></div>
+<div th:replace="baseTemplate/profileLeft :: profileLeft"></div>
 <!--profileLeft -->
 <!-- nav -->
-<nav th:include="baseTemplate/navHtml :: nav" class="navbar horizontal-menu navbar-fixed-top navbar-minimal"></nav>
+<nav th:replace="baseTemplate/navHtml :: nav"></nav>
 <!-- nav -->
 <div class="page-container"><!-- add class "sidebar-collapsed" to close sidebar by default, "chat-visible" to make chat appear always -->
 
@@ -20,6 +20,6 @@
 
 </div>
 <!-- Bottom Scripts -->
-<div th:include="baseTemplate/BottomScriptsHtml :: BottomScripts"></div>
+<div th:replace="baseTemplate/BottomScriptsHtml :: BottomScripts"></div>
 </body>
 </html>

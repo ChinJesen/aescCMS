@@ -10,7 +10,7 @@
  */
 package cn.com.aesc.utils;
 
-import cn.com.aesc.pojo.Users;
+import cn.com.aesc.entity.Users;
 import org.apache.shiro.crypto.hash.SimpleHash;
 import org.apache.shiro.util.ByteSource;
 

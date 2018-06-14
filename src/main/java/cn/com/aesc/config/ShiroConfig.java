@@ -19,4 +19,5 @@ package cn.com.aesc.config;
  * @since 1.0.0
  */
 public class ShiroConfig {
+
 }

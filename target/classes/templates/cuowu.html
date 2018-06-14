@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head th:include="baseTemplate/headHtml :: head"></head>
+<head th:replace="baseTemplate/headHtml :: head"></head>
 <body class="page-body page-error-env">
 
 	<div class="page-error centered">
@@ -35,7 +35,7 @@
 
 
 
-	<div th:include="baseTemplate/BottomScriptsHtml :: BottomScripts"></div>
+	<div th:replace="baseTemplate/BottomScriptsHtml :: BottomScripts"></div>
 
 </body>
 </html> 

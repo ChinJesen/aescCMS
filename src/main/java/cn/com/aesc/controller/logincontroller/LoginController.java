@@ -1,17 +1,19 @@
 package cn.com.aesc.controller.logincontroller;
 
-import cn.com.aesc.entity.Users;
+import cn.com.aesc.entity.users.Users;
 import cn.com.aesc.service.UserService;
 import org.apache.catalina.servlet4preview.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.Resource;
+import java.util.Map;
 
 /**
  * Copyright (C), 2005-2018, 重庆汽博实业有限公司
@@ -42,7 +44,6 @@ private UserService userService;
    * @Version:
    * @Description:用户直接登录页面get方法
    */
-  //@RequestMapping(value = "/login",method = RequestMethod.GET)
   @GetMapping("/login")
   String login() {
     return "login";
@@ -58,21 +59,23 @@ private UserService userService;
    * @Version:
    * @Description:
    */
-  //@RequestMapping(value = "/login",method = RequestMethod.POST)
   @PostMapping("/login")
-  String login(HttpServletRequest request, Users users) {
+  String login(HttpServletRequest request, Users users , Model model, Map<String,Object> map) {
+
     if (StringUtils.isEmpty(users.getUsername()) || StringUtils.isEmpty(users.getPassword())) {
-      request.setAttribute("msg", "用户名或密码不能为空！");
+      model.addAttribute("msg", "用户名或密码错误！");
       return "login";
     }
-    Users u = userService.selectByExamples(users.getUsername());
+    Users u = userService.selectByUsername(users.getUsername());
     if(u != null){
-      request.setAttribute("msg", "有该用户！");
-      return "manageHtml/main";
+      map.put("aa","陈晨");
+      model.addAttribute("model","This is your message陈晨");
+      request.setAttribute("request","陈晨");
+      return "baseTemplate/main";
     }
     logger.info("用户名:"+users.getUsername());
     logger.info("密码:"+users.getPassword());
-    return "redirect:manageHtml/main";
+    return "redirect:baseTemplate/main";
   }
 
   

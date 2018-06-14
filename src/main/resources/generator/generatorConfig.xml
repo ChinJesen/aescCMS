@@ -259,11 +259,11 @@ javaTypeResolver?,javaModelGenerator,sqlMapGenerator?,javaClientGenerator?,table
         <table tableName="resources">
             <generatedKey column="resourcesId" sqlStatement="Mysql" identity="true"/>
         </table>
-        <table tableName="roles_resources">
-            <generatedKey column="userId" sqlStatement="Mysql" identity="true"/>
+        <table tableName="resources_roles">
+            <generatedKey column="roleId" sqlStatement="Mysql" identity="true"/>
         </table>
         <table tableName="users_roles">
-            <generatedKey column="userId" sqlStatement="Mysql" identity="true"/>
+            <generatedKey column="roleId" sqlStatement="Mysql" identity="true"/>
         </table>
     </context>
 </generatorConfiguration>

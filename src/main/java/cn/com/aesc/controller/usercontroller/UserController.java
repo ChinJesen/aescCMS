@@ -10,13 +10,12 @@
  */
 package cn.com.aesc.controller.usercontroller;
 
-import cn.com.aesc.entity.Users;
+import cn.com.aesc.entity.users.Users;
 import cn.com.aesc.utils.PasswordEncryption;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * 〈一句话功能简述〉<br>
@@ -65,10 +64,12 @@ public class UserController {
    * @Version:
    * @Description:添加用户操作 密码在utils里的PasswordEncryption类进行设置 随后mapper存储到数据库
    */
-  @RequestMapping("/addUser")
+  @PostMapping("/user")
   @ResponseBody
   String addUser(Users users) {
-
+    System.out.println(users.getUsername());
+    System.out.println(users.getPassword());
+    System.out.println(users.getDepartment());
     try {
       // 账户启用
       users.setEnable(1);
@@ -80,5 +81,47 @@ public class UserController {
       e.printStackTrace();
       return "baoCunShiBai";
     }
+  }
+
+  /**
+   * Copyright (C), 2005-2018, 重庆汽博实业有限公司
+   *
+   * @Author: dawn@acdiost.com
+   * @Date: 2018-06-14 11:14
+   * @Param:
+   * @Return:
+   * @See:
+   * @Throws:
+   * @Version:
+   * @Description:
+   */
+  @PutMapping("/user")
+  @ResponseBody
+  String ModifyUser(Users users){
+    System.out.println(users.getUsername());
+    System.out.println(users.getPassword());
+    System.out.println(users.getDepartment());
+    return "success";
+  }
+
+  /**
+   * Copyright (C), 2005-2018, 重庆汽博实业有限公司
+   *
+   * @Author: dawn@acdiost.com
+   * @Date: 2018-06-14 11:15
+   * @Param:
+   * @Return:
+   * @See:
+   * @Throws:
+   * @Version:
+   * @Description:
+   */
+  @DeleteMapping("/user")
+  @ResponseBody
+  String DeleteUser(Users users){
+    System.out.println(users.getUsername());
+    System.out.println(users.getPassword());
+    System.out.println(users.getDepartment());
+    return "success";
   }
 }

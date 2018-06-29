@@ -12,7 +12,7 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
 COMMENT = '用户表';
 
-
+INSERT INTO users ( userId,userName,password,department,email,telephone,enable ) VALUES( null,'test19','0f6822516727b89ab23cdf7056c0ae5b','IT部','1036359208@qq.com','15215079472',1 );
 
 drop table if exists `roles`;
 create table `aesc_cms`.`roles`(

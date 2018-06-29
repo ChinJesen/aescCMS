@@ -3,10 +3,10 @@
 <head th:replace="baseTemplate/headHtml :: head"></head>
 <body class="page-body">
 <!--个人信息 -->
-<div th:replace="baseTemplate/profileLeft :: profileLeft" ></div>
+<div th:replace="baseTemplate/profileLeft :: profileLeft"></div>
 <!--个人信息 -->
 <!-- 导航条 -->
-<nav th:replace="baseTemplate/navHtml::nav" ></nav>
+<nav th:replace="baseTemplate/navHtml::nav"></nav>
 <!-- 导航条 -->
 <!-- 页面容器 -->
 <div class="page-container">
@@ -16,9 +16,7 @@
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h3 class="panel-title">用户信息</h3>
-
                 <div class="panel-options">
-                    <!--<a href="javascript:;" onclick="jQuery('#addUser').modal('show', {backdrop: 'static'});" class="btn btn-black btn-single btn-lg">添加用户</a>-->
                     <a href="#" data-toggle="panel">
                         <span class="collapse-icon">&ndash;</span>
                         <span class="expand-icon">+</span>
@@ -30,138 +28,6 @@
             </div>
             <div class="panel-body">
 
-                 <!-- dataTable与checkboxes的选择 -->
-                <script type="text/javascript">
-
-                    // dataTable
-                    var table;
-
-                    jQuery(document).ready(function($)
-                    {
-                        // 当复选框出现时，请将其替换
-                        var $state = $("#usersTable thead input[type='checkbox']");
-
-                        $("#usersTable").on('draw.dt', function ()
-                        {
-                            cbr_replace();
-                            $state.trigger('change');
-                        });
-
-                        // 选择所有复选框的脚本
-                        $state.on('change', function(ev)
-                        {
-                            var $chcks = $("#usersTable tbody input[type='checkbox']");
-
-                            if($state.is(':checked'))
-                            {
-                                $chcks.prop('checked', true).trigger('change');
-                            }
-                            else
-                            {
-                                $chcks.prop('checked', false).trigger('change');
-                            }
-                        });
-
-
-                        table = $("#usersTable").dataTable({
-                            "dom": "t" + "<'row'<'col-xs-6'i><'col-xs-6'p>>",
-                            "searching": false,
-                            "bJQueryUI": true,// UI设置
-                            "sPaginationType": "full_numbers",// 右下页码全显示 simple、simple_numbers、full和 full_numbers, 默认使用 simple_numbers
-                            "serverSide": true,// 开启服务器模式，使用服务器端处理配置datatable
-                            "processing": true,// 开启读取服务器数据时显示正在加载中……特别是大数据量的时候，开启此功能比较好
-
-                            // 请求用户信息
-                            ajax: function (data, callback, settings) {
-                                // 封装请求参数
-                                var param = getQueryCondition(data);
-
-                                $.ajax({
-                                    type: "GET",
-                                    url: 'user',
-                                    cache: false,
-                                    data: param,
-                                    dataType: "json",
-                                    success: function (result) {
-                                        var returnData = {};
-                                        returnData.draw = result.draw;// 这里直接自行返回了draw计数器,应该由后台返回
-                                        returnData.recordsTotal = result.recordsTotal;// 总记录数
-                                        returnData.recordsFiltered = result.recordsFiltered;// 后台不实现过滤功能，每次查询均视作全部结果
-                                        returnData.data = result.data;// 返回的数据列表
-                                        // 调用DataTables提供的callback方法，代表数据已封装完成并传回DataTables进行渲染
-                                        // 此时的数据需确保正确无误，异常判断应在执行此回调前自行处理完毕
-                                        callback(returnData);
-                                    },
-                                    error: function (XMLHttpRequest, textStatus, errorThrown) {
-                                        layer.msg("查询失败");
-                                    }
-                                });
-                            },
-
-
-                            // 加入字段
-                            "columns": [
-                                {
-                                    "sClass": "no-sorting",
-                                    "data": "userid",
-                                    "render": function (data, type, full, meta) {
-                                        return '<input type="checkbox"  class="cbr"  value="' + data + '" />';
-                                    },
-                                    "bSortable": false
-                                },
-                                {"data": "userid"},
-                                {"data": "username"},
-                                {"data": "department"},
-                                {"data": "email"},
-                                {"data": "telephone"},
-                                {"data": "enable"}
-
-                            ],
-
-                            // 设置列的属性，不一定要和表格的列的数目完全一样
-                            // targets属性指定列,orderable属性表示此列是否参与排序,name是对这一列的描述,title当然是列名了,最重要的有两个
-                            // data和render,其中data负责指定数据源,他指定的是你从服务器返回的json数据中的实体对象的属性(事实上你也可以直接写数组),这个属性下面分页时还会具体讲
-                            "columnDefs": [
-                                {"orderable": false, "targets": 1},
-                                {"orderable": false, "targets": 2},
-                                {"orderable": false, "targets": 3},
-                                {"orderable": false, "targets": 4},
-                                {"orderable": false, "targets": 5},
-                                {
-                                    "orderable": false,
-                                    // render英文意为渲染
-                                    "render": function (data, type, row) {
-                                        if (data == 1) {
-                                            return "开启";
-                                        } else {
-                                            return "关闭";
-                                        }
-                                    },
-                                    "targets": 6
-                                },
-                            ],
-                        });
-
-                        function search() {
-                            table.ajax.reload();
-                        }
-
-                        function getQueryCondition(data) {
-                            var param = {};
-                            // 组装排序参数
-                            param.userId = $("#id-search").val();// 查询条件
-                            param.username = $("#name-search").val();// 查询条件
-                            param.enable = $("#status-search").val();// 查询条件
-                            // 组装分页参数
-                            param.start = data.start;
-                            param.length = data.length;
-                            param.draw = data.draw;
-                            return param;
-                        }
-
-
-                    });
-                </script>
                 <form class="form-inline">
                     <div class="form-group">
                         <label>编号:</label>
@@ -179,11 +45,13 @@
                             <option value="0">关闭</option>
                         </select>
                     </div>
-                    <button type="button" onclick="search();" class="btn btn-primary" style="margin-bottom: 0px;">查询</button>
+                    <button type="button" onclick="search();" class="btn btn-primary" style="margin-bottom: 0px;">查询
+                    </button>
                     <button shiro:hasPermission="/users/addUser" type="button" onclick="$('#addUser').modal();"
                             class="btn btn-info" style="float: right; margin-right: 1px;">添加用户
                     </button>
-                    <button shiro:hasPermission="/users/deleteUser" type="button" onclick="$('#deleteUser').modal();" class="btn btn-info"
+                    <button shiro:hasPermission="/users/deleteUser" type="button" onclick="deleteUser();"
+                            class="btn btn-info"
                             style="float: right; margin-right: 1px;">删除
                     </button>
                     <button shiro:hasPermission="/users/updateUser" type="button" onclick="$('#modifyUser').modal();"
@@ -199,7 +67,7 @@
                         <th class="no-sorting">
                             <input type="checkbox" class="cbr"/>
                         </th>
-                        <th>ID</th>
+                        <th>编号</th>
                         <th>用户名</th>
                         <th>部门</th>
                         <th>邮箱</th>
@@ -408,7 +276,132 @@
 <!-- Bottom Scripts -->
 <div th:replace="baseTemplate/BottomScriptsHtml :: BottomScripts"></div>
 
-<script>
+<script type="text/javascript">
+
+    /* checkboxes的选择*/
+
+    // 当复选框出现时，将其替换
+    var $state = $("#usersTable thead input[type='checkbox']");
+
+    $("#usersTable").on('draw.dt', function () {
+        cbr_replace();
+        $state.trigger('change');
+    });
+
+    // 选择所有复选框的脚本
+    $state.on('change', function (ev) {
+        var $chcks = $("#usersTable tbody input[type='checkbox']");
+
+        if ($state.is(':checked')) {
+            $chcks.prop('checked', true).trigger('change');
+        }
+        else {
+            $chcks.prop('checked', false).trigger('change');
+        }
+    });
+
+    /* dataTable*/
+    var table;
+
+    $(document).ready(function () {
+        // 是DataTable而不是dateTable  不然报错（Uncaught TypeError: Cannot read property 'reload' of undefined）。
+        // 找了好久（https://stackoverflow.com/questions/48665509/uncaught-typeerror-cannot-read-property-reload-of-undefined）
+        // The problem is that dataTable() is returning a jQuery object not a Datatables API. You will want to use DataTable() instead, note the capital D.
+        table = $("#usersTable").DataTable({
+            "dom": "t" + "<'row'<'col-xs-6'i><'col-xs-6'p>>",
+            "searching": false,
+            "bJQueryUI": true,// UI设置
+            "sPaginationType": "full_numbers",// 右下页码全显示 simple、simple_numbers、full和 full_numbers, 默认使用 simple_numbers
+            "serverSide": true,// 开启服务器模式，使用服务器端处理配置datatable
+            "processing": true,// 开启读取服务器数据时显示正在加载中……特别是大数据量的时候，开启此功能比较好
+            // 请求用户信息
+            ajax: function (data, callback, settings) {
+                // 封装的请求参数
+                var param = getQueryCondition(data);
+                $.ajax({
+                    type: "GET",
+                    url: 'user',
+                    cache: false,// 禁用缓存
+                    data: param, // 传入已封装的参数
+                    dataType: "json",
+                    success: function (result) {
+                        var returnData = {};
+                        returnData.draw = result.draw;// 这里直接自行返回了draw计数器,应该由后台返回
+                        returnData.recordsTotal = result.recordsTotal;// 总记录数
+                        returnData.recordsFiltered = result.recordsFiltered;// 后台不实现过滤功能，每次查询均视作全部结果
+                        returnData.data = result.data;// 返回的数据列表
+                        // 调用DataTables提供的callback方法，代表数据已封装完成并传回DataTables进行渲染
+                        // 此时的数据需确保正确无误，异常判断应在执行此回调前自行处理完毕
+                        callback(returnData);
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        layer.msg("查询失败");
+                    }
+                });
+            },
+            // 加入字段
+            "columns": [
+                {
+                    "sClass": "no-sorting",
+                    "data": "userid",
+                    "render": function (data, type, full, meta) {
+                        return '<input type="checkbox"  class="cbr"  value="' + data + '" />';
+                    },
+                    "bSortable": false
+                },
+                {"data": "userid"},
+                {"data": "username"},
+                {"data": "department"},
+                {"data": "email"},
+                {"data": "telephone"},
+                {"data": "enable"}
+
+            ],
+            // 设置列的属性，不一定要和表格的列的数目完全一样
+            // targets属性指定列,orderable属性表示此列是否参与排序,name是对这一列的描述,title当然是列名了,最重要的有两个
+            // data和render,其中data负责指定数据源,他指定的是你从服务器返回的json数据中的实体对象的属性(事实上你也可以直接写数组),这个属性下面分页时还会具体讲
+            "columnDefs": [
+                {"orderable": false, "targets": 1},
+                {"orderable": false, "targets": 2},
+                {"orderable": false, "targets": 3},
+                {"orderable": false, "targets": 4},
+                {"orderable": false, "targets": 5},
+                {
+                    "orderable": false,
+                    // render英文意为渲染
+                    "render": function (data, type, row) {
+                        if (data == 1) {
+                            return "开启";
+                        } else {
+                            return "关闭";
+                        }
+                    },
+                    "targets": 6
+                },
+            ],
+        });
+    });
+
+    // 条件查询后加载信息
+    function search() {
+        table.ajax.reload();
+    }
+
+    // 查询的请求参数
+    function getQueryCondition(data) {
+        var param = {};
+        // 组装排序参数
+        param.userId = $("#id-search").val();// 查询条件
+        param.username = $("#name-search").val();// 查询条件
+        param.enable = $("#status-search").val();// 查询条件
+        // 组装分页参数
+        param.start = data.start;
+        param.length = data.length;
+        param.draw = data.draw;
+        return param;
+    }
+
+    // 添加用户
     function addUser() {
         var addUsername = $("#addUsername").val();
         var addPassword = $("#addPassword").val();
@@ -429,27 +422,28 @@
             });
         }
         $.ajax({
-            cache:true,
-            type:"post",
+            cache: true,
+            type: "post",
             url: 'user',
-            data:$('#addUserForm').serialize(),
+            data: $('#addUserForm').serialize(),
             async: true,
-            success:function (data) {
+            success: function (data) {
                 if (data == "success") {
                     layer.msg('添加成功');
+                    table.ajax.reload();
                     jQuery('#addUser').modal('hide');
                 } else if (data == "gaiYongHuYiCunZai") {
                     layer.msg('该用户名已存在！');
                     jQuery('#addUser').modal('hide');
-                }else{
+                } else {
                     layer.msg('添加失败，请联系陈晨！');
                     jQuery('#addUser').modal('hide');
                 }
-
             }
         });
     }
 
+    // 修改用户
     function modifyUser() {
         var modifyUsername = $("#modifyUsername").val();
         var modifyPassword = $("#modifyPassword").val();
@@ -478,6 +472,7 @@
             success: function (data) {
                 if (data == "success") {
                     layer.msg('修改成功');
+                    table.ajax.reload();
                     jQuery('#modifyUser').modal('hide');
                 } else if (data == "gaiYongHuYiCunZai") {
                     layer.msg('该用户名已存在！');
@@ -486,10 +481,44 @@
                     layer.msg('修改失败，请联系陈晨！');
                     jQuery('#modifyUser').modal('hide');
                 }
-
             }
         });
     }
+
+    //删除用户
+    function deleteUser() {
+        var id = $(".cbr:checked").val();
+
+        if($(".cbr:checked").length < 1){
+            layer.msg('请选择一条数据');
+            return;
+        }
+        if($(".cbr:checked").length > 1){
+            layer.msg('一次只能修改一条数据');
+            return;
+        }
+        layer.confirm('您确定要删除该用户吗？', {
+            btn: ['确认','取消'] //按钮
+        }, function(){
+            console.log(id);
+            $.ajax({
+                cache: true,
+                type: "delete",
+                url:'user',
+                data:{id:id},
+                async: false,
+                success: function(data) {
+                    if(data=="success"){
+                        layer.msg('删除成功');
+                        table.ajax.reload();
+                    }else{
+                        layer.msg('删除失败');
+                    }
+                }
+            });
+        });
+    }
+
 </script>
 </body>
 </html>

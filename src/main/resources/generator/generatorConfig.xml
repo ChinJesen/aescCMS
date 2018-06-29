@@ -250,7 +250,7 @@ javaTypeResolver?,javaModelGenerator,sqlMapGenerator?,javaClientGenerator?,table
               <ignoreColumn column="deptId" delimitedColumnName=""/>
               &ndash;&gt;
          </table>-->
-        <table tableName="users" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+        <table schema="aesc_cms" tableName="users" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
             <generatedKey column="userId" sqlStatement="Mysql" identity="true"/>
         </table>
     </context>

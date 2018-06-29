@@ -157,10 +157,8 @@ public class UserController {
    */
   @DeleteMapping("/user")
   @ResponseBody
-  String DeleteUser(Users users){
-    System.out.println(users.getUsername());
-    System.out.println(users.getPassword());
-    System.out.println(users.getDepartment());
+  String DeleteUser(Integer id){
+    LOGGER.info("删除用户的ID是:"+id);
     return "success";
   }
 }

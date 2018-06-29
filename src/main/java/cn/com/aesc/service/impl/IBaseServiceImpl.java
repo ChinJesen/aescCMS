@@ -24,7 +24,7 @@ import java.util.List;
  * @create 2018-06-14
  * @since 1.0.0
  */
-public class IBaseServiceImpl<T> implements IBaesService<T> {
+public abstract class IBaseServiceImpl<T> implements IBaesService<T> {
 
   @Autowired
   protected Mapper<T> mapper;
@@ -61,5 +61,10 @@ public class IBaseServiceImpl<T> implements IBaesService<T> {
   @Override
   public List<T> selectByExample(Object example) {
     return mapper.selectByExample(example);
+  }
+
+  @Override
+  public List<T> selectAll() {
+    return mapper.selectAll();
   }
 }

@@ -250,20 +250,8 @@ javaTypeResolver?,javaModelGenerator,sqlMapGenerator?,javaClientGenerator?,table
               <ignoreColumn column="deptId" delimitedColumnName=""/>
               &ndash;&gt;
          </table>-->
-        <table tableName="users">
+        <table tableName="users" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
             <generatedKey column="userId" sqlStatement="Mysql" identity="true"/>
-        </table>
-        <table tableName="roles">
-            <generatedKey column="roleId" sqlStatement="Mysql" identity="true"/>
-        </table>
-        <table tableName="resources">
-            <generatedKey column="resourcesId" sqlStatement="Mysql" identity="true"/>
-        </table>
-        <table tableName="resources_roles">
-            <generatedKey column="roleId" sqlStatement="Mysql" identity="true"/>
-        </table>
-        <table tableName="users_roles">
-            <generatedKey column="roleId" sqlStatement="Mysql" identity="true"/>
         </table>
     </context>
 </generatorConfiguration>

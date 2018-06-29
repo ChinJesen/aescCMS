@@ -68,17 +68,16 @@ private UserService userService;
     }
     Users u = userService.selectByUsername(users.getUsername());
     if(u != null){
-      map.put("aa","陈晨");
-      model.addAttribute("model","This is your message陈晨");
-      request.setAttribute("request","陈晨");
+      model.addAttribute("username","陈晨");
+      map.put("map","IT部");
+      request.setAttribute("request","欢迎使用合同管理系统");
       return "baseTemplate/main";
     }
     logger.info("用户名:"+users.getUsername());
     logger.info("密码:"+users.getPassword());
-    return "redirect:baseTemplate/main";
+    return "baseTemplate/main";
   }
 
-  
   /**
    * Copyright (C), 2005-2018, 重庆汽博实业有限公司
    * 

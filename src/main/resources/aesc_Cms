@@ -27,7 +27,7 @@ COMMENT = '角色表';
 
 INSERT INTO `aesc_cms`.`roles`(`roleDescription`) VALUES ('superAdmin');
 INSERT INTO `aesc_cms`.`roles`(`roleDescription`) VALUES ('administrator');
-INSERT INTO `aesc_cms`.`roles`(`roleDescription`) VALUES ('commissioner');
+INSERT INTO `aesc_cms`.`roles`(`roleDescription`) VALUES ('employee');
 
 
 

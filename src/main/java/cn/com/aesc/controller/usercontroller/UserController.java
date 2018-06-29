@@ -11,11 +11,17 @@
 package cn.com.aesc.controller.usercontroller;
 
 import cn.com.aesc.entity.users.Users;
+import cn.com.aesc.service.UserService;
 import cn.com.aesc.utils.PasswordEncryption;
+import com.github.pagehelper.PageInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+
+import javax.annotation.Resource;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 〈一句话功能简述〉<br>
@@ -32,7 +38,8 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
   private static final Logger LOGGER = LoggerFactory.getLogger(UserController.class);
 
-
+  @Resource
+  private UserService userService;
 
   /**
    * Copyright (C), 2005-2018, 重庆汽博实业有限公司
@@ -43,15 +50,41 @@ public class UserController {
    * @See:
    * @Throws:
    * @Version:
-   * @Description: 进行查询所有用户数据，返回到用户管理界面
+   * @Description:返回到用户管理界面
    */
   @RequestMapping("/userManagement")
   String userManagement(){
-    LOGGER.info("进入用户管理++++++++++++++++++++++++++++++");
     return "userHtml/users";
   }
 
+/**
+ * Copyright (C), 2005-2018, 重庆汽博实业有限公司
+ * 
+ * @Author: dawn@acdiost.com
+ * @Date: 2018-06-21 11:16
+ * @Param: 
+ * @Return: 
+ * @See: 
+ * @Throws: 
+ * @Version: 
+ * @Description: 查询用户
+ */
 
+
+  @GetMapping("/user")
+  @ResponseBody
+  public Map<String,Object> getAllUsers(Users user, String draw,
+                                   @RequestParam(required = false, defaultValue = "1") int start,
+                                   @RequestParam(required = false, defaultValue = "10") int length){
+    Map<String,Object> map = new HashMap<>();
+    PageInfo<Users> pageInfo = userService.selectByPage(user, start, length);
+    System.out.println("pageInfo.getTotal():"+pageInfo.getTotal());
+    map.put("draw",draw);
+    map.put("recordsTotal",pageInfo.getTotal());
+    map.put("recordsFiltered",pageInfo.getTotal());
+    map.put("data", pageInfo.getList());
+    return map;
+  }
   /**
    * Copyright (C), 2005-2018, 重庆汽博实业有限公司
    *
@@ -71,11 +104,17 @@ public class UserController {
     System.out.println(users.getPassword());
     System.out.println(users.getDepartment());
     try {
+      // 查询用户名是否存在
+      Users user = userService.selectByUsername(users.getUsername());
+      if (user != null){
+        return "gaiYongHuYiCunZai";
+      }
       // 账户启用
       users.setEnable(1);
       // TODO 进行密码的加密，以及其他资料存储数据库
       PasswordEncryption passwordEncryption = new PasswordEncryption();
       passwordEncryption.encryptPassword(users);
+      userService.save(users);
       return "success";
     } catch (Exception e) {
       e.printStackTrace();
@@ -93,7 +132,7 @@ public class UserController {
    * @See:
    * @Throws:
    * @Version:
-   * @Description:
+   * @Description:修改用户
    */
   @PutMapping("/user")
   @ResponseBody
@@ -114,7 +153,7 @@ public class UserController {
    * @See:
    * @Throws:
    * @Version:
-   * @Description:
+   * @Description:删除用户
    */
   @DeleteMapping("/user")
   @ResponseBody

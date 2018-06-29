@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="https://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.html#using-thtext-and-externalizing-text" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<html xmlns:th="https://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
 <head th:replace="baseTemplate/headHtml :: head"></head>
 <body class="page-body">
 <!--profileLeft -->
@@ -12,10 +12,7 @@
 
 	<div class="main-content">
 
-		<h3 th:text="${aa}"></h3><span class="h3">欢迎使用合同管理系统&hellip;</span>
-        <p th:text="${model}">default message</p>
-        <p th:text="${request}">default message</p>
-
+		<h3 class="h3"><span th:text="${map}"></span><span th:text="${username}"></span><span th:text="${request}"></span>&hellip;</h3>
 
 		<footer th:replace="baseTemplate/footHtml :: foot"></footer>
 	</div>

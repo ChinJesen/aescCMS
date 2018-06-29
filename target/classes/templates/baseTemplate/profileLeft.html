@@ -21,13 +21,13 @@
                         <div class="user-details">
 
                             <h3>
-                                <a href="#">用户名</a>
+                                <a href="#" th:text="${username}"></a>
 
                                 <!-- 状态显示 在线、空闲、忙碌、离线: is-online, is-idle, is-busy and is-offline -->
                                 <span class="user-status is-online"></span>
                             </h3>
 
-                            <p class="user-title">部门</p>
+                            <p class="user-title" th:text="${map}"></p>
 
                             <div class="user-links">
                                 <a href="#" class="btn btn-primary">修改个人资料</a>

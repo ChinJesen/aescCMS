@@ -10,13 +10,14 @@
  */
 package cn.com.aesc.service.impl;
 
-import cn.com.aesc.mapper.UsersMapper;
 import cn.com.aesc.entity.users.Users;
 import cn.com.aesc.service.UserService;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Service;
 import tk.mybatis.mapper.entity.Example;
+import tk.mybatis.mapper.util.StringUtil;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -30,6 +31,25 @@ import java.util.List;
 @Service("userService")
 public class UserServiceImpl extends IBaseServiceImpl<Users> implements UserService{
 
+  @Override
+  public PageInfo<Users> selectByPage(Users user, int start, int length) {
+    int page = start/length+1;
+    Example example = new Example(Users.class);
+    Example.Criteria criteria = example.createCriteria();
+    if (StringUtil.isNotEmpty(user.getUsername())) {
+      criteria.andLike("username", "%" + user.getUsername() + "%");
+    }
+    if (user.getUserid() != null) {
+      criteria.andEqualTo("id", user.getUserid());
+    }
+    if (user.getEnable() != null) {
+      criteria.andEqualTo("enable", user.getEnable());
+    }
+    //分页查询
+    PageHelper.startPage(page, length);
+    List<Users> userList = selectByExample(example);
+    return new PageInfo<>(userList);
+  }
 
   /**
    * Copyright (C), 2005-2018, 重庆汽博实业有限公司

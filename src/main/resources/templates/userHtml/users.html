@@ -18,7 +18,7 @@
                 <h3 class="panel-title">用户信息</h3>
 
                 <div class="panel-options">
-                    <a href="javascript:;" onclick="jQuery('#addUser').modal('show', {backdrop: 'static'});" class="btn btn-black btn-single btn-lg">添加用户</a>
+                    <!--<a href="javascript:;" onclick="jQuery('#addUser').modal('show', {backdrop: 'static'});" class="btn btn-black btn-single btn-lg">添加用户</a>-->
                     <a href="#" data-toggle="panel">
                         <span class="collapse-icon">&ndash;</span>
                         <span class="expand-icon">+</span>
@@ -29,35 +29,28 @@
                 </div>
             </div>
             <div class="panel-body">
+
                  <!-- dataTable与checkboxes的选择 -->
                 <script type="text/javascript">
+
+                    // dataTable
+                    var table;
+
                     jQuery(document).ready(function($)
                     {
-                        $("#example-2").dataTable({
-                            dom: "t" + "<'row'<'col-xs-6'i><'col-xs-6'p>>",
-                            aoColumns: [
-                                {bSortable: false},
-                                null,
-                                null,
-                                null,
-                                null
-                            ],
-                        });
+                        // 当复选框出现时，请将其替换
+                        var $state = $("#usersTable thead input[type='checkbox']");
 
-                        // Replace checkboxes when they appear
-                        var $state = $("#example-2 thead input[type='checkbox']");
-
-                        $("#example-2").on('draw.dt', function()
+                        $("#usersTable").on('draw.dt', function ()
                         {
                             cbr_replace();
-
                             $state.trigger('change');
                         });
 
-                        // Script to select all checkboxes
+                        // 选择所有复选框的脚本
                         $state.on('change', function(ev)
                         {
-                            var $chcks = $("#example-2 tbody input[type='checkbox']");
+                            var $chcks = $("#usersTable tbody input[type='checkbox']");
 
                             if($state.is(':checked'))
                             {
@@ -68,62 +61,152 @@
                                 $chcks.prop('checked', false).trigger('change');
                             }
                         });
+
+
+                        table = $("#usersTable").dataTable({
+                            "dom": "t" + "<'row'<'col-xs-6'i><'col-xs-6'p>>",
+                            "searching": false,
+                            "bJQueryUI": true,// UI设置
+                            "sPaginationType": "full_numbers",// 右下页码全显示 simple、simple_numbers、full和 full_numbers, 默认使用 simple_numbers
+                            "serverSide": true,// 开启服务器模式，使用服务器端处理配置datatable
+                            "processing": true,// 开启读取服务器数据时显示正在加载中……特别是大数据量的时候，开启此功能比较好
+
+                            // 请求用户信息
+                            ajax: function (data, callback, settings) {
+                                // 封装请求参数
+                                var param = getQueryCondition(data);
+
+                                $.ajax({
+                                    type: "GET",
+                                    url: 'user',
+                                    cache: false,
+                                    data: param,
+                                    dataType: "json",
+                                    success: function (result) {
+                                        var returnData = {};
+                                        returnData.draw = result.draw;// 这里直接自行返回了draw计数器,应该由后台返回
+                                        returnData.recordsTotal = result.recordsTotal;// 总记录数
+                                        returnData.recordsFiltered = result.recordsFiltered;// 后台不实现过滤功能，每次查询均视作全部结果
+                                        returnData.data = result.data;// 返回的数据列表
+                                        // 调用DataTables提供的callback方法，代表数据已封装完成并传回DataTables进行渲染
+                                        // 此时的数据需确保正确无误，异常判断应在执行此回调前自行处理完毕
+                                        callback(returnData);
+                                    },
+                                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                                        layer.msg("查询失败");
+                                    }
+                                });
+                            },
+
+
+                            // 加入字段
+                            "columns": [
+                                {
+                                    "sClass": "no-sorting",
+                                    "data": "userid",
+                                    "render": function (data, type, full, meta) {
+                                        return '<input type="checkbox"  class="cbr"  value="' + data + '" />';
+                                    },
+                                    "bSortable": false
+                                },
+                                {"data": "userid"},
+                                {"data": "username"},
+                                {"data": "department"},
+                                {"data": "email"},
+                                {"data": "telephone"},
+                                {"data": "enable"}
+
+                            ],
+
+                            // 设置列的属性，不一定要和表格的列的数目完全一样
+                            // targets属性指定列,orderable属性表示此列是否参与排序,name是对这一列的描述,title当然是列名了,最重要的有两个
+                            // data和render,其中data负责指定数据源,他指定的是你从服务器返回的json数据中的实体对象的属性(事实上你也可以直接写数组),这个属性下面分页时还会具体讲
+                            "columnDefs": [
+                                {"orderable": false, "targets": 1},
+                                {"orderable": false, "targets": 2},
+                                {"orderable": false, "targets": 3},
+                                {"orderable": false, "targets": 4},
+                                {"orderable": false, "targets": 5},
+                                {
+                                    "orderable": false,
+                                    // render英文意为渲染
+                                    "render": function (data, type, row) {
+                                        if (data == 1) {
+                                            return "开启";
+                                        } else {
+                                            return "关闭";
+                                        }
+                                    },
+                                    "targets": 6
+                                },
+                            ],
+                        });
+
+                        function search() {
+                            table.ajax.reload();
+                        }
+
+                        function getQueryCondition(data) {
+                            var param = {};
+                            // 组装排序参数
+                            param.userId = $("#id-search").val();// 查询条件
+                            param.username = $("#name-search").val();// 查询条件
+                            param.enable = $("#status-search").val();// 查询条件
+                            // 组装分页参数
+                            param.start = data.start;
+                            param.length = data.length;
+                            param.draw = data.draw;
+                            return param;
+                        }
+
+
                     });
                 </script>
-
-                <table class="table table-bordered table-striped" id="example-2">
+                <form class="form-inline">
+                    <div class="form-group">
+                        <label>编号:</label>
+                        <input type="text" class="form-control" id="id-search" placeholder="编号"/>
+                    </div>
+                    <div class="form-group">
+                        <label>用户名:</label>
+                        <input type="text" class="form-control" id="name-search" placeholder="用户名"/>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">状态:</label>
+                        <select id="status-search" class="form-control">
+                            <option value="">全部</option>
+                            <option value="1">开启</option>
+                            <option value="0">关闭</option>
+                        </select>
+                    </div>
+                    <button type="button" onclick="search();" class="btn btn-primary" style="margin-bottom: 0px;">查询</button>
+                    <button shiro:hasPermission="/users/addUser" type="button" onclick="$('#addUser').modal();"
+                            class="btn btn-info" style="float: right; margin-right: 1px;">添加用户
+                    </button>
+                    <button shiro:hasPermission="/users/deleteUser" type="button" onclick="$('#deleteUser').modal();" class="btn btn-info"
+                            style="float: right; margin-right: 1px;">删除
+                    </button>
+                    <button shiro:hasPermission="/users/updateUser" type="button" onclick="$('#modifyUser').modal();"
+                            class="btn btn-info" style="float: right; margin-right: 1px;">修改用户
+                    </button>
+                    <button shiro:hasPermission="/users/allotUserRoles" type="button" onclick="allotRole();"
+                            class="btn btn-info" style="float: right; margin-right: 1px;">分配权限
+                    </button>
+                </form>
+                <table class="table table-bordered table-striped" id="usersTable">
                     <thead>
                     <tr>
                         <th class="no-sorting">
                             <input type="checkbox" class="cbr"/>
-                            <input type="hidden" th:name="userId"/>
                         </th>
+                        <th>ID</th>
                         <th>用户名</th>
-                        <th>联系方式</th>
                         <th>部门</th>
-                        <th>操作</th>
+                        <th>邮箱</th>
+                        <th>电话</th>
+                        <th>是否启用</th>
                     </tr>
                     </thead>
-
-                    <tbody class="middle-align">
-
-
-                    <tr>
-                        <td>
-                            <input type="checkbox" class="cbr">
-                        </td>
-                        <td>Jennifer J. Jefferson</td>
-                        <td>7</td>
-                        <td>Maxillofacial surgeon</td>
-                        <td>
-                            <!--<button class="btn btn-turquoise" data-toggle="modal" data-target="#modifyUser" >修改</button>
-
-                            <button class="btn btn-red">删除</button>
-
-                            <button class="btn btn-info">详情</button>-->
-                            <a href="javascript:;" onclick="jQuery('#modifyUser').modal('show', {backdrop: 'fade'});" class="btn btn-info btn-single btn-sm">修改</a>
-                            <a href="javascript:;" onclick="jQuery('#deleteUser').modal('show', {backdrop: 'static'});" class="btn btn-red btn-single btn-sm">删除</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <input type="checkbox" class="cbr">
-                        </td>
-                        <td>Jennifer J. Jefferson</td>
-                        <td>6</td>
-                        <td>Maxillofacial surgeon</td>
-                        <td>
-                            <!--<button class="btn btn-turquoise" data-toggle="modal" data-target="#modifyUser" >修改</button>
-
-                            <button class="btn btn-red">删除</button>
-
-                            <button class="btn btn-info">详情</button>-->
-                            <a href="javascript:;" onclick="jQuery('#modifyUser').modal('show', {backdrop: 'fade'});" class="btn btn-info btn-single btn-sm">修改</a>
-                            <a href="javascript:;" onclick="jQuery('#deleteUser').modal('show', {backdrop: 'static'});" class="btn btn-red btn-single btn-sm">删除</a>
-                        </td>
-                    </tr>
-
-                    </tbody>
                 </table>
 
             </div>

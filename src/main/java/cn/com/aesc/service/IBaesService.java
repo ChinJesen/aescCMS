@@ -108,4 +108,20 @@ public interface IBaesService<T> {
    * @Description:
    */
   List<T> selectByExample(Object example);
+
+  /**
+   * Copyright (C), 2005-2018, 重庆汽博实业有限公司
+   * 
+   * @Author: dawn@acdiost.com
+   * @Date: 2018-06-20 14:34
+   * @Param: 
+   * @Return: 
+   * @See: 
+   * @Throws: 
+   * @Version: 
+   * @Description: 
+   */
+  List<T> selectAll();
+
+
 }

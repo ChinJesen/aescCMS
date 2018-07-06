@@ -15,6 +15,8 @@ import cn.com.aesc.service.UserService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 import tk.mybatis.mapper.entity.Example;
 import tk.mybatis.mapper.util.StringUtil;
 
@@ -36,11 +38,12 @@ public class UserServiceImpl extends IBaseServiceImpl<Users> implements UserServ
     int page = start/length+1;
     Example example = new Example(Users.class);
     Example.Criteria criteria = example.createCriteria();
+    // property要和实体类对应不和数据库字段对应
     if (StringUtil.isNotEmpty(user.getUsername())) {
       criteria.andLike("username", "%" + user.getUsername() + "%");
     }
     if (user.getUserid() != null) {
-      criteria.andEqualTo("id", user.getUserid());
+      criteria.andEqualTo("userid", user.getUserid());
     }
     if (user.getEnable() != null) {
       criteria.andEqualTo("enable", user.getEnable());
@@ -73,5 +76,41 @@ public class UserServiceImpl extends IBaseServiceImpl<Users> implements UserServ
       return userList.get(0);
     }
     return null;
+  }
+
+  /**
+   * Copyright (C), 2005-2018, 重庆汽博实业有限公司
+   * 
+   * @Author: dawn@acdiost.com
+   * @Date: 2018-07-02 14:30
+   * @Param: 
+   * @Return: 
+   * @See: 
+   * @Throws: 
+   * @Version: 
+   * @Description: 删除用户。shiro设置了后还需要删除权限信息。
+   */
+  @Override
+  @Transactional(propagation= Propagation.REQUIRED,readOnly=false,rollbackFor={Exception.class})
+  public void deleteUser(Integer id) {
+    mapper.deleteByPrimaryKey(id);
+    
+  }
+
+  /**
+   * Copyright (C), 2005-2018, 重庆汽博实业有限公司
+   * 
+   * @Author: dawn@acdiost.com
+   * @Date: 2018-07-03 12:54
+   * @Param: 
+   * @Return: 
+   * @See: 
+   * @Throws: 
+   * @Version: 
+   * @Description: 通过id查询用户
+   */
+  @Override
+  public Users getUserInfo(Integer id) {
+    return mapper.selectByPrimaryKey(id);
   }
 }

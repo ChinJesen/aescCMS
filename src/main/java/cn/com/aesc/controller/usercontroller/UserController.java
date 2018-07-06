@@ -100,9 +100,6 @@ public class UserController {
   @PostMapping("/user")
   @ResponseBody
   String addUser(Users users) {
-    System.out.println(users.getUsername());
-    System.out.println(users.getPassword());
-    System.out.println(users.getDepartment());
     try {
       // 查询用户名是否存在
       Users user = userService.selectByUsername(users.getUsername());
@@ -111,7 +108,7 @@ public class UserController {
       }
       // 账户启用
       users.setEnable(1);
-      // TODO 进行密码的加密，以及其他资料存储数据库
+      // 进行密码的加密，以及其他资料存储数据库
       PasswordEncryption passwordEncryption = new PasswordEncryption();
       passwordEncryption.encryptPassword(users);
       userService.save(users);
@@ -137,12 +134,28 @@ public class UserController {
   @PutMapping("/user")
   @ResponseBody
   String ModifyUser(Users users){
-    System.out.println(users.getUsername());
-    System.out.println(users.getPassword());
-    System.out.println(users.getDepartment());
+    LOGGER.info(users.toString());
     return "success";
   }
 
+  /**
+   * Copyright (C), 2005-2018, 重庆汽博实业有限公司
+   * 
+   * @Author: dawn@acdiost.com
+   * @Date: 2018-07-03 12:50
+   * @Param: 
+   * @Return: 
+   * @See: 
+   * @Throws: 
+   * @Version: 
+   * @Description: 修改用户前，先查询用户是否存在，并把信息展示出来
+   */
+  @GetMapping("/getUserInfo")
+  @ResponseBody
+  Users getUserInfo(Integer id){
+      Users users = userService.getUserInfo(id);
+      return users;
+  }
   /**
    * Copyright (C), 2005-2018, 重庆汽博实业有限公司
    *
@@ -159,6 +172,12 @@ public class UserController {
   @ResponseBody
   String DeleteUser(Integer id){
     LOGGER.info("删除用户的ID是:"+id);
-    return "success";
+    try {
+      userService.deleteUser(id);
+      return "success";
+    }catch (Exception e){
+      return "fail";
+    }
+
   }
 }

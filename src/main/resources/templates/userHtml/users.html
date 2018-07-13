@@ -180,19 +180,19 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h4 class="modal-title">修改用户信息</h4>
                 <small class="text-small pull-right" style="padding-top:5px;">
-                    <code>错误信息提示</code>
+                    <code id="errorMsg"></code>
                 </small>
             </div>
             <form role="form" id="modifyUserForm" class="validate">
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-md-4">
-                            <input type="hidden" th:name="userid"/>
+                            <input type="hidden" th:name="userid" id="modifyUserId" value=""/>
                             <div class="form-group">
                                 <label for="modifyUsername" class="control-label">用户名</label>
 
                                 <input type="text" th:name="username" class="form-control" id="modifyUsername"
-                                       data-validate="required" placeholder="用户名">
+                                       data-validate="required" placeholder="用户名" value="">
                             </div>
 
                         </div>
@@ -203,7 +203,7 @@
                                 <label for="modifyPassword" class="control-label">密码</label>
 
                                 <input type="password" class="form-control" id="modifyPassword" th:name="password"
-                                       data-validate="required,password">
+                                       data-validate="required,password" value="">
                             </div>
 
                         </div>
@@ -212,13 +212,12 @@
                             <div class="form-group">
                                 <label for="modifyDepartment" class="control-label">部门</label>
 
-                                <input type="text" class="form-control" id="modifyDepartment" th:name="department"
+                                <input type="text" class="form-control" id="modifyDepartment" value="" th:name="department"
                                        placeholder="部门">
                             </div>
 
                         </div>
                     </div>
-
 
                     <div class="row">
                         <div class="col-md-4">
@@ -226,7 +225,7 @@
                             <div class="form-group">
                                 <label for="modifyEmail" class="control-label">邮箱</label>
 
-                                <input type="email" class="form-control" th:name="email" id="modifyEmail"
+                                <input type="email" class="form-control" th:name="email" value="" id="modifyEmail"
                                        placeholder="邮箱">
                             </div>
 
@@ -236,7 +235,7 @@
                             <div class="form-group">
                                 <label for="modifyTelephone" class="control-label">联系方式</label>
 
-                                <input type="text" class="form-control" th:name="telephone" id="modifyTelephone"
+                                <input type="text" class="form-control" th:name="telephone" value="" id="modifyTelephone"
                                        placeholder="联系方式" required="required">
                             </div>
                         </div>
@@ -245,7 +244,7 @@
                             <div class="form-group">
                                 <label for="modifyEnableT" class="control-label">是否启用</label>
                                 <br/><span>是：</span><input type="radio" th:name="enable" value="1" id="modifyEnableT"/>
-                                <span>否：</span><input type="radio" th:name="enable" value="0" id="modifyEnableF"/>
+                                <span>否：</span><input type="radio" th:name="enable"  value="0" id="modifyEnableF"/>
                             </div>
                         </div>
 
@@ -446,8 +445,27 @@
             data:{id:id},
             async:true,
             dataType : 'json',
-            success:function (data) {
-                console.log(data);
+            success:function (userInfo) {
+                // 将数据转化为js标准json。否则报错
+                var jsonData = JSON.stringify(userInfo);
+                // 获取json数据
+                var user = JSON.parse(jsonData);
+                document.getElementById("modifyUserId").value = user.userid;
+                document.getElementById("modifyUsername").value = user.username;
+                document.getElementById("modifyPassword").placeholder = "须要修改密码";
+                document.getElementById("modifyDepartment").value = user.department;
+                document.getElementById("modifyEmail").value = user.email;
+                document.getElementById("modifyTelephone").value = user.telephone;
+                document.getElementById("modifyEnableT").value = user.enable;
+                if(user.enable != null && user.enable == 1){
+                    document.getElementById("modifyEnableT").checked=true;
+                }else if(user.enable != null && user.enable == 0){
+                    document.getElementById("modifyEnableF").checked=true;
+                }else {
+                    document.getElementById("modifyEnableF").required=true;
+                    document.getElementById("errorMsg").innerHTML='务必勾选是否启用';
+                }
+
             }
         });
         $('#modifyUser').modal();

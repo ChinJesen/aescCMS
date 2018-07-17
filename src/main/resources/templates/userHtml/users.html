@@ -243,8 +243,8 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label for="modifyEnableT" class="control-label">是否启用</label>
-                                <br/><span>是：</span><input type="radio" th:name="enable" value="1" id="modifyEnableT"/>
-                                <span>否：</span><input type="radio" th:name="enable"  value="0" id="modifyEnableF"/>
+                                <br/><span>是：</span><input type="radio" name="enable" value="1" id="modifyEnableT"/>
+                                <span>否：</span><input type="radio" name="enable"  value="0" id="modifyEnableF"/>
                             </div>
                         </div>
 
@@ -456,7 +456,6 @@
                 document.getElementById("modifyDepartment").value = user.department;
                 document.getElementById("modifyEmail").value = user.email;
                 document.getElementById("modifyTelephone").value = user.telephone;
-                document.getElementById("modifyEnableT").value = user.enable;
                 if(user.enable != null && user.enable == 1){
                     document.getElementById("modifyEnableT").checked=true;
                 }else if(user.enable != null && user.enable == 0){
@@ -512,7 +511,7 @@
         });
     }
 
-    //删除用户
+    // 删除用户
     function deleteUser() {
         var id = $(".cbr:checked").val();
 
@@ -545,6 +544,37 @@
         });
     }
 
+    // 分配权限
+    function allotRole() {
+        var id = $(".cbr:checked").val();
+
+        if($(".cbr:checked").length < 1){
+            layer.msg('请选择一位用户');
+            return;
+        }
+        if($(".cbr:checked").length > 1){
+            layer.msg('一次只能分配一位用户');
+            return;
+        }
+        $.ajax({
+            cache:true,
+            type:"get",
+            url:'obtainPermission',
+            data:{id:id},
+            async:true,
+            success:function () {
+              layer.open({
+                  type:1,
+                  closeBtn:false,
+                  shift: 7,
+                  shadeClose: true,
+                  content:""
+              });
+            }
+        });
+        layer.msg("获取权限信息失败，请联系陈晨！");
+        layer.closeAll();
+    }
 </script>
 </body>
 </html>

@@ -28,7 +28,22 @@ public class PasswordEncryption {
   /**
    * 加密循环次数
    */
-  private int hashIterations = 3;
+  private short hashIterations = 3;
+
+  /**
+   * @Param passwordEncryption
+   * 单例模式
+   */
+  private static PasswordEncryption passwordEncryption;
+
+  private PasswordEncryption() {}
+
+  public static PasswordEncryption getPasswordEncryption() {
+    if (passwordEncryption == null) {
+      passwordEncryption = new PasswordEncryption();
+    }
+    return passwordEncryption;
+  }
 
   public void encryptPassword(Users user) {
     String newPassword = new SimpleHash(algorithmName, user.getPassword(), ByteSource.Util.bytes(user.getUsername()), hashIterations).toHex();

@@ -109,7 +109,7 @@ public class UserController {
       // 账户启用
       users.setEnable(1);
       // 进行密码的加密，以及其他资料存储数据库
-      PasswordEncryption passwordEncryption = new PasswordEncryption();
+      PasswordEncryption passwordEncryption = PasswordEncryption.getPasswordEncryption();
       passwordEncryption.encryptPassword(users);
       userService.save(users);
       return "success";
@@ -135,7 +135,16 @@ public class UserController {
   @ResponseBody
   String ModifyUser(Users users){
     LOGGER.info(users.toString());
-    return "success";
+    try {
+      PasswordEncryption passwordEncryption = PasswordEncryption.getPasswordEncryption();
+      passwordEncryption.encryptPassword(users);
+      userService.updateAll(users);
+      return "success";
+    }catch (Exception e){
+      e.printStackTrace();
+      return "fail";
+    }
+
   }
 
   /**

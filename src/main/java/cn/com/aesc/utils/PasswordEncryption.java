@@ -24,6 +24,7 @@ import org.apache.shiro.util.ByteSource;
  * @since 1.0.0
  */
 public class PasswordEncryption {
+
   private String algorithmName = "md5";
   /**
    * 加密循环次数

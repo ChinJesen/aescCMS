@@ -33,6 +33,13 @@ import java.util.List;
 @Service("userService")
 public class UserServiceImpl extends IBaseServiceImpl<Users> implements UserService{
 
+  /**
+   *
+   * @param user
+   * @param start
+   * @param length
+   * @return
+   */
   @Override
   public PageInfo<Users> selectByPage(Users user, int start, int length) {
     int page = start/length+1;

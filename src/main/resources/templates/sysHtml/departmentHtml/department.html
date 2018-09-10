@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head th:replace="baseTemplate/headHtml :: head"></head>
+<body class="page-body">
+<!--个人信息 -->
+<div th:replace="baseTemplate/profileLeft :: profileLeft"></div>
+<!--个人信息 -->
+<!-- 导航条 -->
+<nav th:replace="baseTemplate/navHtml :: nav"></nav>
+<!-- 导航条 -->
+<!-- 页面容器 -->
+<div class="page-container">
+
+    <div class="main-content">
+
+        <!-- 主要内容 -->
+        <div class="panel-body panel-border">
+
+            <div class="row">
+                <div class="col-sm-12">
+
+                    <!-- Table Model 2 -->
+                    <strong>部门管理</strong>
+
+                    <table class="table table-model-2 table-hover">
+                        <thead>
+                        <tr>
+                            <th>序号</th>
+                            <th>部门名称</th>
+                            <th>部门描述</th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Arlind</td>
+                            <td>Nushi</td>
+                        </tr>
+
+                        <tr>
+                            <td>2</td>
+                            <td>Art</td>
+                            <td>Ramadani</td>
+                        </tr>
+
+                        <tr>
+                            <td>3</td>
+                            <td>Filan</td>
+                            <td>Fisteku</td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+
+        </div>
+
+        <!-- 主要内容 -->
+
+        <!-- 页脚 -->
+        <footer th:replace="baseTemplate/footHtml :: foot"></footer>
+        <!-- 页脚 -->
+    </div>
+
+</div>
+<!-- 页面容器 -->
+<!-- Bottom Scripts -->
+<div th:replace="baseTemplate/BottomScriptsHtml :: BottomScripts"></div>
+</body>
+</html>

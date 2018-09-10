@@ -79,8 +79,6 @@
 
             </div>
         </div>
-
-
         <!-- 主要内容 -->
 
         <!-- 页脚 -->
@@ -452,7 +450,7 @@
                 var user = JSON.parse(jsonData);
                 document.getElementById("modifyUserId").value = user.userid;
                 document.getElementById("modifyUsername").value = user.username;
-                document.getElementById("modifyPassword").placeholder = "须要修改密码";
+                document.getElementById("modifyPassword").placeholder = "输入一个新密码以修改";
                 document.getElementById("modifyDepartment").value = user.department;
                 document.getElementById("modifyEmail").value = user.email;
                 document.getElementById("modifyTelephone").value = user.telephone;
@@ -546,7 +544,7 @@
 
     // 分配权限
     function allotRole() {
-        var id = $(".cbr:checked").val();
+        /*var id = $(".cbr:checked").val();
 
         if($(".cbr:checked").length < 1){
             layer.msg('请选择一位用户');
@@ -559,10 +557,10 @@
         $.ajax({
             cache:true,
             type:"get",
-            url:'obtainPermission',
+            url:'/role/obtainPermissionInfo',
             data:{id:id},
             async:true,
-            success:function () {
+            success:function (data) {
               layer.open({
                   type:1,
                   closeBtn:false,
@@ -573,7 +571,8 @@
             }
         });
         layer.msg("获取权限信息失败，请联系陈晨！");
-        layer.closeAll();
+        layer.closeAll();*/
+        layer.msg("敬请期待！");
     }
 </script>
 </body>

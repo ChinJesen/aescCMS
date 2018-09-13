@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head th:replace="baseTemplate/headHtml :: head"></head>
+<body class="page-body">
+<!--个人信息 -->
+<div th:replace="baseTemplate/profileLeft :: profileLeft"></div>
+<!--个人信息 -->
+<!-- 导航条 -->
+<nav th:replace="baseTemplate/navHtml :: nav"></nav>
+<!-- 导航条 -->
+<!-- 页面容器 -->
+<div class="page-container">
+
+    <div class="main-content">
+
+        <!-- 主要内容 -->
+
+
+        <!-- 主要内容 -->
+
+        <!-- 页脚 -->
+        <footer th:replace="baseTemplate/footHtml :: foot"></footer>
+        <!-- 页脚 -->
+    </div>
+
+</div>
+<!-- 页面容器 -->
+<!-- Bottom Scripts -->
+<div th:replace="baseTemplate/BottomScriptsHtml :: BottomScripts"></div>
+</body>
+</html>

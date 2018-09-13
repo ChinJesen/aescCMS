@@ -78,7 +78,6 @@ public class UserController {
                                    @RequestParam(required = false, defaultValue = "10") int length){
     Map<String,Object> map = new HashMap<>();
     PageInfo<Users> pageInfo = userService.selectByPage(user, start, length);
-    System.out.println("pageInfo.getTotal():"+pageInfo.getTotal());
     map.put("draw",draw);
     map.put("recordsTotal",pageInfo.getTotal());
     map.put("recordsFiltered",pageInfo.getTotal());

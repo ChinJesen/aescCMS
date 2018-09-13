@@ -10,9 +10,16 @@
  */
 package cn.com.aesc.controller.departmentcontroller;
 
+import cn.com.aesc.entity.Departments;
+import cn.com.aesc.service.DepartmentsService;
+import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.annotation.Resource;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 〈一句话功能简述〉<br> 
@@ -26,8 +33,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/department")
 public class DepartmentController {
 
+    @Resource
+    private DepartmentsService departmentsService;
     @GetMapping("/department")
     String getDepartmentList(){
+        // 去数据库读取出部门信息列表返回到页面
+        Map<String,Object> map = new HashMap<>();
+        PageInfo<Departments> pageInfo = departmentsService.selectDepartmentsInfo();
         return "sysHtml/departmentHtml/department";
     }
 }

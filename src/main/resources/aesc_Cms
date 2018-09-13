@@ -1,3 +1,5 @@
+set names utf8;
+create schema aesc_cms;
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE `aesc_cms`.`users` (
   `userId` INT NOT NULL auto_increment COMMENT '用户id主键',
@@ -84,3 +86,17 @@ comment'角色资源关系表';
 INSERT INTO `aesc_cms`.`resources_roles`(`resourcesId`, `roleId`) VALUES (1, 1);
 INSERT INTO `aesc_cms`.`resources_roles`(`resourcesId`, `roleId`) VALUES (1, 2)
 INSERT INTO `aesc_cms`.`users_roles`(`roleId`, `userId`) VALUES (1, 1);
+
+
+
+drop table if exists  `departments`;
+create table `aesc_cms`.`departments`(
+`departmentId` int not null auto_increment comment'部门ID',
+`departmentName` varchar (200) not null comment'部门名称',
+`departmentDescription` varchar (500) comment'部门描述',
+primary key (`departmentId`)
+)
+engine=innodb
+default character set = utf8
+comment'部门表';
+INSERT INTO `aesc_cms`.`departments` (`departmentName`) VALUES ('行政部'),('财务部'),('IT部'),('招商部');

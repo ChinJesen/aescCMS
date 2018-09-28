@@ -53,7 +53,7 @@ public class UserController {
    * @Description:返回到用户管理界面
    */
   @RequestMapping("/userManagement")
-  String userManagement(){
+  String userManagementHtml(){
     return "sysHtml/userHtml/users";
   }
 

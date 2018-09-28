@@ -5,6 +5,18 @@ import com.github.pagehelper.PageInfo;
 
 public interface UserService extends IBaesService<Users>{
 
+  /**
+   * Copyright (C), 2005-2018, 重庆汽博实业有限公司
+   * 
+   * @Author: dawn@acdiost.com
+   * @Date: 2018-09-28 15:40
+   * @Param: 
+   * @Return: 
+   * @See: 
+   * @Throws: 
+   * @Version: 
+   * @Description: 查询所有用户信息
+   */
   PageInfo<Users> selectByPage(Users user, int start, int length);
 
   /**
@@ -17,7 +29,7 @@ public interface UserService extends IBaesService<Users>{
    * @See:
    * @Throws:
    * @Version:
-   * @Description:
+   * @Description: 通过名字查询用户信息
    */
   Users selectByUsername(String username);
 
@@ -31,7 +43,7 @@ public interface UserService extends IBaesService<Users>{
    * @See: 
    * @Throws: 
    * @Version: 
-   * @Description: 
+   * @Description: 删除用户
    */
     void deleteUser(Integer id);
 
@@ -45,7 +57,7 @@ public interface UserService extends IBaesService<Users>{
      * @See: 
      * @Throws: 
      * @Version: 
-     * @Description: 
+     * @Description: 得到单个用户信息
      */
     Users getUserInfo(Integer id);
 }

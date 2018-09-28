@@ -58,6 +58,18 @@ public abstract class IBaseServiceImpl<T> implements IBaesService<T> {
     return mapper.updateByPrimaryKeySelective(entity);
   }
 
+  /**
+   * Copyright (C), 2005-2018, 重庆汽博实业有限公司
+   * 
+   * @Author: dawn@acdiost.com
+   * @Date: 2018-09-28 15:50
+   * @Param: 
+   * @Return: 
+   * @See: 
+   * @Throws: 
+   * @Version: 
+   * @Description: 返回一个实体类的集合
+   */
   @Override
   public List<T> selectByExample(Object example) {
     return mapper.selectByExample(example);

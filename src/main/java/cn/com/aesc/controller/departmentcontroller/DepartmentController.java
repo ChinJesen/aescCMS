@@ -12,14 +12,14 @@ package cn.com.aesc.controller.departmentcontroller;
 
 import cn.com.aesc.entity.Departments;
 import cn.com.aesc.service.DepartmentsService;
-import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 
 /**
  * 〈一句话功能简述〉<br> 
@@ -35,11 +35,41 @@ public class DepartmentController {
 
     @Resource
     private DepartmentsService departmentsService;
+
+    /**
+     * Copyright (C), 2005-2018, 重庆汽博实业有限公司
+     * 
+     * @Author: dawn@acdiost.com
+     * @Date: 2018-09-28 16:09
+     * @Param: 
+     * @Return: 
+     * @See:
+     * @Throws: 
+     * @Version: 
+     * @Description: 返回到部门页面
+     */
     @GetMapping("/department")
-    String getDepartmentList(){
-        // 去数据库读取出部门信息列表返回到页面
-        Map<String,Object> map = new HashMap<>();
-        PageInfo<Departments> pageInfo = departmentsService.selectDepartmentsInfo();
+    String departmentHtml(ModelAndView modelAndView){
+        List<Departments> departmentsList = departmentsService.selectDepartmentsInfo();
+        modelAndView.addObject(departmentsList);
         return "sysHtml/departmentHtml/department";
+    }
+
+/**
+ * Copyright (C), 2005-2018, 重庆汽博实业有限公司
+ * 
+ * @Author: dawn@acdiost.com
+ * @Date: 2018-09-28 16:22
+ * @Param: 
+ * @Return: 
+ * @See: 
+ * @Throws: 
+ * @Version: 
+ * @Description: 去数据库读取出部门信息列表然后渲染到页面table
+ */
+    @GetMapping("/departmentsInfo")
+    @ResponseBody
+    List<Departments> departmentsInfo(){
+        return departmentsService.selectDepartmentsInfo();
     }
 }

@@ -12,8 +12,10 @@ package cn.com.aesc.service.impl;
 
 import cn.com.aesc.entity.Departments;
 import cn.com.aesc.service.DepartmentsService;
-import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Service;
+import tk.mybatis.mapper.entity.Example;
+
+import java.util.List;
 
 /**
  * 〈一句话功能简述〉<br> 
@@ -27,7 +29,10 @@ import org.springframework.stereotype.Service;
 public class DepartmentsServiceImpl extends IBaseServiceImpl<Departments> implements DepartmentsService {
 
     @Override
-    public PageInfo<Departments> selectDepartmentsInfo() {
-        return null;
+    public List<Departments> selectDepartmentsInfo() {
+        Example example = new Example(Departments.class);
+        Example.Criteria criteria = example.createCriteria();
+        List<Departments> departmentsList = selectByExample(example);
+        return departmentsList;
     }
 }

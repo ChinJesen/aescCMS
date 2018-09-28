@@ -32,22 +32,10 @@
                         </thead>
 
                         <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Arlind</td>
-                            <td>Nushi</td>
-                        </tr>
-
-                        <tr>
-                            <td>2</td>
-                            <td>Art</td>
-                            <td>Ramadani</td>
-                        </tr>
-
-                        <tr>
-                            <td>3</td>
-                            <td>Filan</td>
-                            <td>Fisteku</td>
+                        <tr th:each="departments,departmentStat : ${departmentsList}">
+                            <td th:text="${departmentStat.departmentid}">null</td>
+                            <td th:text="${departmentStat.departmentname}">null</td>
+                            <td th:text="${departmentStat.departmentdescription}">null</td>
                         </tr>
                         </tbody>
                     </table>
@@ -68,5 +56,23 @@
 <!-- 页面容器 -->
 <!-- Bottom Scripts -->
 <div th:replace="baseTemplate/BottomScriptsHtml :: BottomScripts"></div>
+<!--<script>
+    window.onload = function getDepartmentsInfo() {
+        $.ajax({
+            type:"GET",
+            url:'departmentsInfo',
+            cache:false,
+            dataType: "json",
+            success:function (departmentsInfo) {
+                var jsonData = JSON.stringify(departmentsInfo);
+                var departments = JSON.parse(jsonData);
+                layer.msg(departments.departmentname);
+            },
+            error:function () {
+                layer.msg("读取部门信息失败");
+            }
+        });
+    }
+</script>-->
 </body>
 </html>

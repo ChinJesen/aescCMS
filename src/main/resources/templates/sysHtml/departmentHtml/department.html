@@ -15,34 +15,72 @@
 
         <!-- 主要内容 -->
         <div class="panel-body panel-border">
-
             <div class="row">
-                <div class="col-sm-12">
+                <div class="col-md-12">
 
-                    <!-- Table Model 2 -->
-                    <strong>部门管理</strong>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">部门管理</h3>
 
-                    <table class="table table-model-2 table-hover">
-                        <thead>
-                        <tr>
-                            <th>序号</th>
-                            <th>部门名称</th>
-                            <th>部门描述</th>
-                        </tr>
-                        </thead>
+                            <div class="panel-options">
+                                <button id="addDepartment" class="btn btn-info">添加部门</button>
+                                <button id="modifyDepartment" class="btn btn-warning">修改部门</button>
+                                <button id="deleteDepartment" class="btn btn-danger">删除部门</button>
+                                <a href="#">
+                                    <i class="linecons-cog"></i>
+                                </a>
 
-                        <tbody>
-                        <tr th:each="departments,departmentStat : ${departmentsList}">
-                            <td th:text="${departmentStat.departmentid}">null</td>
-                            <td th:text="${departmentStat.departmentname}">null</td>
-                            <td th:text="${departmentStat.departmentdescription}">null</td>
-                        </tr>
-                        </tbody>
-                    </table>
+                                <a href="#" data-toggle="panel">
+                                    <span class="collapse-icon">&ndash;</span>
+                                    <span class="expand-icon">+</span>
+                                </a>
 
+                                <a href="#" data-toggle="reload">
+                                    <i class="fa-rotate-right"></i>
+                                </a>
+
+                                <a href="#" data-toggle="remove">
+                                    &times;
+                                </a>
+                            </div>
+                        </div>
+                        <div class="panel-body">
+
+                            <div class="table-responsive" data-pattern="priority-columns" data-focus-btn-icon="fa-asterisk" data-sticky-table-header="true" data-add-display-all-btn="true" data-add-focus-btn="true">
+
+                                <table cellspacing="0" class="table table-small-font table-bordered table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th data-priority="1">部门编号</th>
+                                        <th data-priority="2">部门名称</th>
+                                        <th data-priority="3">部门描述</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr th:each="departmentStat : ${departmentsList}">
+                                        <td th:name="departmentid" th:text="${departmentStat.departmentid}">null</td>
+                                        <td th:name="departmentname" th:text="${departmentStat.departmentname}">null</td>
+                                        <td th:name="departmentdescription" th:text="${departmentStat.departmentdescription}">null</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <script type="text/javascript">
+                                // This JavaScript Will Replace Checkboxes in dropdown toggles
+                                jQuery(document).ready(function($)
+                                {
+                                    setTimeout(function()
+                                    {
+                                        $(".checkbox-row input").addClass('cbr');
+                                        cbr_replace();
+                                    }, 0);
+                                });
+                            </script>
+                        </div>
+                    </div>
                 </div>
             </div>
-
         </div>
 
         <!-- 主要内容 -->

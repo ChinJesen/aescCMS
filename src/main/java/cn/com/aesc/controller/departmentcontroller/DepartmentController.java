@@ -13,6 +13,7 @@ package cn.com.aesc.controller.departmentcontroller;
 import cn.com.aesc.entity.Departments;
 import cn.com.aesc.service.DepartmentsService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -49,9 +50,9 @@ public class DepartmentController {
      * @Description: 返回到部门页面
      */
     @GetMapping("/department")
-    String departmentHtml(ModelAndView modelAndView){
+    String departmentHtml(Model model){
         List<Departments> departmentsList = departmentsService.selectDepartmentsInfo();
-        modelAndView.addObject(departmentsList);
+        model.addAttribute(departmentsList);
         return "sysHtml/departmentHtml/department";
     }
 

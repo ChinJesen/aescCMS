@@ -10,44 +10,35 @@
 <!-- 导航条 -->
 <!-- 页面容器 -->
 <div class="page-container">
-
     <div class="main-content">
-
         <!-- 主要内容 -->
         <div class="panel-body panel-border">
             <div class="row">
                 <div class="col-md-12">
-
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <h3 class="panel-title">部门管理</h3>
-
                             <div class="panel-options">
-                                <button id="addDepartment" class="btn btn-info">添加部门</button>
-                                <button id="modifyDepartment" class="btn btn-warning">修改部门</button>
-                                <button id="deleteDepartment" class="btn btn-danger">删除部门</button>
+                                <button onclick="$('#addDepartmentModal').modal();" class="btn btn-info">新增部门</button>
+                                <button onclick="modifyDepartment();" id="modifyDepartment" class="btn btn-warning">修改部门</button>
+                                <button onclick="deleteDepartment();" id="deleteDepartment" class="btn btn-danger">删除部门</button>
                                 <a href="#">
                                     <i class="linecons-cog"></i>
                                 </a>
-
                                 <a href="#" data-toggle="panel">
                                     <span class="collapse-icon">&ndash;</span>
                                     <span class="expand-icon">+</span>
                                 </a>
-
                                 <a href="#" data-toggle="reload">
                                     <i class="fa-rotate-right"></i>
                                 </a>
-
                                 <a href="#" data-toggle="remove">
                                     &times;
                                 </a>
                             </div>
                         </div>
                         <div class="panel-body">
-
                             <div class="table-responsive" data-pattern="priority-columns" data-focus-btn-icon="fa-asterisk" data-sticky-table-header="true" data-add-display-all-btn="true" data-add-focus-btn="true">
-
                                 <table cellspacing="0" class="table table-small-font table-bordered table-striped">
                                     <thead>
                                     <tr>
@@ -65,16 +56,15 @@
                                     </tbody>
                                 </table>
                             </div>
-
                             <script type="text/javascript">
-                                // This JavaScript Will Replace Checkboxes in dropdown toggles
+                                // 这个JavaScript将替换display下拉菜单中的复选框
                                 jQuery(document).ready(function($)
                                 {
                                     setTimeout(function()
                                     {
                                         $(".checkbox-row input").addClass('cbr');
                                         cbr_replace();
-                                    }, 0);
+                                    }, 10);
                                 });
                             </script>
                         </div>
@@ -82,35 +72,153 @@
                 </div>
             </div>
         </div>
-
         <!-- 主要内容 -->
-
         <!-- 页脚 -->
         <footer th:replace="baseTemplate/footHtml :: foot"></footer>
         <!-- 页脚 -->
     </div>
-
 </div>
 <!-- 页面容器 -->
+<!-- 新增部门 -->
+<div class="modal fade" id="addDepartmentModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">新增一个部门</h4>
+            </div>
+            <small class="text-small pull-right" style="padding-top:5px;">
+                <code><span id="addErrorMsg"></span></code>
+            </small>
+            <div class="modal-body">
+                <form role="form" id="addDepartmentForm" class="validate">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="departmentname" class="control-label">	部门名称</label>
+                                <input type="text" id="departmentname" th:name="departmentname" class="form-control"
+                                       placeholder="部门名称" pattern="^[\u4e00-\u9fa5]" required="required">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="departmentdescription" class="control-label">部门描述</label>
+                                <input type="text" id="departmentdescription" class="form-control" th:name="departmentdescription"
+                                       placeholder="部门描述" pattern="^[\u4e00-\u9fa5]" required="required">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-white" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-info" onclick="addDepartment();">确认</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 修改部门 -->
+<div class="modal fade" id="modifyDepartmentModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">修改部门信息</h4>
+            </div>
+            <small class="text-small pull-right" style="padding-top:5px;">
+                <code><span id="modifyErrorMsg"></span></code>
+            </small>
+            <div class="modal-body">
+                <form role="form" id="modifyDepartmentForm" class="validate">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="modifyDepartmentname" class="control-label">	部门名称</label>
+                                <input type="text" id="modifyDepartmentname" th:name="departmentname" class="form-control"
+                                       placeholder="部门名称" pattern="^[\u4e00-\u9fa5]" required="required">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="modifyDepartmentdescription" class="control-label">部门描述</label>
+                                <input type="text" id="modifyDepartmentdescription" class="form-control" th:name="departmentdescription"
+                                       placeholder="部门描述" pattern="^[\u4e00-\u9fa5]" required="required">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-white" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-info" onclick="modifyDepartment();">确认</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 删除部门 -->
+
 <!-- Bottom Scripts -->
 <div th:replace="baseTemplate/BottomScriptsHtml :: BottomScripts"></div>
-<!--<script>
-    window.onload = function getDepartmentsInfo() {
+<script>
+    function addDepartment() {
+        var departmentname = $("#departmentname").val();
+        if (departmentname == "" || departmentname == undefined || departmentname == null) {
+            return layer.msg('部门名称不能为空', function () {
+                //关闭后的操作
+            });
+        }
         $.ajax({
-            type:"GET",
-            url:'departmentsInfo',
-            cache:false,
-            dataType: "json",
-            success:function (departmentsInfo) {
-                var jsonData = JSON.stringify(departmentsInfo);
-                var departments = JSON.parse(jsonData);
-                layer.msg(departments.departmentname);
-            },
-            error:function () {
-                layer.msg("读取部门信息失败");
+            type:"POST",
+            url:'department',
+            cache:true,
+            data: $('#addDepartmentForm').serialize(),
+            async: true,
+            success:function (data) {
+                if (data == "success") {
+                    layer.msg('添加成功');
+                    $('#addDepartmentModal').modal('hide');
+                }else if(data == "fail") {
+                    layer.msg('添加失败');
+                    $('#addDepartmentModal').modal('hide');
+                }else if (data == "buMenYiCunZai"){
+                    layer.msg('部门已存在，新增失败');
+                    $('#addDepartmentModal').modal('hide');
+                }else {
+                    layer.msg("新增失败，请联系陈晨解决！");
+                    $('#addDepartmentModal').modal('hide');
+                }
             }
         });
     }
-</script>-->
+
+    function modifyDepartment() {
+        if($(".cbr:checked").length < 1){
+            layer.msg('请选择一个部门');
+            return;
+        }
+        var id = $(".cbr:checked").val();
+        layer.msg(id);
+        $.ajax({
+            type:'get',
+            url:'getDepartmentInfo',
+            data:{id:id},
+            async:true,
+            dataType : 'json',
+            success:function (departmentInfo) {
+                // 将数据转化为js标准json。否则报错
+                var jsonData = JSON.stringify(departmentInfo);
+                // 获取json数据
+                var user = JSON.parse(jsonData);
+                document.getElementById("modifyUserId").value = user.userid;
+                document.getElementById("modifyUsername").value = user.username;
+            }
+        });
+        $('#modifyUser').modal();
+    }
+
+    function deleteDepartment() {
+        layer.msg("a");
+    }
+</script>
 </body>
 </html>

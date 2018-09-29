@@ -10,7 +10,8 @@ CREATE TABLE `aesc_cms`.`users` (
   `email` varchar (255) comment'邮箱',
   `telephone` varchar (255) not null comment'电话号码',
   `enable` int not null comment'账户是否启用',
-  PRIMARY KEY (`userId`))
+  PRIMARY KEY (`userId`)),
+  UNIQUE (`userName`)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
 COMMENT = '用户表';
@@ -95,7 +96,8 @@ create table `aesc_cms`.`departments`(
 `departmentId` int not null auto_increment comment'部门ID',
 `departmentName` varchar (200) not null comment'部门名称',
 `departmentDescription` varchar (500) comment'部门描述',
-primary key (`departmentId`)
+primary key (`departmentId`),
+UNIQUE (`departmentName`)
 )
 engine=innodb
 default character set = utf8

@@ -14,10 +14,7 @@ import cn.com.aesc.entity.Departments;
 import cn.com.aesc.service.DepartmentsService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -47,7 +44,7 @@ public class DepartmentController {
      * @See:
      * @Throws: 
      * @Version: 
-     * @Description: 返回到部门页面
+     * @Description: 去数据库读取出部门信息列表然后渲染到页面table,返回到部门页面
      */
     @GetMapping("/department")
     String departmentHtml(Model model){
@@ -66,11 +63,49 @@ public class DepartmentController {
  * @See: 
  * @Throws: 
  * @Version: 
- * @Description: 去数据库读取出部门信息列表然后渲染到页面table
+ * @Description: 添加部门信息
  */
-    @GetMapping("/departmentsInfo")
+    @PostMapping("/department")
     @ResponseBody
-    List<Departments> departmentsInfo(){
-        return departmentsService.selectDepartmentsInfo();
+    String addDepartmentsInfo(Departments departments){
+        System.out.println(departments.getDepartmentname());
+        System.out.println(departments.getDepartmentdescription());
+        return "success";
+    }
+
+    /**
+     * Copyright (C), 2005-2018, 重庆汽博实业有限公司
+     * 
+     * @Author: dawn@acdiost.com
+     * @Date: 2018-09-29 11:36
+     * @Param: 
+     * @Return: 
+     * @See: 
+     * @Throws: 
+     * @Version: 
+     * @Description:  修改部门信息
+     */
+    @PutMapping("/department")
+    @ResponseBody
+    String modifyDepartment(Departments departments){
+        return "";
+    }
+
+    /**
+     * Copyright (C), 2005-2018, 重庆汽博实业有限公司
+     * 
+     * @Author: dawn@acdiost.com
+     * @Date: 2018-09-29 11:38
+     * @Param: 
+     * @Return: 
+     * @See: 
+     * @Throws: 
+     * @Version: 
+     * @Description:  删除部门信息
+     */
+    @DeleteMapping("/department")
+    @ResponseBody
+    String deleteDepartment(int departmentId){
+        return "";
     }
 }

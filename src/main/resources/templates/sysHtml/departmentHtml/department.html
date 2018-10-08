@@ -12,61 +12,54 @@
 <div class="page-container">
     <div class="main-content">
         <!-- 主要内容 -->
-        <div class="panel-body panel-border">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h3 class="panel-title">部门管理</h3>
-                            <div class="panel-options">
-                                <button onclick="$('#addDepartmentModal').modal();" class="btn btn-info">新增部门</button>
-                                <button onclick="modifyDepartment();" id="modifyDepartment" class="btn btn-warning">修改部门</button>
-                                <button onclick="deleteDepartment();" id="deleteDepartment" class="btn btn-danger">删除部门</button>
-                                <a href="#">
-                                    <i class="linecons-cog"></i>
-                                </a>
-                                <a href="#" data-toggle="panel">
-                                    <span class="collapse-icon">&ndash;</span>
-                                    <span class="expand-icon">+</span>
-                                </a>
-                                <a href="#" data-toggle="reload">
-                                    <i class="fa-rotate-right"></i>
-                                </a>
-                                <a href="#" data-toggle="remove">
-                                    &times;
-                                </a>
-                            </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">部门管理</h3>
+                        <div class="panel-options">
+                            <button onclick="$('#addDepartmentModal').modal();" class="btn btn-info">新增部门</button>
+                            <button onclick="modifyDepartment();" id="modifyDepartment" class="btn btn-warning">修改部门</button>
+                            <button onclick="deleteDepartment();" id="deleteDepartment" class="btn btn-danger">删除部门</button>
+                            <!--<a href="#">
+                                <i class="linecons-cog"></i>
+                            </a>-->
+                            <a href="#" data-toggle="panel">
+                                <span class="collapse-icon">&ndash;</span>
+                                <span class="expand-icon">+</span>
+                            </a>
+                            <a href="#" data-toggle="reload">
+                                <i class="fa-rotate-right"></i>
+                            </a>
+                            <a href="#" data-toggle="remove">
+                                &times;
+                            </a>
                         </div>
-                        <div class="panel-body">
-                            <div class="table-responsive" data-pattern="priority-columns" data-focus-btn-icon="fa-asterisk" data-sticky-table-header="true" data-add-display-all-btn="true" data-add-focus-btn="true">
-                                <table cellspacing="0" class="table table-small-font table-bordered table-striped">
+                    </div>
+                    <div class="panel-body panel-border">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <table class="table table-model-2 table-hover" id="departmentTable">
                                     <thead>
                                     <tr>
-                                        <th data-priority="1">部门编号</th>
-                                        <th data-priority="2">部门名称</th>
-                                        <th data-priority="3">部门描述</th>
+                                        <th class="no-sorting">
+                                            <input type="checkbox" class="cbr"/>
+                                        </th>
+                                        <th>部门编号</th>
+                                        <th>部门名称</th>
+                                        <th>部门描述</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr th:each="departmentStat : ${departmentsList}">
-                                        <td th:name="departmentid" th:text="${departmentStat.departmentid}">null</td>
-                                        <td th:name="departmentname" th:text="${departmentStat.departmentname}">null</td>
-                                        <td th:name="departmentdescription" th:text="${departmentStat.departmentdescription}">null</td>
+                                    <tr th:each="department : ${departmentsList}">
+                                        <td><input type="checkbox" class="cbr" th:value="${department.departmentid}"/></td>
+                                        <td th:name="departmentid" th:text="${department.departmentid}">null</td>
+                                        <td th:name="departmentname" th:text="${department.departmentname}">null</td>
+                                        <td th:name="departmentdescription" th:text="${department.departmentdescription}">null</td>
                                     </tr>
                                     </tbody>
                                 </table>
                             </div>
-                            <script type="text/javascript">
-                                // 这个JavaScript将替换display下拉菜单中的复选框
-                                jQuery(document).ready(function($)
-                                {
-                                    setTimeout(function()
-                                    {
-                                        $(".checkbox-row input").addClass('cbr');
-                                        cbr_replace();
-                                    }, 10);
-                                });
-                            </script>
                         </div>
                     </div>
                 </div>
@@ -87,7 +80,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h4 class="modal-title">新增一个部门</h4>
             </div>
-            <small class="text-small pull-right" style="padding-top:5px;">
+            <small class="text-small pull-right" style="padding-top:3px;">
                 <code><span id="addErrorMsg"></span></code>
             </small>
             <div class="modal-body">
@@ -160,6 +153,25 @@
 <!-- Bottom Scripts -->
 <div th:replace="baseTemplate/BottomScriptsHtml :: BottomScripts"></div>
 <script>
+    var $state = $("#departmentTable thead input[type='checkbox']");
+
+    $("#departmentTable").on('draw.dt', function () {
+        cbr_replace();
+        $state.trigger('change');
+    });
+
+    // 选择所有复选框的脚本
+    $state.on('change', function (ev) {
+        var $chcks = $("#departmentTable tbody input[type='checkbox']");
+
+        if ($state.is(':checked')) {
+            $chcks.prop('checked', true).trigger('change');
+        }
+        else {
+            $chcks.prop('checked', false).trigger('change');
+        }
+    });
+
     function addDepartment() {
         var departmentname = $("#departmentname").val();
         if (departmentname == "" || departmentname == undefined || departmentname == null) {
@@ -196,8 +208,11 @@
             layer.msg('请选择一个部门');
             return;
         }
+        if($(".cbr:checked").length > 1){
+            layer.msg('一次只能修改一个部门');
+            return;
+        }
         var id = $(".cbr:checked").val();
-        layer.msg(id);
         $.ajax({
             type:'get',
             url:'getDepartmentInfo',
@@ -217,7 +232,33 @@
     }
 
     function deleteDepartment() {
-        layer.msg("a");
+        if($(".cbr:checked").length < 1){
+            layer.msg('请选择一个部门');
+            return;
+        }
+        if($(".cbr:checked").length > 1){
+            layer.msg('一次只能删除一个部门');
+            return;
+        }
+        var id = $(".cbr:checked").val();
+        layer.confirm('您确定要删除该部门吗？', {
+            btn: ['确认','取消'] //按钮
+        }, function(){
+            $.ajax({
+                cache: true,
+                type: "post",
+                url:'department',
+                data:{id:id,_method:"delete"},//_method:"delete"直接delete后台无法获取参数。tomcat的封装原因。先将其设置为post再转换为delete。
+                async: false,
+                success: function(data) {
+                    if(data=="success"){
+                        layer.msg('删除成功');
+                    }else{
+                        layer.msg('删除失败');
+                    }
+                }
+            });
+        });
     }
 </script>
 </body>

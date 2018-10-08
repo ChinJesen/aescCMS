@@ -77,6 +77,24 @@ public class DepartmentController {
      * Copyright (C), 2005-2018, 重庆汽博实业有限公司
      * 
      * @Author: dawn@acdiost.com
+     * @Date: 2018-10-08 14:53
+     * @Param: 
+     * @Return: 
+     * @See: 
+     * @Throws: 
+     * @Version: 
+     * @Description:  修改部门  选择一条部门信息通过ID查询部门数据渲染到修改弹窗
+     */
+    @GetMapping("/getDepartmentInfo")
+    @ResponseBody
+    String getDepartmentInfo (String id){
+        System.out.println(id);
+        return "";
+    }
+    /**
+     * Copyright (C), 2005-2018, 重庆汽博实业有限公司
+     * 
+     * @Author: dawn@acdiost.com
      * @Date: 2018-09-29 11:36
      * @Param: 
      * @Return: 
@@ -105,7 +123,8 @@ public class DepartmentController {
      */
     @DeleteMapping("/department")
     @ResponseBody
-    String deleteDepartment(int departmentId){
+    String deleteDepartment(int id){
+        System.out.println(id);
         return "";
     }
 }

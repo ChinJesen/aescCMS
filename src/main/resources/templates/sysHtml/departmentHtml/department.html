@@ -124,17 +124,18 @@
             <div class="modal-body">
                 <form role="form" id="modifyDepartmentForm" class="validate">
                     <div class="row">
+                        <input type="hidden" th:name="departmentid" id="modifyDepartmentId" value=""/>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="modifyDepartmentname" class="control-label">	部门名称</label>
-                                <input type="text" id="modifyDepartmentname" th:name="departmentname" class="form-control"
+                                <label for="modifyDepartmentName" class="control-label">	部门名称</label>
+                                <input type="text" id="modifyDepartmentName" th:name="departmentname" class="form-control"
                                        placeholder="部门名称" pattern="^[\u4e00-\u9fa5]" required="required">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="modifyDepartmentdescription" class="control-label">部门描述</label>
-                                <input type="text" id="modifyDepartmentdescription" class="form-control" th:name="departmentdescription"
+                                <label for="modifyDepartmentDescription" class="control-label">部门描述</label>
+                                <input type="text" id="modifyDepartmentDescription" class="form-control" th:name="departmentdescription"
                                        placeholder="部门描述" pattern="^[\u4e00-\u9fa5]" required="required">
                             </div>
                         </div>
@@ -143,15 +144,15 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-white" data-dismiss="modal">取消</button>
-                <button type="button" class="btn btn-info" onclick="modifyDepartment();">确认</button>
+                <button type="button" class="btn btn-info" onclick="modifyDepartments();">确认</button>
             </div>
         </div>
     </div>
 </div>
-<!-- 删除部门 -->
 
 <!-- Bottom Scripts -->
 <div th:replace="baseTemplate/BottomScriptsHtml :: BottomScripts"></div>
+
 <script>
     var $state = $("#departmentTable thead input[type='checkbox']");
 
@@ -189,6 +190,7 @@
                 if (data == "success") {
                     layer.msg('添加成功');
                     $('#addDepartmentModal').modal('hide');
+                    setTimeout(function(){location.reload();},1500);
                 }else if(data == "fail") {
                     layer.msg('添加失败');
                     $('#addDepartmentModal').modal('hide');
@@ -223,12 +225,43 @@
                 // 将数据转化为js标准json。否则报错
                 var jsonData = JSON.stringify(departmentInfo);
                 // 获取json数据
-                var user = JSON.parse(jsonData);
-                document.getElementById("modifyUserId").value = user.userid;
-                document.getElementById("modifyUsername").value = user.username;
+                var department = JSON.parse(jsonData);
+                document.getElementById("modifyDepartmentId").value = department.departmentid;
+                document.getElementById("modifyDepartmentName").value = department.departmentname;
+                document.getElementById("modifyDepartmentDescription").value = department.departmentdescription;
             }
         });
-        $('#modifyUser').modal();
+        $('#modifyDepartmentModal').modal();
+    }
+
+    function modifyDepartments() {
+        var departmentname = $("#modifyDepartmentName").val();
+        layer.msg(departmentname);
+        if (departmentname == "" || departmentname == undefined || departmentname == null) {
+            return layer.msg('部门名称不能为空', function () {
+                //关闭后的操作
+            });
+        }
+        $.ajax({
+            cache: true,
+            type: "put",
+            url: 'department',
+            data: $('#modifyDepartmentForm').serialize(),
+            async: true,
+            success: function (data) {
+                if (data == "success") {
+                    layer.msg('修改成功');
+                    jQuery('#modifyDepartmentModal').modal('hide');
+                    setTimeout(function(){location.reload();},1500);
+                } else if (data == "buMenYiCunZai") {
+                    layer.msg('该部门已存在！');
+                    jQuery('#modifyDepartmentModal').modal('hide');
+                } else {
+                    layer.msg('修改失败，请联系陈晨！');
+                    jQuery('#modifyDepartmentModal').modal('hide');
+                }
+            }
+        });
     }
 
     function deleteDepartment() {
@@ -253,8 +286,10 @@
                 success: function(data) {
                     if(data=="success"){
                         layer.msg('删除成功');
+                        setTimeout(function(){location.reload();},1500);
                     }else{
                         layer.msg('删除失败');
+                        setTimeout(function(){location.reload();},1500);
                     }
                 }
             });

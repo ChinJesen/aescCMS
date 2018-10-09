@@ -88,6 +88,12 @@
                             </a>
                         </li>
                         <li>
+                            <a href="/department/department">
+                                <i class="fa-home"></i>
+                                <span class="title">部门管理</span>
+                            </a>
+                        </li>
+                        <li>
                             <a href="/role/role">
                                 <i class="fa-male"></i>
                                 <span class="title">角色管理</span>
@@ -100,12 +106,6 @@
                             </a>
                         </li>
                         <li>
-                            <a href="/department/department">
-                                <i class="fa-home"></i>
-                                <span class="title">部门管理</span>
-                            </a>
-                        </li>
-                        <li>
                             <a href="#">
                                 <i class="fa-folder-open-o"></i>
                                 <span class="title">资源链管理</span>
@@ -113,7 +113,12 @@
                         </li>
                     </ul>
                 </li>
-
+                <li th:each="department : ${initDepartmentsList}">
+                    <a href="#">
+                        <i class="fa-users"></i>
+                        <span class="title" th:text="${department.departmentname}"></span>
+                    </a>
+                </li>
                 <li>
                     <a href="#">
                         <i class="linecons-shop"></i>

@@ -1,13 +1,18 @@
 package cn.com.aesc.entity;
 
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.io.Serializable;
-import javax.persistence.*;
 
 public class Departments implements Serializable {
     /**
      * 部门ID
      */
+    @Id
     @Column(name = "departmentId")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer departmentid;
 
     /**

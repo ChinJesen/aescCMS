@@ -17,4 +17,19 @@
 <script th:src="@{/xenon/assets/js/rwd-table/js/rwd-table.min.js}"></script>
 <!-- JavaScripts 初始化 -->
 <script th:src="@{/xenon/assets/js/xenon-custom.js}"></script>
+    <script>
+        window.onload=function init() {
+            console.log("1");
+            $.ajax({
+
+                cache: true,
+                url:'initialize/department',
+                async: false,
+                success: function() {
+                    console.log("2");
+                }
+            });
+        }
+    </script>
+
 </div>

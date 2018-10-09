@@ -134,6 +134,11 @@ public class UserController {
   @ResponseBody
   String ModifyUser(Users users){
     LOGGER.info(users.toString());
+    // 查询用户名是否存在
+    Users user = userService.selectByUsername(users.getUsername());
+    if (user != null){
+      return "gaiYongHuYiCunZai";
+    }
     try {
       PasswordEncryption passwordEncryption = PasswordEncryption.getPasswordEncryption();
       passwordEncryption.encryptPassword(users);

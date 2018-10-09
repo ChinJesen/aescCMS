@@ -35,4 +35,27 @@ public class DepartmentsServiceImpl extends IBaseServiceImpl<Departments> implem
         List<Departments> departmentsList = selectByExample(example);
         return departmentsList;
     }
+
+    @Override
+    public Departments selectByDepartmentName(String departmentname) {
+        Example example = new Example(Departments.class);
+        Example.Criteria criteria = example.createCriteria();
+        criteria.andEqualTo("departmentname",departmentname);
+        List<Departments> departmentsList = selectByExample(example);
+        if (departmentsList.size() > 0 ){
+            return departmentsList.get(0);
+        }
+        return null;
+    }
+
+    @Override
+    public Departments getDepartmentInfo(Integer id) {
+        return mapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public void deleteDepartment(Integer id) {
+        mapper.deleteByPrimaryKey(id);
+    }
+
 }

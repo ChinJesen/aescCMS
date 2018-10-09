@@ -101,7 +101,6 @@ public class UserServiceImpl extends IBaseServiceImpl<Users> implements UserServ
   @Transactional(propagation= Propagation.REQUIRED,readOnly=false,rollbackFor={Exception.class})
   public void deleteUser(Integer id) {
     mapper.deleteByPrimaryKey(id);
-    
   }
 
   /**

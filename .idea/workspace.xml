@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d11000d1-5683-4024-83ea-333db624acc7" name="Default Changelist" comment="" />
+    <list default="true" id="d11000d1-5683-4024-83ea-333db624acc7" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/aescCMS.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/aescCMS.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -13,74 +16,99 @@
     <session id="1135991211">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="2" />
+          <entry key="project.closed" value="5" />
           <entry key="project.open.time.11" value="1" />
           <entry key="project.open.time.14" value="1" />
+          <entry key="project.open.time.2" value="1" />
           <entry key="project.open.time.6" value="1" />
-          <entry key="project.opened" value="3" />
+          <entry key="project.open.time.7" value="1" />
+          <entry key="project.open.time.8" value="1" />
+          <entry key="project.open.time.9" value="1" />
+          <entry key="project.opened" value="7" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="html" value="11" />
-          <entry key="js" value="1" />
+          <entry key="java" value="2" />
+          <entry key="js" value="10" />
+          <entry key="json" value="2" />
           <entry key="properties" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="HTML" value="11" />
-          <entry key="JavaScript" value="1" />
+          <entry key="JAVA" value="2" />
+          <entry key="JSON" value="2" />
+          <entry key="JavaScript" value="10" />
           <entry key="Properties" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="html" value="257" />
-          <entry key="java" value="2" />
+          <entry key="java" value="110" />
           <entry key="js" value="14" />
+          <entry key="json" value="9" />
           <entry key="properties" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="HTML" value="257" />
-          <entry key="JAVA" value="2" />
+          <entry key="JAVA" value="110" />
+          <entry key="JSON" value="9" />
           <entry key="JavaScript" value="14" />
           <entry key="Properties" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.js.language.service.starts" />
+      <usages-collector id="statistics.vcs.git.usages" />
+      <usages-collector id="statistics.spring.boot.run.usages" />
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/aesc/controller/departmentcontroller/DepartmentController.java">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/sysHtml/departmentHtml/department.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="379">
-              <caret line="57" lean-forward="true" selection-start-line="57" selection-end-line="57" />
+            <state relative-caret-position="5510">
+              <caret line="290" column="42" selection-start-line="290" selection-start-column="42" selection-end-line="290" selection-end-column="42" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/aesc/Application.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="399">
+              <caret line="24" column="53" lean-forward="true" selection-start-line="24" selection-start-column="53" selection-end-line="24" selection-end-column="53" />
               <folding>
-                <element signature="n#!!doc" expanded="true" />
+                <element signature="e#801#802#0" expanded="true" />
+                <element signature="e#861#862#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/sysHtml/departmentHtml/department.html">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/static/package.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="343">
-              <caret line="54" column="60" selection-start-line="54" selection-start-column="60" selection-end-line="54" selection-end-column="60" />
-              <folding>
-                <element signature="e#9884#9891#1" expanded="true" />
-                <element signature="e#10121#10128#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="171">
+              <caret line="9" column="15" lean-forward="true" selection-start-line="9" selection-start-column="15" selection-end-line="9" selection-end-column="15" />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -93,6 +121,10 @@
     <replaceStrings>
       <replace>../../static/xenon/assets</replace>
     </replaceStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -107,6 +139,8 @@
         <option value="$PROJECT_DIR$/src/main/resources/templates/baseTemplate/BottomScriptsHtml.html" />
         <option value="$PROJECT_DIR$/src/main/resources/static/xenon/assets/js/rwd-table/js/rwd-table.js" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/sysHtml/departmentHtml/department.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/package.json" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/com/aesc/utils/PaiXu.java" />
       </list>
     </option>
   </component>
@@ -129,6 +163,22 @@
       </MavenImportingSettings>
     </option>
   </component>
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <expand>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="aescCMS" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+        </path>
+      </expand>
+      <select />
+    </treeState>
+  </component>
+  <component name="NodePackageJsonFileManager">
+    <packageJsonPaths>
+      <path value="$PROJECT_DIR$/src/main/resources/static/package.json" />
+    </packageJsonPaths>
+  </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-7" />
     <option name="width" value="974" />
@@ -139,6 +189,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -172,62 +224,18 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="aesc" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="aescCMS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="aescCMS" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="aescCMS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="aescCMS" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="aescCMS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="aescCMS" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="baseTemplate" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="aescCMS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="aescCMS" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="sysHtml" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="aescCMS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="aescCMS" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="sysHtml" type="462c0819:PsiDirectoryNode" />
-              <item name="departmentHtml" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="last_opened_file_path" value="D:/Program Files/Git/git-cmd.exe" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -241,7 +249,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Application">
     <configuration name="Application" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="cn.com.aesc.Application" />
       <module name="aescCMS" />
@@ -249,79 +257,86 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="PaiXu" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="cn.com.aesc.utils.PaiXu" />
+      <module name="aescCMS" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.Application" />
+      <item itemvalue="Application.PaiXu" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.PaiXu" />
         <item itemvalue="Application.Application" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18390192" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1924307" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
-      <window_info id="Learn" order="3" weight="0.32985073" />
+      <window_info id="Learn" order="3" weight="0.32942432" />
       <window_info id="Favorites" order="4" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49946696" weight="0.329718" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.30911064" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50053304" side_tool="true" weight="0.329718" />
+      <window_info anchor="bottom" id="FindBugs-IDEA" />
+      <window_info anchor="bottom" id="Terminal" order="0" weight="0.32962137" />
+      <window_info anchor="bottom" id="Message" order="1" />
+      <window_info anchor="bottom" id="Find" order="2" sideWeight="0.49946696" weight="0.329718" />
+      <window_info anchor="bottom" id="Run" order="3" weight="0.30846325" />
+      <window_info anchor="bottom" id="Debug" order="4" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="7" weight="0.32962137" />
+      <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="9" sideWeight="0.49946696" visible="true" weight="0.32998884" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50053304" side_tool="true" visible="true" weight="0.32998884" />
+      <window_info anchor="bottom" id="Messages" order="11" weight="0.32962137" />
+      <window_info anchor="bottom" id="Spring" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info anchor="right" id="Database" order="4" />
-      <window_info anchor="right" id="Maven Projects" order="5" />
+      <window_info anchor="right" id="Maven Projects" order="5" visible="true" weight="0.102878466" />
+      <window_info anchor="right" id="RestServices" order="6" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
+  </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/aesc/controller/departmentcontroller/DepartmentController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="379">
-          <caret line="57" lean-forward="true" selection-start-line="57" selection-end-line="57" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/XenonTemplate/tables-datatables.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="79207">
           <caret line="4172" column="42" selection-start-line="4172" selection-start-column="42" selection-end-line="4172" selection-end-column="42" />
-          <folding>
-            <element signature="e#1490#1497#0" expanded="true" />
-            <element signature="e#6958#6963#0" expanded="true" />
-            <element signature="e#7521#7526#0" expanded="true" />
-            <element signature="e#8268#8273#0" expanded="true" />
-            <element signature="e#8541#8546#0" expanded="true" />
-            <element signature="e#9215#9220#0" expanded="true" />
-            <element signature="e#29433#29440#1" expanded="true" />
-            <element signature="e#29548#29555#0" expanded="true" />
-            <element signature="e#41694#41701#1" expanded="true" />
-            <element signature="e#41809#41816#0" expanded="true" />
-            <element signature="e#77505#77512#1" expanded="true" />
-            <element signature="e#77620#77627#0" expanded="true" />
-            <element signature="e#89060#89067#1" expanded="true" />
-            <element signature="e#89175#89182#0" expanded="true" />
-            <element signature="e#101577#101583#0" expanded="true" />
-            <element signature="e#105665#105672#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -329,21 +344,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="26045">
           <caret line="1374" column="42" selection-start-line="1374" selection-start-column="42" selection-end-line="1374" selection-end-column="42" />
-          <folding>
-            <element signature="e#1575#1582#0" expanded="true" />
-            <element signature="e#7043#7048#0" expanded="true" />
-            <element signature="e#7606#7611#0" expanded="true" />
-            <element signature="e#8353#8358#0" expanded="true" />
-            <element signature="e#8626#8631#0" expanded="true" />
-            <element signature="e#9322#9327#0" expanded="true" />
-            <element signature="e#29626#29633#1" expanded="true" />
-            <element signature="e#30023#30030#1" expanded="true" />
-            <element signature="e#30951#30958#1" expanded="true" />
-            <element signature="e#31423#31430#1" expanded="true" />
-            <element signature="e#31881#31888#1" expanded="true" />
-            <element signature="e#32629#32635#0" expanded="true" />
-            <element signature="e#36717#36724#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -351,31 +351,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="33729">
           <caret line="1779" column="42" selection-start-line="1779" selection-start-column="42" selection-end-line="1779" selection-end-column="42" />
-          <folding>
-            <element signature="e#1575#1582#0" expanded="true" />
-            <element signature="e#7043#7048#0" expanded="true" />
-            <element signature="e#7606#7611#0" expanded="true" />
-            <element signature="e#8353#8358#0" expanded="true" />
-            <element signature="e#8626#8631#0" expanded="true" />
-            <element signature="e#9300#9305#0" expanded="true" />
-            <element signature="e#29663#29670#1" expanded="true" />
-            <element signature="e#29900#29907#0" expanded="true" />
-            <element signature="e#36325#36332#1" expanded="true" />
-            <element signature="e#36562#36569#0" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#td#3;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#2;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#td#3;n#tr#1;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#2;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#td#3;n#tr#2;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#2;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="e#38536#38543#1" expanded="true" />
-            <element signature="e#38773#38780#0" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#td#2;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#1;n#div#2;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#td#2;n#tr#1;n#tbody#0;n#table#0;n#div#0;n#div#1;n#div#2;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#td#2;n#tr#2;n#tbody#0;n#table#0;n#div#0;n#div#1;n#div#2;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#td#2;n#tr#3;n#tbody#0;n#table#0;n#div#0;n#div#1;n#div#2;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#td#2;n#tr#4;n#tbody#0;n#table#0;n#div#0;n#div#1;n#div#2;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#td#2;n#tr#5;n#tbody#0;n#table#0;n#div#0;n#div#1;n#div#2;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="e#42046#42052#0" expanded="true" />
-            <element signature="e#46134#46141#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -390,21 +365,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="27774">
           <caret line="1465" column="42" selection-start-line="1465" selection-start-column="42" selection-end-line="1465" selection-end-column="42" />
-          <folding>
-            <element signature="e#1582#1589#0" expanded="true" />
-            <element signature="e#7050#7055#0" expanded="true" />
-            <element signature="e#7613#7618#0" expanded="true" />
-            <element signature="e#8360#8365#0" expanded="true" />
-            <element signature="e#8633#8638#0" expanded="true" />
-            <element signature="e#9307#9312#0" expanded="true" />
-            <element signature="e#29533#29540#1" expanded="true" />
-            <element signature="e#29656#29663#0" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#2;n#div#0;n#div#0;n#div#1;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="e#34817#34823#0" expanded="true" />
-            <element signature="e#38905#38912#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -422,27 +382,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="133">
           <caret line="1098" column="12" selection-start-line="1098" selection-start-column="12" selection-end-line="1482" selection-end-column="18" />
-          <folding>
-            <element signature="n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="e#1585#1592#0" expanded="true" />
-            <element signature="n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
-            <element signature="e#7053#7058#0" expanded="true" />
-            <element signature="e#7616#7621#0" expanded="true" />
-            <element signature="e#8363#8368#0" expanded="true" />
-            <element signature="e#8636#8641#0" expanded="true" />
-            <element signature="e#9310#9315#0" expanded="true" />
-            <element signature="n#nav#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#1;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" />
-            <element signature="e#29697#29704#1" expanded="true" />
-            <element signature="e#29934#29941#0" expanded="true" />
-            <element signature="n#footer#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" />
-            <element signature="e#41384#41390#0" expanded="true" />
-            <element signature="n#div#2;n#div#1;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#script#0;n#div#0;n#div#2;n#div#1;n#body#0;n#html#0;n#!!top" />
-            <element signature="e#45472#45479#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -457,20 +396,51 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="142">
           <caret line="46" lean-forward="true" selection-start-line="46" selection-end-line="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/aesc/controller/departmentcontroller/DepartmentController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="779">
+          <caret line="57" selection-start-line="57" selection-end-line="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/node_modules/jquery/dist/jquery.js" />
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/package-lock.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/node_modules/jquery/src/ajax/var/location.js" />
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/node_modules/jquery/src/ajax/var/nonce.js" />
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/node_modules/jquery/src/ajax/var/rquery.js" />
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/node_modules/jquery/src/ajax/jsonp.js" />
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/node_modules/jquery/src/ajax/xhr.js" />
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/node_modules/jquery/src/ajax/script.js" />
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/node_modules/jquery/src/ajax/parseXML.js" />
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/node_modules/jquery/src/ajax/load.js" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/aesc/utils/PaiXu.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/sysHtml/departmentHtml/department.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5510">
+          <caret line="290" column="42" selection-start-line="290" selection-start-column="42" selection-end-line="290" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/aesc/Application.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="24" column="53" lean-forward="true" selection-start-line="24" selection-start-column="53" selection-end-line="24" selection-end-column="53" />
           <folding>
-            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#801#802#0" expanded="true" />
+            <element signature="e#861#862#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/sysHtml/departmentHtml/department.html">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/package.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="343">
-          <caret line="54" column="60" selection-start-line="54" selection-start-column="60" selection-end-line="54" selection-end-column="60" />
-          <folding>
-            <element signature="e#9884#9891#1" expanded="true" />
-            <element signature="e#10121#10128#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="171">
+          <caret line="9" column="15" lean-forward="true" selection-start-line="9" selection-start-column="15" selection-end-line="9" selection-end-column="15" />
         </state>
       </provider>
     </entry>
@@ -491,7 +461,7 @@
       </state>
       <state key="FacetStructureConfigurable.UI">
         <settings>
-          <last-edited>No facets are configured</last-edited>
+          <last-edited>Spring</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -526,12 +496,11 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>aescCMS</last-edited>
+          <last-edited>Spring|aescCMS</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
                 <option value="0.2" />
-                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>

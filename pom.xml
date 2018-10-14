@@ -13,6 +13,27 @@
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.0.5.RELEASE</version>
     </parent>
+
+    <properties>
+        <!--设置编码和Java版本-->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+        <!-- MyBatis Generator -->
+        <mybatis.generator.version>1.3.7</mybatis.generator.version>
+        <targetJavaProject>${basedir}/src/main/java</targetJavaProject>
+        <targetMapperPackage>cn.com.aesc.mapper</targetMapperPackage>
+        <targetEntityPackage>cn.com.aesc.entity</targetEntityPackage>
+        <!-- tk.mybatis -->
+        <tk.mybatis.version>2.0.4</tk.mybatis.version>
+        <persistence.version>1.0.2</persistence.version>
+        <mapper.plugin>tk.mybatis.mapper.generator.MapperPlugin</mapper.plugin>
+        <mapper.Mapper>tk.mybatis.mapper.common.Mapper</mapper.Mapper>
+        <!-- 使用thymeleaf最新版本，不然页面有错??msg_zh_CN??-->
+        <thymeleaf.version>3.0.10.RELEASE</thymeleaf.version>
+        <thymeleaf-layout-dialect.version>2.3.0</thymeleaf-layout-dialect.version>
+    </properties>
+
     <dependencies>
         <!--spring核心 包含自动配置、日志-->
         <dependency>
@@ -29,6 +50,18 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+            <!-- 从依赖信息里移除 Tomcat配置 -->
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-tomcat</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <!-- 添加 Undertow依赖 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-undertow</artifactId>
         </dependency>
         <!--对thymeleaf模板引擎的支持-->
         <dependency>
@@ -41,7 +74,7 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.12</version>
         </dependency>
-        <!-- spring boot整合mybatis -->
+        <!-- spring boot mybatis -->
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
             <artifactId>mybatis-spring-boot-starter</artifactId>
@@ -58,13 +91,13 @@
         <dependency>
             <groupId>com.github.pagehelper</groupId>
             <artifactId>pagehelper-spring-boot-starter</artifactId>
-            <version>1.2.7</version>
+            <version>1.2.8</version>
         </dependency>
         <!-- 阿里巴巴druid数据库连接池 -->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid</artifactId>
-            <version>1.1.10</version>
+            <version>1.1.11</version>
         </dependency>
         <!--监控应用-->
         <dependency>
@@ -83,6 +116,7 @@
             <artifactId>shiro-spring</artifactId>
             <version>1.4.0</version>
         </dependency>
+        <!--shiro和thymeleaf的支持-->
         <dependency>
             <groupId>com.github.theborakompanioni</groupId>
             <artifactId>thymeleaf-extras-shiro</artifactId>
@@ -116,26 +150,6 @@
             <version>1.0.2</version>
         </dependency>
     </dependencies>
-
-    <properties>
-        <!--设置编码和Java版本-->
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <java.version>1.8</java.version>
-        <!-- MyBatis Generator -->
-        <mybatis.generator.version>1.3.7</mybatis.generator.version>
-        <targetJavaProject>${basedir}/src/main/java</targetJavaProject>
-        <targetMapperPackage>cn.com.aesc.mapper</targetMapperPackage>
-        <targetEntityPackage>cn.com.aesc.entity</targetEntityPackage>
-        <!-- tk.mybatis -->
-        <tk.mybatis.version>2.0.4</tk.mybatis.version>
-        <persistence.version>1.0.2</persistence.version>
-        <mapper.plugin>tk.mybatis.mapper.generator.MapperPlugin</mapper.plugin>
-        <mapper.Mapper>tk.mybatis.mapper.common.Mapper</mapper.Mapper>
-        <!-- 使用thymeleaf最新版本，不然页面有错??msg_zh_CN??-->
-        <thymeleaf.version>3.0.9.RELEASE</thymeleaf.version>
-        <thymeleaf-layout-dialect.version>2.3.0</thymeleaf-layout-dialect.version>
-    </properties>
 
     <build>
         <plugins>

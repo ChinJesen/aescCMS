@@ -2,7 +2,6 @@ package cn.com.aesc.controller.logincontroller;
 
 import cn.com.aesc.entity.users.Users;
 import cn.com.aesc.service.UserService;
-import org.apache.catalina.servlet4preview.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -62,7 +61,7 @@ private UserService userService;
    * @Description:
    */
   @PostMapping("/login")
-  String login(HttpServletRequest request, Users users , Model model, Map<String,Object> map) {
+  String login(Users users , Model model, Map<String,Object> map) {
 
     if (StringUtils.isEmpty(users.getUsername()) || StringUtils.isEmpty(users.getPassword())) {
       model.addAttribute("msg", "用户名或密码错误！");
@@ -70,9 +69,9 @@ private UserService userService;
     }
     Users u = userService.selectByUsername(users.getUsername());
     if(u != null){
-      model.addAttribute("username","陈晨");
-      map.put("map","IT部");
-      request.setAttribute("request","欢迎使用合同管理系统");
+      model.addAttribute("username",users.getUsername());
+      model.addAttribute("request","欢迎使用合同管理系统");
+      map.put("map","你好，");
       return "baseTemplate/main";
     }
     logger.info("用户名:"+users.getUsername());

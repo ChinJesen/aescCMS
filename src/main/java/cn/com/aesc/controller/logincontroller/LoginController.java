@@ -71,7 +71,7 @@ private UserService userService;
     if(u != null){
       model.addAttribute("username",users.getUsername());
       model.addAttribute("request","欢迎使用合同管理系统");
-      map.put("map","你好，");
+      map.put("map","您好，");
       return "baseTemplate/main";
     }
     logger.info("用户名:"+users.getUsername());

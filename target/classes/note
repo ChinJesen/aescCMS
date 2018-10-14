@@ -1,3 +1,24 @@
+2018-10-14
+ <!--热部署-->
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-devtools</artifactId>
+    <optional>true</optional>
+</dependency>
+ <plugin>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-maven-plugin</artifactId>
+    <dependencies>
+        <!-- spring热部署 -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>springloaded</artifactId>
+            <version>1.2.8.RELEASE</version>
+        </dependency>
+    </dependencies>
+</plugin>
+1） “File” -> “Settings” -> “Build,Execution,Deplyment” -> “Compiler”，选中打勾 “Build project automatically” 。
+2） 组合键：“Shift+Ctrl+Alt+/” ，选择 “Registry” ，选中打勾 “compiler.automake.allow.when.app.running” 。
 
 2018-06-13
 修改了thymleaf的部分。foot添加了时间。js在xenon-custom.js的文件中。
@@ -6,8 +27,6 @@
 AOP完成shiro后集成。
 1、添加aop依赖
 2、创建类。添加Aspect和Component注解。pointcut、Before、after、afterReturning注解等。
-
-
 
 2018-06-07
 
@@ -26,4 +45,3 @@ List selectByExampleWithBLOGs(UserExample example) thorws SQLException	         
 int updateByPrimaryKey(User record) thorws SQLException	                            按主键更新
 int updateByPrimaryKeySelective(User record) thorws SQLException	                按主键更新值不为null的字段
 int updateByExample(User record, UserExample example) thorws SQLException	        按条件更新
-int updateByExampleSelective(User record, UserExample example) thorws SQLException	按条件更新值不为null的字段
